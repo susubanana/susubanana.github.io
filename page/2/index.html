@@ -1,0 +1,641 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 2 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没有肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mobiledevelop">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mycase">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-22T10:00:32.000Z"><a href="/2013/12/22/object-2/">12月 22 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="理解面向对象继承">理解面向对象继承</h2>
+<p>实现继承是依靠原型链来实现的。</p>
+<h3 id="原型链">原型链</h3>
+<blockquote>
+<p>原型链就是，将一个对象的实例赋值给一个对象的原型来实现的。子对象的原型有一个内部指针[[prototype]]指向父对象的原型，相应地，父对象也包含一个内部指针[[prototype]]指向另一个构造函数，直到Object构造函数，这样就组成一条原型链。这样子对象能共享父对象所有的属性和方法，它的问题也是共享所有的属性，比如包含引用类型，一旦更改，所有指向这个引用类型的对象的属性值也被修改。</p>
+</blockquote>
+<ul>
+<li>所有的引用类型都默认继承Object</li>
+<li>通过subObj instanceof Object检测对象的类型</li>
+<li>通过Object.prototype.isPrototypeOf(subObj)检测对象是否由该原型链派生的实例的原型。</li>
+<li>不要使用字面量创建原型，这样会重写原型链，constructor指向Object，不是Bird，如：</li>
+</ul>
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/22/object-2/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-21T11:00:06.000Z"><a href="/2013/12/21/object-1/">12月 21 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="私有属性和方法">私有属性和方法</h2>
+<p>javascript没有特殊的语法表示公有、私有属性和方法，所有对象的成员都是公有的。实现私有成员的方法：使用闭包。</p>
+<h3 id="构造函数实现私有成员">构造函数实现私有成员</h3>
+<p>局部变量(私有成员)被所有在构造函数中定义的公有方法所共享，而且仅被在构造函数中定义的公有方法所共享，所以在prototype中定义的类成员不能访问在构造器中定义的局部变量。</p>
+<figure class="highlight ssh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">Bird</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _birdWidth = <span class="number">42</span>;
+
+    <span class="comment">//公有方法或特权方法（指能访问私有成员的公有方法）</span>
+    <span class="keyword">this</span>.getWidth = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> _birdWidth;
+    };
+}
+Bird.prototype = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _vBird = <span class="number">45</span>;
+
+    <span class="comment">//公有成员</span>
+    <span class="keyword">return</span> {
+        getW : <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            console.log(<span class="keyword">this</span>._birdWidth); <span class="comment">//undefined</span>
+        },
+        getVBird: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">return</span> _vBird;
+        }
+    };
+}());
+
+<span class="keyword">var</span> bird = <span class="keyword">new</span> Bird();
+console.log(bird.birdWidth); <span class="comment">//undefined</span>
+console.log(bird.getWidth()); <span class="comment">//42</span>
+console.log(bird.getVBird()); <span class="comment">//45</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/21/object-1/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-17T10:50:51.000Z"><a href="/2013/12/17/object-0/">12月 17 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="对象的创建">对象的创建</h2>
+<p>对象就是无序属性的集合，可以理解成名值对的集合，其中值可以是数据，也可以是函数。</p>
+<h3 id="工厂模式">工厂模式</h3>
+<p>解决代码重复问题，却无法识别对象类型</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span><span class="params">(name)</span>{</span>
+　　<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
+　　o.name = name;
+　　o.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+　　alert(<span class="keyword">this</span>.name);
+　　};
+　　<span class="keyword">return</span> o;
+}
+<span class="keyword">var</span> person = createPerson(<span class="string">'syh'</span>);
+person.sayName();
+</pre></td></tr></table></figure>
+
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/17/object-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-12T11:15:44.000Z"><a href="/2013/12/12/secrets-of-javascript-5/">12月 12 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="高阶函数">高阶函数</h2>
+<blockquote>
+<p>高阶函数是用函数封装好重复或者相似的代码，作为参数（回调函数）或者返回值的函数。<br>需要引入高阶函数的信号是出现重复相似的代码<br>实现了高阶函数抽象出来重复代码，进行优化操作时，仅需操作一处。</p>
+</blockquote>
+<p>假设用26位英文字符实现字符串：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="keyword">var</span> aIndex = <span class="string">"a"</span>.charCodeAt(<span class="number">0</span>);
+<span class="keyword">var</span> alphabet = <span class="string">''</span>;
+<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++){
+    alphabet += <span class="built_in">String</span>.fromCharCode(aIndex + i);
+}
+console.log(alphabet); <span class="comment">//abcdefghijklmnopqrstuvwxyz</span>
+</pre></td></tr></table></figure>
+
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/12/secrets-of-javascript-5/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-12T09:45:24.000Z"><a href="/2013/12/12/secrets-of-javascript-4/">12月 12 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="函数柯里化">函数柯里化</h2>
+<p>与函数bind()紧密相关的主题是函数柯里化。</p>
+<blockquote>
+<p>将函数及其参数的子集绑定来实现函数委托的方式称为函数柯里化<br>柯里化主要工作是将被返回的函数的参数进行排序</p>
+</blockquote>
+<p>柯里化函数通常如下创建：调用另一个函数，并为它传入柯里化函数和必要参数，返回给定的函数的函数和传入的参数。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">curry</span><span class="params">(fn)</span> {</span>
+
+    <span class="comment">//1表示返回的数组包含从第二个参数开始的所有参数，args包含外部函数传入的参数。</span>
+    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+
+        <span class="comment">//innerArgs存放内部函数的参数</span>
+        <span class="keyword">var</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);
+        <span class="keyword">var</span> finalArgs = args.concat(innerArgs);
+
+        <span class="comment">//不用绑定执行环境，所以为null</span>
+        <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, finalArgs);
+    };
+}
+<span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(x1, x2)</span>{</span>
+    <span class="keyword">return</span> x1 + x2;
+}
+<span class="keyword">var</span> currySum = curry(sum, <span class="number">1</span>, <span class="number">2</span>);
+currySum(); <span class="comment">//3</span>
+</pre></td></tr></table></figure>
+
+<p>柯里化函数常作为bind方法的一部分。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">bind</span><span class="params">(fn, context)</span> {</span>
+
+    <span class="comment">//2表示返回的数组包含从第三个参数开始的所有参数，args包含外部函数传入的参数。</span>
+    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+
+        <span class="comment">//innerArgs存放内部函数的参数</span>
+        <span class="keyword">var</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);
+        <span class="keyword">var</span> finalArgs = args.concat(innerArgs);
+
+        <span class="comment">//绑定执行环境context</span>
+        <span class="keyword">return</span> fn.apply(context, finalArgs);
+    };
+}
+</pre></td></tr></table></figure>
+
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/" class="prev" title="undefined">undefined</a></span>
+    
+    
+    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/3/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用hexo搭建博客--博客初成 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="用过Octopress或Jekyll来建立自己的Blog，好用，但是文章多了生成速度会很慢，于是就有了Hexo。
+
+hexo是由Node.js驱动的一款快速、简单且功能强大的博客框架，支持多线程，数百篇文章只需几秒即可生成。支持markdown编写文章，可以方便的生成静态网页托管在github上。
+
+本博客是用hexo搭建，本文记录如何利用hexo搭建博客。安装hexo前，先下载安装node。
+安装hexo
+1
+npm install hexo -g">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用hexo搭建博客--博客初成"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没有肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mobiledevelop">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mycase">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-11-18T14:34:13.000Z"><a href="/2013/11/18/build-blog-1/">11月 18 2013</a></time>
+      
+      
+
+    <h1 class="title">用hexo搭建博客--博客初成</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>用过Octopress或Jekyll来建立自己的Blog，好用，但是文章多了生成速度会很慢，于是就有了Hexo。</p>
+<blockquote>
+<p>hexo是由Node.js驱动的一款快速、简单且功能强大的博客框架，支持多线程，数百篇文章只需几秒即可生成。支持markdown编写文章，可以方便的生成静态网页托管在github上。</p>
+</blockquote>
+<p>本博客是用hexo搭建，本文记录如何利用hexo搭建博客。安装hexo前，先下载安装<a href="http://nodejs.org/" target="_blank">node</a>。</p>
+<h2 id="安装hexo">安装hexo</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>npm <span class="keyword">install</span> hexo -g
+</pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="创建hexo所在文件夹">创建hexo所在文件夹</h2>
+<p>创建博客所在的文件夹（如：D:/node/blog/hexo），然后通过cmd，通过命令行进入blog文件夹下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>d:
+<span class="built_in">cd</span> node/blog/hexo
+</pre></td></tr></table></figure>
+
+<p>执行下面代码，hexo会在hexo文件夹下初始化所需要的所有文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>hexo init
+</pre></td></tr></table></figure>
+
+<h2 id="启动本地服务">启动本地服务</h2>
+<p>在上面创建的hexo文件夹下执行以下命令</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>hexo g //每次修改本地文件后，需要<span class="escape">`h</span>exo g<span class="escape">`/</span><span class="escape">`h</span>exo generate<span class="escape">`才</span>能保存
+hexo s //启动服务
+</pre></td></tr></table></figure>
+
+<p>至此，本地博客已经搭建成功，在浏览器输入<code>localhost:4000</code>就能看到自己搭建的hexo博客主页了。</p>
+<h2 id="关于命令格式">关于命令格式</h2>
+<p>上面的hexo命令都是执行简单的命令格式，右侧为原有的命令</p>
+<p>hexo g == hexo generate</p>
+<p>hexo d == hexo deploy</p>
+<p>hexo s == hexo server</p>
+<p>hexo n == hexo new</p>
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2013/11/19/build-blog-2/" class="prev" title="用hexo搭建博客--部署到github上">用hexo搭建博客--部署到github上</a></span>
+    
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/hexo/">hexo</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2013/11/18/build-blog-1/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

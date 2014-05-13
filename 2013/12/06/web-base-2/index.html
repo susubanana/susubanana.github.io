@@ -1,0 +1,369 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>web基础--浏览器缓存 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="浏览器缓存
+是把页面信息保存到用户本地磁盘里，包括html缓存和图片js，css等资源的缓存。如下图：
+
+缓存的优点：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="web基础--浏览器缓存"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没有肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mobiledevelop">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mycase">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-06T11:25:18.000Z"><a href="/2013/12/06/web-base-2/">12月 6 2013</a></time>
+      
+      
+
+    <h1 class="title">web基础--浏览器缓存</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="浏览器缓存">浏览器缓存</h2>
+<p>是把页面信息保存到用户本地磁盘里，包括html缓存和图片js，css等资源的缓存。如下图：</p>
+<p><img src="/images/cont/web-base-2.jpg" style="display:block;" /></p>
+<h3 id="缓存的优点：">缓存的优点：</h3>
+<p><a id="more"></a></p>
+<ul>
+<li>服务器响应更快：请求缓存服务器而不是源服务器，这个过程耗时更少，让服务器看上去响应更快。</li>
+<li>减少网络带宽消耗：当副本被重用时会减低客户端的带宽消耗。</li>
+</ul>
+<h3 id="缓存工作原理">缓存工作原理</h3>
+<p>页面缓存状态是由http header决定的，一个浏览器请求信息，一个是服务器响应信息。主要包括Pragma: no-cache、Cache-Control、 Expires、 Last-Modified、If-Modified-Since。</p>
+<p>原理主要分三步：</p>
+<ol>
+<li>第一次请求：浏览器通过http的header报头，附带Expires，Cache-Control，Last-Modified/Etag向服务器请求，此时服务器记录第一次请求的Last-Modified/Etag</li>
+<li>再次请求：当浏览器再次请求的时候，请求头附带Expires，Cache-Control，If-Modified-Since/Etag向服务器请求</li>
+<li>服务器根据第一次记录的Last-Modified/Etag和再次请求的If-Modified-Since/Etag做对比，判断是否需要更新，服务器通过这两个头判断本地资源未发生变化，客户端不需要重新下载，返回304响应。</li>
+</ol>
+<p>原理图：</p>
+<p><img src="/images/cont/web-base-21.jpg" style="display:block;" /></p>
+<p>流程图：</p>
+<p><img src="/images/cont/web-base-22.jpg" style="display:block;" /></p>
+<p>与缓存相关的HTTP扩展消息头</p>
+<blockquote>
+<p>Expires：设置页面过期时间，格林威治时间GMT<br>Cache-Control：更细致的控制缓存的内容<br>Last-Modified：请求对象最后一次的修改时间 用来判断缓存是否过期 通常由文件的时间信息产生<br>ETag：响应中资源的校验值，在服务器上某个时段是唯一标识的。ETag是一个可以 与Web资源关联的记号（token），和Last-Modified功能差不多，也是一个标识符，一般和Last-Modified一起使用，加强服务器判断的准确度。<br>Date：服务器的时间<br>If-Modified-Since：客户端存取的该资源最后一次修改的时间，用来和服务器端的Last-Modified做比较<br>If-None-Match：客户端存取的该资源的检验值，同ETag。</p>
+</blockquote>
+<p>Cache-Control的主要参数</p>
+<blockquote>
+<p>Cache-Control: private/public Public 响应会被缓存，并且在多用户间共享。 Private 响应只能够作为私有的缓存，不能再用户间共享。<br>Cache-Control: no-cache：不进行缓存<br>Cache-Control: max-age=x：缓存时间 以秒为单位<br>Cache-Control: must-revalidate：如果页面是过期的 则去服务器进行获取。</p>
+</blockquote>
+<h3 id="关于图片，css，js，flash的缓存">关于图片，css，js，flash的缓存</h3>
+<p>主要通过修改服务器的配置来实现缓存。</p>
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2013/12/07/web-base-3/" class="prev" title="web基础--cookie和session">web基础--cookie和session</a></span>
+    
+    
+    <span>下一篇：<a href="/2013/12/06/web-base-1/" class="next" title="web基础--HTTP协议详解">web基础--HTTP协议详解</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/web开发/">web开发</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/web基础/">web基础</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2013/12/06/web-base-2/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

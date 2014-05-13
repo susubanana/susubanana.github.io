@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>web基础--HTTP协议详解 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="HTTP是一种通过Internet发送与接收数据的协议，客户端发出一个请求，服务器响应这个请求。,它建立在TCP协议之上，一般采用TCP的80端口。HTTP协议是无状态的，同一个客户端的这次请求和上次请求是没有对应关系，对HTTP服务器来说，它并不知道这两个请求是否来自同一个客户端。
+HTTP协议详解之url
+http url的格式如右：http://host[&quot;:&quot;port][abs_path]">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="web基础--HTTP协议详解"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没有肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mobiledevelop">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mycase">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-06T10:20:22.000Z"><a href="/2013/12/06/web-base-1/">12月 6 2013</a></time>
+      
+      
+
+    <h1 class="title">web基础--HTTP协议详解</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>HTTP是一种通过Internet发送与接收数据的协议，客户端发出一个请求，服务器响应这个请求。,它建立在TCP协议之上，一般采用TCP的80端口。<br>HTTP协议是无状态的，同一个客户端的这次请求和上次请求是没有对应关系，对HTTP服务器来说，它并不知道这两个请求是否来自同一个客户端。</p>
+<h2 id="HTTP协议详解之url">HTTP协议详解之url</h2>
+<p>http url的格式如右：<code>http://host[&quot;:&quot;port][abs_path]</code><br><a id="more"></a></p>
+<ul>
+<li>http表示要通过HTTP协议来定位网络资源；</li>
+<li>host表示合法的Internet主机域名或者IP地址；</li>
+<li>port指定一个端口号，为空则使用缺省端口80；</li>
+<li>abs_path指定请求资源的URI；</li>
+<li>如果URL中没有给出abs_path，那么当它作为请求URI时，必须以“/”的形式给出，通常这个工作浏览器自动帮我们完成。<br>example：<br>1、输入：www.guet.edu.cn<br>浏览器自动转换成：<a href="http://www.guet.edu.cn/" target="_blank">http://www.guet.edu.cn/</a><br>2、http:192.168.0.116:8080/index.jsp</li>
+</ul>
+<h2 id="HTTP协议详解之请求篇">HTTP协议详解之请求篇</h2>
+<p>http请求由三部分组成，分别是：请求行、消息报头、请求正文</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>GET /domains/example/ HTTP/<span class="number">1.1</span>      <span class="comment">//请求行: 请求方法 请求URI HTTP协议/协议版本</span>
+Host：www.iana.org             <span class="comment">//服务端的主机名</span>
+User-Agent：Mozilla/<span class="number">5.0</span> (Windows NT <span class="number">6.1</span>) AppleWebKit/<span class="number">537.4</span> (KHTML, like Gecko) Chrome/<span class="number">22.0</span><span class="number">.1229</span><span class="number">.94</span> Safari/<span class="number">537.4</span>   <span class="comment">//告诉HTTP服务器， 客户端使用的操作系统和浏览器的名称和版本</span>
+Accept：<span class="keyword">text</span>/html,application/xhtml+xml,application/xml;q=<span class="number">0.9</span>,<span class="variable">*/</span><span class="variable">*;</span>q=<span class="number">0.8</span>    <span class="comment">//客户端能接收的mine</span>
+Accept-Encoding：gzip,deflate,sdch     <span class="comment">//是否支持流压缩</span>
+Accept-Charset：UTF-<span class="number">8</span>,<span class="variable">*;</span>q=<span class="number">0.5</span>      <span class="comment">//客户端字符编码集</span>
+<span class="comment">//空行,用于分割请求头和消息体</span>
+<span class="comment">//消息体,请求资源参数,例如POST传递的参数</span>
+</pre></td></tr></table></figure>
+
+<h3 id="请求行的请求方法">请求行的请求方法</h3>
+<p>请求方法有多种，最基本的有4种，分别是GET,POST,PUT,DELETE，对应资源的查，改，增，删4个操作。</p>
+<p>主要看看GET和POST的区别:</p>
+<ul>
+<li>GET请求消息体为空，POST请求带有消息体。</li>
+<li>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如：EditPosts.aspx?name=test1&amp;id=123456。POST方法是把提交的数据放在HTTP包的body中。</li>
+<li>GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制。</li>
+<li>GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码。</li>
+</ul>
+<h2 id="HTTP协议详解之响应篇">HTTP协议详解之响应篇</h2>
+<p>HTTP响应也是由三个部分组成，分别是：状态行、消息报头、响应正文</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>HTTP/<span class="number">1.1</span> <span class="number">200</span> OK                     <span class="comment">//状态行：HTTP协议版本号 状态码 状态消息</span>
+Server: nginx/<span class="number">1.0</span><span class="number">.8</span>                 <span class="comment">//服务器使用的WEB软件名及版本</span>
+<span class="built_in">Date</span>:<span class="built_in">Date</span>: Tue, <span class="number">30</span> Oct <span class="number">2012</span> <span class="number">04</span>:<span class="number">14</span>:<span class="number">25</span> GMT        <span class="comment">//发送时间</span>
+Content<span class="attribute">-Type</span>: text/html             <span class="comment">//服务器发送信息的类型</span>
+Transfer<span class="attribute">-Encoding</span>: chunked          <span class="comment">//表示发送HTTP包是分段发的</span>
+Connection: keep<span class="attribute">-alive</span>              <span class="comment">//保持连接状态</span>
+Content<span class="attribute">-Length</span>: <span class="number">90</span>                  <span class="comment">//主体内容长度</span>
+<span class="comment">//空行 用来分割消息头和主体</span>
+<span class="subst">&lt;!</span>DOCTYPE html <span class="keyword">PUBLIC</span> <span class="string">"-//W3C//DTD XHTML 1.0 Transitional//EN"</span><span class="attribute">...</span> <span class="comment">//消息体</span>
+</pre></td></tr></table></figure>
+
+<h3 id="状态码">状态码</h3>
+<p>状态码用来告诉客户端,服务器是否产生了预期的Response。状态代码由三位数字组成，第一个数字是响应类别，有五种可能值：</p>
+<p>1XX 提示信息 - 表示请求已被成功接收，继续处理<br>2XX 成功 - 表示请求已被成功接收，理解，接受<br>3XX 重定向 - 要完成请求必须进行更进一步的处理<br>4XX 客户端错误 - 请求有语法错误或请求无法实现<br>5XX 服务器端错误 - 服务器未能实现合法的请求</p>
+<p>常见状态代码：<br>200 OK      //客户端请求成功<br>400 Bad Request  //客户端请求有语法错误，不能被服务器所理解<br>401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用<br>403 Forbidden  //服务器收到请求，但是拒绝提供服务<br>404 Not Found  //请求资源不存在，eg：输入了错误的URL<br>500 Internal Server Error //服务器发生不可预期的错误<br>503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后，可能恢复正常</p>
+<h3 id="Connection:_keep-alive">Connection: keep-alive</h3>
+<p>从HTTP/1.1起，默认都开启了Keep-Alive，保持连接特性，简单地说，当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接</p>
+<p>Keep-Alive不会永久保持连接，它有一个保持时间，可以在不同服务器软件（如Apache）中设置这个时间。</p>
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2013/12/06/web-base-2/" class="prev" title="web基础--浏览器缓存">web基础--浏览器缓存</a></span>
+    
+    
+    <span>下一篇：<a href="/2013/12/04/web-base-0/" class="next" title="web基础--web工作原理">web基础--web工作原理</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/web开发/">web开发</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/web基础/">web基础</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2013/12/06/web-base-1/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

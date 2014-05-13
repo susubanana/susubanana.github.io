@@ -1,0 +1,466 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用hexo搭建博客--markdown语法 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="H1标题两种表示方式
+1
+2
+H1标题第一种表示方式
+=======================
+
+
+或
+1
+# H1标题第二种表示方式
+
+
+H2标题两种表示方式
+1
+2
+H2标题第一种表示方式
+-----------------------">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="用hexo搭建博客--markdown语法"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没有肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mobiledevelop">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mycase">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-11-21T09:35:32.000Z"><a href="/2013/11/21/build-blog-5/">11月 21 2013</a></time>
+      
+      
+
+    <h1 class="title">用hexo搭建博客--markdown语法</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h1 id="H1标题两种表示方式">H1标题两种表示方式</h1>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="header">H1标题第一种表示方式
+=======================</span>
+</pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="preprocessor"># H1标题第二种表示方式</span>
+</pre></td></tr></table></figure>
+
+<h2 id="H2标题两种表示方式">H2标题两种表示方式</h2>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="header">H2标题第一种表示方式
+-----------------------</span>
+</pre></td></tr></table></figure>
+
+<p><a id="more"></a><br>或</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="preprocessor">## H2标题第二种表示方式</span>
+</pre></td></tr></table></figure>
+
+<h3 id="H3-H6标题_数字有多少就应该是几个<code>#</code>">H3-H6标题 数字有多少就应该是几个<code>#</code></h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="preprocessor">### H3标题</span>
+<span class="preprocessor">###### H6标题</span>
+</pre></td></tr></table></figure>
+
+<h2 id="段落">段落</h2>
+<p>空一行，写一段文字就会是一个段落</p>
+<h2 id="强调">强调</h2>
+<p><code>&lt;em&gt;</code>的表示法，被 * 或 _ 包围的字词会被转成用 <code>&lt;em&gt;</code> 标签</p>
+<p><em>em强调</em></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="emphasis">*强调*</span>
+<span class="emphasis">_强调_</span>
+</pre></td></tr></table></figure>
+
+<p><code>&lt;strong&gt;</code>的表示法，用** 或 __ 包起来的话，则会被转成<code>&lt;strong&gt;</code>标签</p>
+<p><strong>strong强调</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="strong">**强调**</span>
+<span class="strong">__强调__</span>
+</pre></td></tr></table></figure>
+
+<h2 id="链接">链接</h2>
+<p>使用[链接内容]加上(url)，代码如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>[<span class="link_label">github</span>](<span class="link_url">https://github.com/</span>)
+</pre></td></tr></table></figure>
+
+<h2 id="图片的两种表示方式">图片的两种表示方式</h2>
+<p>简单的img标签</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"图片地址"</span> <span class="attribute">title</span>=<span class="value">"文字"</span> /&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>或<br>一个惊叹号 !，接着一个方括号，里面放上图片的替代文字，接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>![<span class="link_label">Alt text</span>](<span class="link_url">/path/to/img.jpg "Optional title"</span>)
+</pre></td></tr></table></figure>
+
+<h2 id="代码区块">代码区块</h2>
+<p>可以空一行，然后4个空格或者一个制表符的缩进来建立代码区块</p>
+<pre><code>这是一个代码区块
+</code></pre><p>可以使用3个英文字符的点（ESC下面的键）加上sh开始，再以3个英文字符的点结束</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>这是一个代码区块
+</pre></td></tr></table></figure>
+
+<h2 id="有序列表">有序列表</h2>
+<p>可以使用<code>*</code>、<code>+</code>、<code>-</code>加上空格，作为前缀都会生成无序列表</p>
+<ul>
+<li><code>*</code>作为前缀都会生成无序列表</li>
+<li><code>*</code>作为前缀都会生成无序列表</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="bullet">* </span>作为前缀都会生成无序列表
+<span class="bullet">* </span>作为前缀都会生成无序列表
+等同于：
+<span class="bullet">+ </span>作为前缀都会生成无序列表
+<span class="bullet">+ </span>作为前缀都会生成无序列表
+等同于：
+<span class="bullet">- </span>作为前缀都会生成无序列表
+<span class="bullet">- </span>作为前缀都会生成无序列表
+</pre></td></tr></table></figure>
+
+<h2 id="有序列表-1">有序列表</h2>
+<p>有序列表则使用数字接着一个英文句点</p>
+<ol>
+<li>有序列表</li>
+<li>有序列表</li>
+<li>有序列表</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="bullet">1. </span>有序列表
+<span class="bullet">2. </span>有序列表
+<span class="bullet">3. </span>有序列表
+</pre></td></tr></table></figure>
+
+<h2 id="引文">引文</h2>
+<p>右尖括号&gt;加引文，空一行表示分段</p>
+<blockquote>
+<p>The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible. The idea is that a<br>Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with</p>
+<p>tags or formatting instructions.</p>
+</blockquote>
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2013/11/21/build-blog-6/" class="prev" title="用hexo搭建博客--博文技巧">用hexo搭建博客--博文技巧</a></span>
+    
+    
+    <span>下一篇：<a href="/2013/11/19/build-blog-4/" class="next" title="用hexo搭建博客--博客主题的配置">用hexo搭建博客--博客主题的配置</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/markdown/">markdown</a>, <a href="/tags/hexo/">hexo</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+      <div id="fb-root"></div>
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div class="fb-comments" data-href="http://yoursite.com/2013/11/21/build-blog-5/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
+      
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>1</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-5/">javascript高级技巧--高阶函数</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
