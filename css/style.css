@@ -131,7 +131,7 @@ a:hover {
   height: 7.5em;
   margin: 0 auto;
 }
-@media mini {
+@media screen and (max-width: 480px) {
   #header .line {
     width: 10em;
     float: left;
@@ -145,7 +145,7 @@ a:hover {
   border-right: 0.2em solid #fff;
   margin: 0 auto;
 }
-@media mini {
+@media screen and (max-width: 480px) {
   #header .line span {
     position: absolute;
     left: 3em;
@@ -175,7 +175,7 @@ a:hover {
   -ms-transform: rotateZ(360deg);
   transform: rotateZ(360deg);
 }
-@media mini {
+@media screen and (max-width: 480px) {
   #header .line .author {
     position: absolute;
     top: 6em;
