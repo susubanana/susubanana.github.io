@@ -184,7 +184,16 @@ a:hover {
 }
 #header .my-word {
   float: left;
-  margin: 20px 0 0 2%;
+}
+@media screen and (max-width: 1260px) {
+  #header .my-word {
+    margin: 20px 0 0 20px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #header .my-word {
+    margin: 20px 0 0 10px;
+  }
 }
 #header .my-word h2 {
   font-size: 25px;
