@@ -188,6 +188,11 @@ a:hover {
     top: 0.6em;
   }
 }
+@media screen and (max-width: 320px) {
+  #header .line .author {
+    width: 6em;
+  }
+}
 #header .my-word {
   float: left;
 }
@@ -233,11 +238,6 @@ a:hover {
 @media screen and (max-width: 480px) {
   #header .my-word p {
     font-size: 14px;
-  }
-}
-@media screen and (max-width: 320px) {
-  #header .my-word p {
-    font-size: 12px;
   }
 }
 #header #main-nav {
