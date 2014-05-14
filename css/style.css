@@ -159,11 +159,17 @@ a:hover {
     left: 3em;
   }
 }
+@media screen and (max-width: 320px) {
+  #header .line span {
+    position: absolute;
+    left: 2em;
+  }
+}
 #header .line .author {
   width: 6.875em;
   height: 6.875em;
   margin: 0 auto;
-  background: no-repeat url("/images/author.jpg") left top;
+  background: no-repeat url("/images/author.jpg") center top;
   -webkit-background-size: 6.875em 6.875em;
   -moz-background-size: 6.875em 6.875em;
   background-size: 6.875em 6.875em;
