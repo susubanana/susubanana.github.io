@@ -190,7 +190,8 @@ a:hover {
 }
 @media screen and (max-width: 320px) {
   #header .line .author {
-    width: 6em;
+    width: 5.5em;
+    height: 5.5em;
   }
 }
 #header .my-word {
