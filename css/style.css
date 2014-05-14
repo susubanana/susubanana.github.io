@@ -202,10 +202,20 @@ a:hover {
   line-height: 1.5;
   font-family: Microsoft YaHei;
 }
+@media screen and (max-width: 480px) {
+  #header .my-word h2 {
+    font-size: 22px;
+  }
+}
 #header .my-word p {
   font-size: 16px;
   line-height: 1.5;
   color: #060;
+}
+@media screen and (max-width: 480px) {
+  #header .my-word p {
+    font-size: 14px;
+  }
 }
 #header #main-nav {
   font-family: tahoma, Microsoft YaHei, SimSun, Arial, sans-serif;
