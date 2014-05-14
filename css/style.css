@@ -128,12 +128,13 @@ a:hover {
 }
 #header .line {
   float: left;
+  width: 7em;
   height: 7.5em;
   margin: 0 auto;
 }
 @media screen and (max-width: 480px) {
   #header .line {
-    width: 7em;
+    width: 6.5em;
     float: left;
     position: relative;
   }
@@ -202,6 +203,7 @@ a:hover {
 }
 #header .my-word {
   float: left;
+  margin: 20px 0 0 20px;
 }
 @media screen and (max-width: 1260px) {
   #header .my-word {
