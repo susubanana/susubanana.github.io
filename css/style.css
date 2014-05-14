@@ -190,7 +190,7 @@ a:hover {
     margin: 20px 0 0 20px;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   #header .my-word {
     margin: 20px 0 0 10px;
   }
