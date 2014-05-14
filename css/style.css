@@ -133,7 +133,7 @@ a:hover {
 }
 @media screen and (max-width: 480px) {
   #header .line {
-    width: 10em;
+    width: 7em;
     float: left;
     position: relative;
   }
@@ -149,7 +149,6 @@ a:hover {
   #header .line span {
     position: absolute;
     left: 3em;
-    margin: 0 0 1.5em;
   }
 }
 #header .line .author {
@@ -178,8 +177,7 @@ a:hover {
 @media screen and (max-width: 480px) {
   #header .line .author {
     position: absolute;
-    top: 6em;
-    margin: 0 0 1.5em;
+    top: 0.6em;
   }
 }
 #header .my-word {
