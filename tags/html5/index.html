@@ -3,17 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>web基础--web工作原理 | no forget</title>
+  <title>html5 | no forget</title>
   <meta name="author" content="susubanana">
-  
-  <meta name="description" content="平时用浏览器，输入网址后回车，页面响应我们想要浏览的内容，简单操作的背后蕴涵了什么原理？
-web工作原理
-当输入url回车后，客户端（浏览器）会去请求DNS服务器，通过DNS获取域名对应的IP地址，然后通过这个地址找到对应的服务器，要求建立TCP连接，建立连接，客户端发送httpRequest（请求包）后，服务器接收并开始处理请求，调用自身服务，返回httpResponse（响应包），客户端收到响应包后开始渲染body主体，等到全部接收，断开与该服务器端的TCP连接。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="web基础--web工作原理"/>
+  
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -113,120 +109,25 @@ web工作原理
 
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-04T13:29:52.000Z"><a href="/2013/12/04/web-base-0/">12月 4 2013</a></time>
-      
-      
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title tag">html5</h2>
 
-    <h1 class="title">web基础--web工作原理</h1>
-  
 
-    </header>
-    <div class="entry">
-      
-        <p>平时用浏览器，输入网址后回车，页面响应我们想要浏览的内容，简单操作的背后蕴涵了什么原理？</p>
-<h2 id="web工作原理">web工作原理</h2>
-<p>当输入url回车后，客户端（浏览器）会去请求DNS服务器，通过DNS获取域名对应的IP地址，然后通过这个地址找到对应的服务器，要求建立TCP连接，建立连接，客户端发送httpRequest（请求包）后，服务器接收并开始处理请求，调用自身服务，返回httpResponse（响应包），客户端收到响应包后开始渲染body主体，等到全部接收，断开与该服务器端的TCP连接。</p>
-<a id="more"></a>
-
-<p><img src="/images/cont/web-base-0.jpg" style="display:block;" /></p>
-<p>可以简单归纳为：</p>
-<ul>
-<li>客户端通过TCP/IP协议与服务器端建立TCP连接；</li>
-<li>客户端发送httpRequest请求服务器端的资源；</li>
-<li>服务器接收并开始处理请求，将处理得到的数据返回给客户端；</li>
-<li>客户端与服务器端断开TCP连接，等待下一次请求。</li>
-</ul>
-<h2 id="URL">URL</h2>
-<p>是统一资源定位符的英文缩写。包含协议，http服务器IP或者域名，端口号等。</p>
-<h2 id="DNS">DNS</h2>
-<p>域名系统的缩写。它是用于TCP/IP网络，从事将主机名或者域名翻译成IP地址的工作。</p>
-<h3 id="DNS的工作模式">DNS的工作模式</h3>
-<ol>
-<li>当输入网址后，操作系统先检查本地hosts文件，看看是否有这个网址的映射关系。</li>
-<li>第一步没有映射关系，查找本地DNS缓存，有则返回，完成域名解析。</li>
-<li>第一二步没有映射关系，则查找TCP/IP协议首选的DNS服务器（本地DNS服务器），有则返回给客户端，完成域名解析。</li>
-<li>上面几步都失效的情况下，则根据本地DNS服务器的设置查询，一级一级的查询上层DNS服务器，最后将结果返回给本地服务器，本地服务器再返回给客户端。</li>
-</ol>
-<p><img src="/images/cont/web-base-01.jpg" style="display:block;" /></p>
-<p>总的来说，浏览器最后发起请求时基于IP来和服务器交互的。</p>
-
-        <div class="paging">
+  <div class="archive">
     
-    <span>上一篇：<a href="/2013/12/06/web-base-1/" class="prev" title="web基础--HTTP协议详解">web基础--HTTP协议详解</a></span>
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2014-04-15T09:58:13.000Z"><a href="/2014/04/15/nodejs-3/">4月 15 2014</a></time>
+            
+              <h1 class="title"><a href="/2014/04/15/nodejs-3/">node.js--WebSocket与Socket.io</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
-    
-    <span>下一篇：<a href="/2013/11/21/build-blog-6/" class="next" title="用hexo搭建博客--博文技巧">用hexo搭建博客--博文技巧</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
-        
-  
-  <div class="categories">
-    <a href="/categories/web开发/">web开发</a>
   </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/web基础/">web基础</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Comments</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://yoursite.com/2013/12/04/web-base-0/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
-      
-  
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright">
   
