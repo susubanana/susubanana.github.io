@@ -3,17 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>web基础--cookie和session | no forget</title>
+  <title>Archives: 2014/4 | no forget</title>
   <meta name="author" content="susubanana">
-  
-  <meta name="description" content="因为HTTP协议是无状态的，所以用户的每一次请求都是无状态的，我们不知道在整个Web操作过程中哪些连接与该用户有关，如何解决这个问题？Web经典的解决方案是cookie和session，cookie是一种客户端机制，把用户数据保存在客户端，而session是一种服务器端的机制。
-Cookie
-Cookie是由浏览器维持的，在本地计算机保存一些用户操作的历史信息（当然包括登录信息），并在用户再次访问该站点时浏览器通过HTTP协议将本地cookie内容发送给服务器，从而完成验证，或继续上一步操作。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="web基础--cookie和session"/>
+  
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -113,107 +109,25 @@ Cookie是由浏览器维持的，在本地计算机保存一些用户操作的�
 
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-07T13:13:30.000Z"><a href="/2013/12/07/web-base-3/">12月 7 2013</a></time>
-      
-      
+    <div id="main-col" class="alignleft"><div id="wrapper">
+<h2 class="archive-title">2014/4</h2>
 
-    <h1 class="title">web基础--cookie和session</h1>
-  
 
-    </header>
-    <div class="entry">
-      
-        <p>因为HTTP协议是无状态的，所以用户的每一次请求都是无状态的，我们不知道在整个Web操作过程中哪些连接与该用户有关，如何解决这个问题？Web经典的解决方案是cookie和session，cookie是一种客户端机制，把用户数据保存在客户端，而session是一种服务器端的机制。</p>
-<h2 id="Cookie">Cookie</h2>
-<p>Cookie是由浏览器维持的，在本地计算机保存一些用户操作的历史信息（当然包括登录信息），并在用户再次访问该站点时浏览器通过HTTP协议将本地cookie内容发送给服务器，从而完成验证，或继续上一步操作。<br><a id="more"></a><br><img src="/images/cont/web-base-3.jpg" style="display:block;" /></p>
-<p>cookie是有时间限制的，根据生命期不同分成两种：会话cookie和持久cookie；</p>
-<h3 id="会话cookie">会话cookie</h3>
-<p>如果不设置过期时间，只要关闭浏览器窗口，cookie就消失了。这种生命期为浏览会话期的cookie被称为会话cookie。会话cookie一般保存在内存里。</p>
-<h3 id="持久cookie">持久cookie</h3>
-<p>浏览器就会把cookie保存到硬盘上，关闭后再次打开浏览器，这些cookie依然有效直到超过设定的过期时间。存储在硬盘上的cookie可以在不同的浏览器进程间共享，比如两个IE窗口。而对于保存在内存的cookie，不同的浏览器有不同的处理方式。 　</p>
-<h2 id="Session">Session</h2>
-<p>session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构(也可能就是使用散列表)来保存信息，每一个网站访客都会被分配给一个唯一的标志符,即sessionID。</p>
-<p>程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否包含了一个sessionID，如果有则说明以前已经为此客户创建过session，服务器就按照sessionID把这个session检索出来使用。如果没有，则为此客户创建一个session并且同时生成一个与此session相关联的sessionID，将这个sessionID放在本次响应中返回给客户端保存在cookie里。</p>
-<p><img src="/images/cont/web-base-31.jpg" style="display:block;" /></p>
-<p>总的来说，session通过cookie，在客户端保存sessionID，而将用户的其他会话消息保存在服务端的session对象中。而cookie需要将所有信息都保存在客户端。</p>
-
-        <div class="paging">
+  <div class="archive">
     
-    <span>上一篇：<a href="/2013/12/10/secrets-of-javascript-0/" class="prev" title="javascript作用域--执行环境">javascript作用域--执行环境</a></span>
+      <article class="post">
+        <div class="post-content">
+          <header>
+            <div class="icon"></div>
+            <time datetime="2014-04-15T09:58:13.000Z"><a href="/2014/04/15/nodejs-3/">4月 15 2014</a></time>
+            
+              <h1 class="title"><a href="/2014/04/15/nodejs-3/">node.js--WebSocket与Socket.io</a></h1>
+            
+          </header>
+        </div>
+      </article>
     
-    
-    <span>下一篇：<a href="/2013/12/06/web-base-2/" class="next" title="web基础--浏览器缓存">web基础--浏览器缓存</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
-        
-  
-  <div class="categories">
-    <a href="/categories/web开发/">web开发</a>
   </div>
-
-        
-  
-  <div class="tags">
-    <a href="/tags/web基础/">web基础</a>
-  </div>
-
-        
-  <div class="addthis addthis_toolbox addthis_default_style">
-    
-      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-    
-    
-      <a class="addthis_button_tweet"></a>
-    
-    
-      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-    
-    
-      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
-    
-    <a class="addthis_counter addthis_pill_style"></a>
-  </div>
-  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-<section id="comment">
-  <h1 class="title">Comments</h1>
-
-  
-      <div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=123456789012345";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<div class="fb-comments" data-href="http://yoursite.com/2013/12/07/web-base-3/" data-num-posts="5" data-width="840" data-colorscheme="light"></div>
-      
-  
-</section>
-
 </div></div>
     <aside id="sidebar" class="alignright">
   

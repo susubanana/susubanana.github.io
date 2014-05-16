@@ -116,6 +116,100 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-10T13:19:18.000Z"><a href="/2013/12/10/secrets-of-javascript-1/">12月 10 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="全局变量定义">全局变量定义</h2>
+<ul>
+<li>在任何函数外面定义var语句</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">var</span> a = <span class="string">'value'</span>;
+</pre></td></tr></table></figure>
+
+<ul>
+<li>直接添加属性在全局对象上</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>window.<span class="operator">a</span> = <span class="string">'value'</span>;   <span class="comment"> //全局对象是所有全局变量的容器</span>
+</pre></td></tr></table></figure>
+
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/10/secrets-of-javascript-1/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-10T11:25:18.000Z"><a href="/2013/12/10/secrets-of-javascript-0/">12月 10 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/10/secrets-of-javascript-0/">javascript作用域--执行环境</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="变量对象">变量对象</h2>
+<p>变量对象是与执行上下文相关的数据作用域。它是与上下文关联的特殊对象，用于存储被定义在上下文中的变量和函数声明。</p>
+<h2 id="活动对象">活动对象</h2>
+<p>当函数被激活的时候，活动对象就会被激活，这个活动对象就是该函数的变量对象。</p>
+<h2 id="作用域链">作用域链</h2>
+<p>在当前函数中，可能会引用它的父函数变量，或者全局的变量，指向这些执行环境各自的变量对象引用组成一个作用域链。<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/10/secrets-of-javascript-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-07T13:13:30.000Z"><a href="/2013/12/07/web-base-3/">12月 7 2013</a></time>
       
       
@@ -206,7 +300,7 @@
     </header>
     <div class="entry">
       
-        <p>HTTP是一种通过Internet发送与接收数据的协议，客户端发出一个请求，服务器响应这个请求。,它建立在TCP协议之上，一般采用TCP的80端口。<br>HTTP协议是无状态的，同一个客户端的这次请求和上次请求是没有对应关系，对HTTP服务器来说，它并不知道这两个请求是否来自同一个客户端。</p>
+        <p>HTTP超文本传输协议是一种通过Internet发送与接收数据的协议，客户端发出一个请求，服务器响应这个请求。,它建立在TCP协议之上，一般采用TCP的80端口。<br>HTTP协议是无状态的，同一个客户端的这次请求和上次请求是没有对应关系，对HTTP服务器来说，它并不知道这两个请求是否来自同一个客户端。</p>
 <h2 id="HTTP协议详解之url">HTTP协议详解之url</h2>
 <p>http url的格式如右：<code>http://host[&quot;:&quot;port][abs_path]</code><br>
       
@@ -217,92 +311,6 @@
         
           <div class="alignleft">
             <a href="/2013/12/06/web-base-1/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-04T13:29:52.000Z"><a href="/2013/12/04/web-base-0/">12月 4 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/04/web-base-0/">web基础--web工作原理</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>平时用浏览器，输入网址后回车，页面响应我们想要浏览的内容，简单操作的背后蕴涵了什么原理？</p>
-<h2 id="web工作原理">web工作原理</h2>
-<p>当输入url回车后，客户端（浏览器）会去请求DNS服务器，通过DNS获取域名对应的IP地址，然后通过这个地址找到对应的服务器，要求建立TCP连接，建立连接，客户端发送httpRequest（请求包）后，服务器接收并开始处理请求，调用自身服务，返回httpResponse（响应包），客户端收到响应包后开始渲染body主体，等到全部接收，断开与该服务器端的TCP连接。</p>
-
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/04/web-base-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-21T11:25:26.000Z"><a href="/2013/11/21/build-blog-6/">11月 21 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/11/21/build-blog-6/">用hexo搭建博客--博文技巧</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>做了那么多准备工作，实在很急啊，很想写几篇博文过过瘾，验收一下辛苦建站的成果。</p>
-<h2 id="创建博文">创建博文</h2>
-<p>在hexo文件夹下，敲入<code>hexo n 博文名称</code>或<code>hexo new 博文名称</code>，找到<code>\hexo\source\_posts文件夹</code>，接着用markdown语法写博文</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>hexo n <span class="keyword">my</span>-<span class="keyword">first</span>-blog
-</pre></td></tr></table></figure>
-
-<h2 id="显示摘要">显示摘要</h2>
-<p>在博文合适位置，使用<code>&lt;!--more--&gt;</code>就可将文章分割。</p>
-
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/11/21/build-blog-6/#more" class="more-link">阅读全文</a>
           </div>
         
         
@@ -346,7 +354,7 @@
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/nodejs/">nodejs</a><small>2</small></li>
+    <li><a href="/categories/nodejs/">nodejs</a><small>4</small></li>
   
     <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
   
@@ -367,7 +375,7 @@
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>2</small></li>
+    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -379,6 +387,14 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/15/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/13/nodejs-2/">node.js--异步编程难点和解决方案</a>
+      </li>
     
       <li>
         <a href="/2014/03/13/nodejs-1/">node.js--异步编程难点和解决方案</a>
@@ -430,14 +446,6 @@
     
       <li>
         <a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/10/secrets-of-javascript-0/">javascript作用域--执行环境</a>
       </li>
     
   </ul>

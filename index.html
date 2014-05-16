@@ -116,6 +116,93 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-04-15T09:58:13.000Z"><a href="/2014/04/15/nodejs-3/">4月 15 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/04/15/nodejs-3/">node.js--WebSocket与Socket.io</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>WebSocket主要是两部分内容，一部分是浏览器实现的WebSocket，一部分是服务器端实现的WebSocket协议。WebSocket是随html5的推动被设计和开发，但是没有成为html5标准的一部分，前者被W3C标准化，后者被IETF标准化为RFC 6455。</p>
+<h2 id="WebSocket协议">WebSocket协议</h2>
+<ul>
+<li>客户端与服务器端只建立一个TCP连接即可完成双向通信。这个连接是实时的、永久的，除非被显式关闭。</li>
+<li>WebSocket服务器端可以推送数据到客户端，远比http请求响应灵活。</li>
+<li>有更轻量级的协议头，减少数据传送量。</li>
+</ul>
+<h3 id="WebSocket浏览器端的实现">WebSocket浏览器端的实现</h3>
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/04/15/nodejs-3/#more" class="more-link">阅读全文</a>
+          </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-13T09:29:12.000Z"><a href="/2014/03/13/nodejs-2/">3月 13 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/13/nodejs-2/">node.js--异步编程难点和解决方案</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Node借助异步I/O模型和V8高性能引擎，突破单线程的性能瓶颈，另一方面统一了前后端javascript的编程模型。</p>
+<h2 id="异步编程难点">异步编程难点</h2>
+
+        <div class="paging">
+    
+    
+    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-13T09:29:12.000Z"><a href="/2014/03/13/nodejs-1/">3月 13 2014</a></time>
       
       
@@ -339,104 +426,6 @@ Bird.getVBird();
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-01-07T12:30:30.000Z"><a href="/2014/01/07/design-patterns-1/">1月 7 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="工厂模式">工厂模式</h2>
-<blockquote>
-<p>工厂模式的目的就是为了创建对象，不用直接用new构造函数方式创建对象。<br>工厂模式在编译期间不知道一个具体对象类型，通过一个通用的接口来创建对象，这个接口由子类决定实例化哪种对象类型。通俗来理解，通过买早餐，你告诉老板，是要粥还是包子。</p>
-</blockquote>
-<p>制作一个鸟工厂，鸟有会飞的鸟和不会飞的鸟。</p>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/01/07/design-patterns-1/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-01-06T11:10:32.000Z"><a href="/2014/01/06/design-patterns-0/">1月 6 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="单例模式">单例模式</h2>
-<blockquote>
-<p>其思想是保证一个特定的类仅有一个实例，每次初始化的对象都是同一个对象。<br>单例的存在往往表明系统中要么紧密耦合，要么逻辑过于分散在其他模块中。如游戏中某个对象的状态需要在其他模块中通信。<br>单例可以用来划分命名空间，并将一批相关方法和属性组织在一起的对象，如果它可以被实例化，那么它只能被实例化一次。</p>
-</blockquote>
-<p>使用对象字面量创建对象就是一个单例。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="keyword">var</span> Bird = {
-    vBird : <span class="number">45</span>,
-    getVBird :<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> <span class="keyword">this</span>.vBird;
-    }
-};
-</pre></td></tr></table></figure>
-
-<p>也可以使用构造函数方式创建单例，什么时候使用这种语法的单例实现呢，在于当使用同一个构造函数实例化多个对象时，应该指向完全相同的对象。<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/01/06/design-patterns-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
 
 <nav id="pagination">
   
@@ -466,7 +455,7 @@ Bird.getVBird();
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/nodejs/">nodejs</a><small>2</small></li>
+    <li><a href="/categories/nodejs/">nodejs</a><small>4</small></li>
   
     <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
   
@@ -487,7 +476,7 @@ Bird.getVBird();
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>2</small></li>
+    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -499,6 +488,14 @@ Bird.getVBird();
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/15/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/13/nodejs-2/">node.js--异步编程难点和解决方案</a>
+      </li>
     
       <li>
         <a href="/2014/03/13/nodejs-1/">node.js--异步编程难点和解决方案</a>
@@ -550,14 +547,6 @@ Bird.getVBird();
     
       <li>
         <a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/10/secrets-of-javascript-0/">javascript作用域--执行环境</a>
       </li>
     
   </ul>
