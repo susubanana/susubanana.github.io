@@ -9,7 +9,8 @@
   <meta name="description" content="开发免不了调试bug，高效的调试技巧会让编程更有乐趣。
 Node调试技巧
 命令行调试
-在命令行下进入项目路径，执行node debug 文件名，将会启动Node调试终端
+在命令行下进入项目路径，执行node debug 文件名，将会启动Node调试终端。
+终端显示结果：
 1
 2
 3
@@ -160,7 +161,8 @@ debug&gt; c
         <p>开发免不了调试bug，高效的调试技巧会让编程更有乐趣。</p>
 <h2 id="Node调试技巧">Node调试技巧</h2>
 <h3 id="命令行调试">命令行调试</h3>
-<p>在命令行下进入项目路径，执行<code>node debug 文件名</code>，将会启动Node调试终端</p>
+<p>在命令行下进入项目路径，执行<code>node debug 文件名</code>，将会启动Node调试终端。</p>
+<p>终端显示结果：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -188,8 +190,80 @@ debug&gt; c
 </pre></td></tr></table></figure>
 
 <p>可以基于如下命令进行调试：<br><a id="more"></a><br>&gt;<br><code>run</code> 执行脚本在第一行暂停<br><code>restart</code> 重新执行脚本<br><code>cont、c</code> 继续执行脚本，直到遇到下一个断点<br><code>next、n</code> 单步执行<br><code>step、s</code> 单步执行并进入函数<br><code>out、o</code> 从函数中退出<br><code>setBreakpoint(&#39;sripts.js&#39;, 20)</code> 在scripts的第20行设置断点<br><code>clearBreakpoint</code> 清除所有断点<br><code>breaktrace、bt</code> 显示当前调用栈<br><code>list(5)</code> 显示当前执行到的前5行代码<br><code>watch(expr)</code> 把表达式expr加入监视列表<br><code>unwatch(expr)</code> 把表达式expr从监视列表移除<br><code>watchers</code> 显示监视列表中所有表达式和值<br><code>repl</code> 在当前上下文打开即时求值环境<br><code>kill</code> 终止当前执行的脚本<br><code>scripts</code> 显示所有已加载的脚本</p>
+<h3 id="使用supervisor">使用supervisor</h3>
+<p>开发node的时候，修改代码，总要终止进程并重启才凑效。这是因为node只有在第一次引用到某部分时才会去访问脚本，以后都会直接访问内存，避免重复载入。这种设计有利于提高性能，却不利于调试。</p>
+<p>supervisor可以监视代码改动，并自动重启。</p>
+<p>使用步骤：</p>
+<ol>
+<li>安装supervisor，<code>npm install -g supervisor</code></li>
+<li>在当前项目路径下，使用supervisor启动app.js，<code>supervisor app.js</code></li>
+</ol>
+<p>终端显示结果：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>D:\project\microblog&gt;supervisor app.js
+
+Running node-supervisor <span class="operator">with</span>
+  program <span class="string">'app.js'</span>
+  <span class="comment">--watch '.'</span>
+  <span class="comment">--extensions 'node,js'</span>
+  <span class="comment">--exec 'node'</span>
+
+Starting child <span class="built_in">process</span> <span class="operator">with</span> <span class="string">'node app.js'</span>
+Watching <span class="built_in">directory</span> <span class="string">'D:\project\microblog'</span> <span class="keyword">for</span> changes.
+Express server listening <span class="command"><span class="keyword">on</span> <span class="title">port</span> <span class="title">3000</span></span>
+connect mongodb success...
+</pre></td></tr></table></figure>
+
+<p>当代码被改动，会自动终止脚本并重启</p>
+<p>终端显示结果：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="code"><pre>D:\project\microblog&gt;supervisor app.js
+
+Running node-supervisor <span class="operator">with</span>
+  program <span class="string">'app.js'</span>
+  <span class="comment">--watch '.'</span>
+  <span class="comment">--extensions 'node,js'</span>
+  <span class="comment">--exec 'node'</span>
+
+Starting child <span class="built_in">process</span> <span class="operator">with</span> <span class="string">'node app.js'</span>
+Watching <span class="built_in">directory</span> <span class="string">'D:\project\microblog'</span> <span class="keyword">for</span> changes.
+Express server listening <span class="command"><span class="keyword">on</span> <span class="title">port</span> <span class="title">3000</span></span>
+connect mongodb success...
+crashing child
+Starting child <span class="built_in">process</span> <span class="operator">with</span> <span class="string">'node app.js'</span>
+Express server listening <span class="command"><span class="keyword">on</span> <span class="title">port</span> <span class="title">3000</span></span>
+connect mongodb success...
+</pre></td></tr></table></figure>
+
 <h3 id="使用node-inspector调试">使用node-inspector调试</h3>
 <p>node-inspector是一个完全基于Node的开源在线调试工具，提供强大的调试功能和友好的用户界面，通过npm install -g node-inspector安装。</p>
+<p>使用步骤：</p>
 <ol>
 <li>打开终端，在项目目录下通过<code>node --debug-brk=5858 app.js</code>连接调式服务器。</li>
 <li>新开一个终端，在项目目录下输入<code>node-inspector</code>，来启动node-inspector。</li>
