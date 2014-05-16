@@ -210,12 +210,10 @@ webSocket.onclose = <span class="function"><span class="keyword">function</span>
 14
 15
 16
-17
 </pre></td><td class="code"><pre><span class="keyword">var</span> express = <span class="keyword">require</span>(<span class="string">'express'</span>)
     , http = <span class="keyword">require</span>(<span class="string">'http'</span>)
     , bodyParser = <span class="keyword">require</span>(<span class="string">'body-parser'</span>)
     , app = express();
-
 
 app.<span class="keyword">use</span>(bodyParser());
 <span class="comment">//使用static中间件，并将public作为托管的目录</span>
@@ -305,7 +303,7 @@ io.sockets.on(<span class="string">'connection'</span>, <span class="function"><
         <div class="paging">
     
     
-    <span>下一篇：<a href="/2014/03/13/nodejs-1/" class="next" title="node.js--异步编程难点和解决方案">node.js--异步编程难点和解决方案</a></span>
+    <span>下一篇：<a href="/2014/03/13/nodejs-1/" class="next" title="node.js--错误调试">node.js--错误调试</a></span>
     
 
 </div>
@@ -393,7 +391,7 @@ io.sockets.on(<span class="string">'connection'</span>, <span class="function"><
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/nodejs/">nodejs</a><small>4</small></li>
+    <li><a href="/categories/nodejs/">nodejs</a><small>3</small></li>
   
     <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
   
@@ -414,7 +412,7 @@ io.sockets.on(<span class="string">'connection'</span>, <span class="function"><
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
+    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -432,11 +430,7 @@ io.sockets.on(<span class="string">'connection'</span>, <span class="function"><
       </li>
     
       <li>
-        <a href="/2014/03/13/nodejs-1/">node.js--异步编程难点和解决方案</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/13/nodejs-2/">node.js--异步编程难点和解决方案</a>
+        <a href="/2014/03/13/nodejs-1/">node.js--错误调试</a>
       </li>
     
       <li>
@@ -485,6 +479,10 @@ io.sockets.on(<span class="string">'connection'</span>, <span class="function"><
     
       <li>
         <a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a>
       </li>
     
   </ul>

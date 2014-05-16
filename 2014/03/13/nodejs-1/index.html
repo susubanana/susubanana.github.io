@@ -3,16 +3,45 @@
 <head>
   <meta charset="utf-8">
   
-  <title>node.js--异步编程难点和解决方案 | no forget</title>
+  <title>node.js--错误调试 | no forget</title>
   <meta name="author" content="susubanana">
   
-  <meta name="description" content="Node借助异步I/O模型和V8高性能引擎，突破单线程的性能瓶颈，另一方面统一了前后端javascript的编程模型。
-异步编程难点">
+  <meta name="description" content="开发免不了调试bug，高效的调试技巧会让编程更有乐趣。
+Node调试技巧
+命令行调试
+在命令行下进入项目路径，执行node debug 文件名，将会启动Node调试终端
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+D:\node\microblog&gt;node debug app.js
+&lt; debugger listening on port 5858
+connecting... ok
+break in D:\node\microblog\app.js:6
+  4  */
+  5
+  6 var express = require(&#39;express&#39;);
+  7 var http = require(&#39;http&#39;);
+  8 var routes = require(&#39;./routes&#39;);
+debug&gt; c
+&lt; Express server listening on port 3000
+&lt; connect mongodb success...
+
+
+可以基于如下命令进行调试：">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="node.js--异步编程难点和解决方案"/>
+  <meta property="og:title" content="node.js--错误调试"/>
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -122,21 +151,59 @@
       
       
 
-    <h1 class="title">node.js--异步编程难点和解决方案</h1>
+    <h1 class="title">node.js--错误调试</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Node借助异步I/O模型和V8高性能引擎，突破单线程的性能瓶颈，另一方面统一了前后端javascript的编程模型。</p>
-<h2 id="异步编程难点">异步编程难点</h2>
+        <p>开发免不了调试bug，高效的调试技巧会让编程更有乐趣。</p>
+<h2 id="Node调试技巧">Node调试技巧</h2>
+<h3 id="命令行调试">命令行调试</h3>
+<p>在命令行下进入项目路径，执行<code>node debug 文件名</code>，将会启动Node调试终端</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="attribute">D</span>:\node\microblog&gt;node debug app.js
+&lt; <span class="keyword">debugger</span> listening <span class="literal">on</span> port <span class="number">5858</span>
+connecting... ok
+<span class="keyword">break</span> <span class="keyword">in</span> <span class="attribute">D</span>:\node\microblog\app.<span class="attribute">js</span>:<span class="number">6</span>
+  <span class="number">4</span>  */
+  <span class="number">5</span>
+  <span class="number">6</span> <span class="reserved">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);
+  <span class="number">7</span> <span class="reserved">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);
+  <span class="number">8</span> <span class="reserved">var</span> routes = <span class="built_in">require</span>(<span class="string">'./routes'</span>);
+debug&gt; c
+&lt; Express server listening <span class="literal">on</span> port <span class="number">3000</span>
+&lt; connect mongodb success...
+</pre></td></tr></table></figure>
+
+<p>可以基于如下命令进行调试：<br><a id="more"></a><br>&gt;<br><code>run</code> 执行脚本在第一行暂停<br><code>restart</code> 重新执行脚本<br><code>cont、c</code> 继续执行脚本，直到遇到下一个断点<br><code>next、n</code> 单步执行<br><code>step、s</code> 单步执行并进入函数<br><code>out、o</code> 从函数中退出<br><code>setBreakpoint(&#39;sripts.js&#39;, 20)</code> 在scripts的第20行设置断点<br><code>clearBreakpoint</code> 清除所有断点<br><code>breaktrace、bt</code> 显示当前调用栈<br><code>list(5)</code> 显示当前执行到的前5行代码<br><code>watch(expr)</code> 把表达式expr加入监视列表<br><code>unwatch(expr)</code> 把表达式expr从监视列表移除<br><code>watchers</code> 显示监视列表中所有表达式和值<br><code>repl</code> 在当前上下文打开即时求值环境<br><code>kill</code> 终止当前执行的脚本<br><code>scripts</code> 显示所有已加载的脚本</p>
+<h3 id="使用node-inspector调试">使用node-inspector调试</h3>
+<p>node-inspector是一个完全基于Node的开源在线调试工具，提供强大的调试功能和友好的用户界面，通过npm install -g node-inspector安装。</p>
+<ol>
+<li>打开终端，在项目目录下通过<code>node --debug-brk=5858 app.js</code>连接调式服务器。</li>
+<li>新开一个终端，在项目目录下输入<code>node-inspector</code>，来启动node-inspector。</li>
+<li>在浏览器输入localhost:8080/debug?port=5858即可显示web调试工具。</li>
+</ol>
+<p><img src="/images/cont/nodejs-11.jpg" style="display:block;"/></p>
+<p>其使用方法就和浏览器调试脚本一样，支持单步、断点、调用栈帧查看等。</p>
 
         <div class="paging">
     
     <span>上一篇：<a href="/2014/04/15/nodejs-3/" class="prev" title="node.js--WebSocket与Socket.io">node.js--WebSocket与Socket.io</a></span>
     
     
-    <span>下一篇：<a href="/2014/03/13/nodejs-2/" class="next" title="node.js--异步编程难点和解决方案">node.js--异步编程难点和解决方案</a></span>
+    <span>下一篇：<a href="/2014/03/10/nodejs-0/" class="next" title="node.js--异步I/O与非阻塞I/O">node.js--异步I/O与非阻塞I/O</a></span>
     
 
 </div>
@@ -224,7 +291,7 @@
   <h3 class="title">Categories</h3>
   <ul class="entry">
   
-    <li><a href="/categories/nodejs/">nodejs</a><small>4</small></li>
+    <li><a href="/categories/nodejs/">nodejs</a><small>3</small></li>
   
     <li><a href="/categories/web开发/">web开发</a><small>17</small></li>
   
@@ -245,7 +312,7 @@
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
+    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -263,11 +330,7 @@
       </li>
     
       <li>
-        <a href="/2014/03/13/nodejs-1/">node.js--异步编程难点和解决方案</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/13/nodejs-2/">node.js--异步编程难点和解决方案</a>
+        <a href="/2014/03/13/nodejs-1/">node.js--错误调试</a>
       </li>
     
       <li>
@@ -316,6 +379,10 @@
     
       <li>
         <a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a>
       </li>
     
   </ul>
