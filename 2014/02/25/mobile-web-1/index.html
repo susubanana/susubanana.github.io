@@ -1,0 +1,439 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动Web开发--text-size-adjust属性 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="text-size-adjust属性
+
+这个属性用来设定文字大小是否根据设备(浏览器)来自动调整显示大小。有三种属性值：
+
+none 字体大小不会自动调整
+auto 默认属性值，字体大小会根据设备/浏览器来自动调整
+percentage 字体显示的大小（百分比）
+
+
+Chrome不支持12px以下字体的解决方案">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="移动Web开发--text-size-adjust属性"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/移动开发/">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/项目/">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-25T10:22:38.000Z"><a href="/2014/02/25/mobile-web-1/">2月 25 2014</a></time>
+      
+      
+
+    <h1 class="title">移动Web开发--text-size-adjust属性</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="text-size-adjust属性">text-size-adjust属性</h2>
+<blockquote>
+<p>这个属性用来设定文字大小是否根据设备(浏览器)来自动调整显示大小。有三种属性值：</p>
+<ul>
+<li><code>none</code> 字体大小不会自动调整</li>
+<li><code>auto</code> 默认属性值，字体大小会根据设备/浏览器来自动调整</li>
+<li><code>percentage</code> 字体显示的大小（百分比）</li>
+</ul>
+</blockquote>
+<h3 id="Chrome不支持12px以下字体的解决方案">Chrome不支持12px以下字体的解决方案</h3>
+<p><a id="more"></a><br><strong>中文PC桌面版Chrome 27正式取消了-webkit-text-size-adjust属性的支持，实际上是修正了原有的bug</strong>（该属性本职是用于mobile的，桌面版webkit支持它，这是一个bug）。目前定义该属性在Chrome调试窗口会显示<code>Unknown property name</code>警告，所有字号最小为12px。</p>
+<p>为实现字体字号小于12px的需求，解决方案为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="tag">p</span><span class="rules">{
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">6</span>px</span></span>;
+    <span class="rule"><span class="attribute">-webkit-transform</span>:<span class="value"> <span class="function">scale(<span class="number">0.5</span>)</span></span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+<p>但是，网页在三种浏览器的有不同表现：</p>
+<ol>
+<li>Chrome下启用了缩放，所以字符间距出现问题，影响美观，这时候可以用js判断为Chrome后再用CSS属性letter-spacing去修复；</li>
+<li>Firefox不认识-webkit，所以表现正常，6px；</li>
+<li>Opera 内核暂未更换为webkit，但是已能够识别-webkit-前缀了，而且在检查元素时还抹掉了前缀，但又能够显示12px以下的字号，结果变成了9×0.75，影响了肉眼的识别。</li>
+</ol>
+<p>因而，改进方案为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="tag">p</span>{
+    <span class="attribute">font-size</span><span class="value">: <span class="number">6</span>px;</span>
+    -webkit-<span class="attribute">transform</span><span class="value">: scale(<span class="number">0.5</span>);</span>
+    -o-<span class="attribute">transform</span><span class="value">: scale(<span class="number">1</span>);</span>    <span class="comment">//针对能识别-webkit的opera设置</span>
+}
+</pre></td></tr></table></figure>
+
+<h3 id="避免iOS/Windows_mobile字体大小的重置">避免iOS/Windows mobile字体大小的重置</h3>
+<p>据说该属性最初专门是为iPhone版safari设计的，用来自动调整普通网页在iPhone手机端字体的展现问题。</p>
+<p><strong>移动端chrome/safari目前依然支持-webkit-text-size-adjust属性</strong>。</p>
+<p>另外，iPhone和iPad的默认设定是不一样的：</p>
+<p>iPhone默认设定 -webkit-text-size-adjust: auto;</p>
+<p>iPad默认设定 -webkit-text-size-adjust: none;</p>
+<p>所以，当iPhone从竖屏模式切换到横屏模式时，页面字体会放大。针对这个问题，可以用如下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>html{
+    <span class="attribute">-webkit</span><span class="attribute">-text</span><span class="attribute">-size</span><span class="attribute">-adjust</span>: <span class="literal">none</span>;
+    <span class="attribute">-ms</span><span class="attribute">-text</span><span class="attribute">-size</span><span class="attribute">-adjust</span>: <span class="literal">none</span>;
+    text<span class="attribute">-size</span><span class="attribute">-adjust</span>: <span class="literal">none</span>;
+}
+</pre></td></tr></table></figure>
+
+<blockquote>
+<p>优点：告诉webkit引擎在渲染页面时不要自动调整字体大小<br>缺点：对于旧版本支持该属性的PC端浏览器或者非移动客户端访问，这个设置仍会导致页面的缩放功能被禁用，对于有视觉障碍的浏览者非常不友好。</p>
+</blockquote>
+<p>为了防止缩放功能被禁用，可以用-webkit-text-size-adjust: 100%代替;</p>
+<p>因而，改进方案为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="tag">html</span><span class="rules">{
+    <span class="rule"><span class="attribute">-webkit-text-size-adjust</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+    <span class="rule"><span class="attribute">-ms-text-size-adjust</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+    <span class="rule"><span class="attribute">text-size-adjust</span>:<span class="value"> <span class="number">100</span>%</span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2014/02/27/mobile-web-2/" class="prev" title="移动Web开发--移动端的配置和优化">移动Web开发--移动端的配置和优化</a></span>
+    
+    
+    <span>下一篇：<a href="/2014/02/21/mobile-web-0/" class="next" title="移动Web开发--响应式设计">移动Web开发--响应式设计</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/移动开发/">移动开发</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/css/">css</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+    <h1 class="title">我爱评</h1>
+
+    <div class="ds-thread" data-thread-key="/2014/02/25/mobile-web-1/" data-title="移动Web开发--text-size-adjust属性" data-url="/2014/02/25/mobile-web-1/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"no-forget"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+
+    </script>
+</section>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/html5/">html5</a><small>3</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+    <li><a href="/tags/响应式设计/">响应式设计</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/13/nodejs-1/">node.js--错误调试</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/mobile-web-3/">移动Web开发--css3线性渐变</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/28/mobile-web-4/">移动Web开发--离线存储</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/27/mobile-web-2/">移动Web开发--移动端的配置和优化</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/25/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/21/mobile-web-0/">移动Web开发--响应式设计</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
