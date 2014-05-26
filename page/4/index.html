@@ -406,93 +406,16 @@ console.log(alphabet); <span class="comment">//abcdefghijklmnopqrstuvwxyz</span>
 <blockquote>
 <p>将函数及其参数的子集绑定来实现函数委托的方式称为函数柯里化<br>柯里化主要工作是将被返回的函数的参数进行排序</p>
 </blockquote>
-<p>柯里化函数通常如下创建：调用另一个函数，并为它传入柯里化函数和必要参数，返回给定的函数的函数和传入的参数。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">curry</span><span class="params">(fn)</span> {</span>
-
-    <span class="comment">//1表示返回的数组包含从第二个参数开始的所有参数，args包含外部函数传入的参数。</span>
-    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-
-        <span class="comment">//innerArgs存放内部函数的参数</span>
-        <span class="keyword">var</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);
-        <span class="keyword">var</span> finalArgs = args.concat(innerArgs);
-
-        <span class="comment">//不用绑定执行环境，所以为null</span>
-        <span class="keyword">return</span> fn.apply(<span class="literal">null</span>, finalArgs);
-    };
-}
-<span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(x1, x2)</span>{</span>
-    <span class="keyword">return</span> x1 + x2;
-}
-<span class="keyword">var</span> currySum = curry(sum, <span class="number">1</span>, <span class="number">2</span>);
-currySum(); <span class="comment">//3</span>
-</pre></td></tr></table></figure>
-
-<p>柯里化函数常作为bind方法的一部分。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">bind</span><span class="params">(fn, context)</span> {</span>
-
-    <span class="comment">//2表示返回的数组包含从第三个参数开始的所有参数，args包含外部函数传入的参数。</span>
-    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">2</span>);
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-
-        <span class="comment">//innerArgs存放内部函数的参数</span>
-        <span class="keyword">var</span> innerArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);
-        <span class="keyword">var</span> finalArgs = args.concat(innerArgs);
-
-        <span class="comment">//绑定执行环境context</span>
-        <span class="keyword">return</span> fn.apply(context, finalArgs);
-    };
-}
-</pre></td></tr></table></figure>
-
-
-        <div class="paging">
-    
-    <span>上一篇：<a href="/" class="prev" title="undefined">undefined</a></span>
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
-
-</div>
+<p>柯里化函数通常如下创建：调用另一个函数，并为它传入柯里化函数和必要参数，返回给定的函数的函数和传入的参数。<br>
       
     </div>
 
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2013/12/12/secrets-of-javascript-4/#more" class="more-link">阅读全文</a>
+          </div>
         
 
       
