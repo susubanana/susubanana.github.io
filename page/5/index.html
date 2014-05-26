@@ -116,6 +116,80 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-11T12:28:51.000Z"><a href="/2013/12/11/secrets-of-javascript-3/">12月 11 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/11/secrets-of-javascript-3/">javascript高级技巧--函数绑定bind()</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="函数绑定bind()方法">函数绑定bind()方法</h2>
+<h3 id="自定义bind方法">自定义bind方法</h3>
+<p>这个技巧常用于回调函数中。其中this指向的对象取决于调用表达式。可能会出现不符合预期的情况，因而需要绑定函数的原始对象。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="comment">// 作为回调函数传递时，this指向全局变量</span>
+<span class="keyword">var</span> Bird = {
+    vBird : <span class="number">45</span>,
+    colors: [<span class="string">'blue'</span>, <span class="string">'yellow'</span>],
+    getVBird :<span class="function"><span class="keyword">function</span><span class="params">(whichBird)</span>{</span>
+        <span class="keyword">return</span> whichBird + <span class="string">'的速度是 '</span> + <span class="keyword">this</span>.vBird;
+    }
+};
+<span class="keyword">var</span> bird = {
+    vBird : <span class="number">60</span>
+    method: <span class="function"><span class="keyword">function</span><span class="params">(callback)</span> {</span>
+        <span class="keyword">return</span> callback(<span class="string">'blueBird'</span>);
+    }
+};
+bird.method(Bird.getVBird); <span class="comment">// "blueBird的速度是 undefined"</span>
+</pre></td></tr></table></figure>
+
+<p>简单的bind(一个环境，一个函数)，这个bind函数返回给定环境中调用给定的函数的函数，并将所有参数传递过去：<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/11/secrets-of-javascript-3/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-11T10:30:27.000Z"><a href="/2013/12/11/secrets-of-javascript-2/">12月 11 2013</a></time>
       
       
@@ -315,49 +389,6 @@ var <span class="built_in">sum</span> = add();
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-06T11:25:18.000Z"><a href="/2013/12/06/web-base-2/">12月 6 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/06/web-base-2/">web基础--浏览器缓存</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="浏览器缓存">浏览器缓存</h2>
-<p>是把页面信息保存到用户本地磁盘里，包括html缓存和图片js，css等资源的缓存。如下图：</p>
-<p><img src="/images/cont/web-base-2.jpg" style="display:block;" /></p>
-<h3 id="缓存的优点：">缓存的优点：</h3>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/06/web-base-2/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -391,7 +422,7 @@ var <span class="built_in">sum</span> = add();
   
     <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
   
-    <li><a href="/tags/css/">css</a><small>2</small></li>
+    <li><a href="/tags/css/">css</a><small>3</small></li>
   
     <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
   
@@ -441,7 +472,11 @@ var <span class="built_in">sum</span> = add();
       </li>
     
       <li>
-        <a href="/2014/02/25/mobile-web-3/">移动Web开发--离线存储</a>
+        <a href="/2014/02/25/mobile-web-6/">移动Web开发--离线存储</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/20/mobile-web-3/">移动Web开发--谈谈css3几个常用的属性</a>
       </li>
     
       <li>
@@ -470,10 +505,6 @@ var <span class="built_in">sum</span> = add();
     
       <li>
         <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
       </li>
     
   </ul>
