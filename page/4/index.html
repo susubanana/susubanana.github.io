@@ -116,6 +116,107 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-21T11:00:06.000Z"><a href="/2013/12/21/object-1/">12月 21 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="私有属性和方法">私有属性和方法</h2>
+<p>javascript没有特殊的语法表示公有、私有属性和方法，所有对象的成员都是公有的。实现私有成员的方法：使用闭包。</p>
+<h3 id="构造函数实现私有成员">构造函数实现私有成员</h3>
+<p>局部变量(私有成员)被所有在构造函数中定义的公有方法所共享，而且仅被在构造函数中定义的公有方法所共享，所以在prototype中定义的类成员不能访问在构造器中定义的局部变量。</p>
+<figure class="highlight ssh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">Bird</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _birdWidth = <span class="number">42</span>;
+
+    <span class="comment">//公有方法或特权方法（指能访问私有成员的公有方法）</span>
+    <span class="keyword">this</span>.getWidth = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> _birdWidth;
+    };
+}
+Bird.prototype = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _vBird = <span class="number">45</span>;
+
+    <span class="comment">//公有成员</span>
+    <span class="keyword">return</span> {
+        getW : <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            console.log(<span class="keyword">this</span>._birdWidth); <span class="comment">//undefined</span>
+        },
+        getVBird: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">return</span> _vBird;
+        }
+    };
+}());
+
+<span class="keyword">var</span> bird = <span class="keyword">new</span> Bird();
+console.log(bird.birdWidth); <span class="comment">//undefined</span>
+console.log(bird.getWidth()); <span class="comment">//42</span>
+console.log(bird.getVBird()); <span class="comment">//45</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/21/object-1/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-17T10:50:51.000Z"><a href="/2013/12/17/object-0/">12月 17 2013</a></time>
       
       
@@ -428,72 +529,6 @@ bird.method(Bird.getVBird); <span class="comment">// "blueBird的速度是 undef
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-11T10:30:27.000Z"><a href="/2013/12/11/secrets-of-javascript-2/">12月 11 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="闭包的理解">闭包的理解</h2>
-<p>根据下面代码进行分析：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">()</span>{</span>
-    var firstVal = <span class="number">0</span>,
-        secondVal = <span class="number">1</span>;
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        secondVal++;
-        <span class="keyword">return</span> firstVal + secondVal;
-    }
-}
-var <span class="built_in">sum</span> = add();
-<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//2</span>
-<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//3，说明secondVal++的值没有被销毁，还保存在内存中。</span>
-</pre></td></tr></table></figure>
-
-<h3 id="从堆栈的角度理解：">从堆栈的角度理解：</h3>
-<p>在面向堆栈的编程语言中，函数的局部变量都是保存在栈上的，每当函数激活的时候，这些变量和函数参数都会压入到该堆栈上。当函数返回的时候，这些参数又会从栈中移除。<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/11/secrets-of-javascript-2/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -541,7 +576,7 @@ var <span class="built_in">sum</span> = add();
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
-    <li><a href="/tags/响应式设计/">响应式设计</a><small>1</small></li>
+    <li><a href="/tags/响应式设计/">响应式设计</a><small>2</small></li>
   
   </ul>
 </div>
@@ -569,23 +604,27 @@ var <span class="built_in">sum</span> = add();
       </li>
     
       <li>
-        <a href="/2014/02/28/mobile-web-3/">移动Web开发--css3线性渐变</a>
+        <a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a>
       </li>
     
       <li>
-        <a href="/2014/02/28/mobile-web-4/">移动Web开发--离线存储</a>
+        <a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a>
       </li>
     
       <li>
-        <a href="/2014/02/27/mobile-web-2/">移动Web开发--移动端的配置和优化</a>
+        <a href="/2014/02/25/mobile-web-3/">移动Web开发--离线存储</a>
       </li>
     
       <li>
-        <a href="/2014/02/25/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+        <a href="/2014/02/18/mobile-web-2/">移动Web开发--css3线性渐变</a>
       </li>
     
       <li>
-        <a href="/2014/02/21/mobile-web-0/">移动Web开发--响应式设计</a>
+        <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
       </li>
     
       <li>
@@ -606,10 +645,6 @@ var <span class="built_in">sum</span> = add();
     
       <li>
         <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
       </li>
     
   </ul>

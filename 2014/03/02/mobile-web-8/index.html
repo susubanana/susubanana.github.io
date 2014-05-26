@@ -1,0 +1,546 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动Web开发--Retina分辨率的像素处理 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="苹果的新产品中已经使用了Retina(视网膜)技术。这是一种新的屏幕的显示技术，声称人类的肉眼将无法区分单个像素。这个技术得到了更多人的亲眯，因为给画面带来了前所未有的清晰平滑效果。但是Web开发人员和设计者为了确保用户得到最好的视觉体验，Retina还是给开发带来了些小麻烦。
+Retina分辨率的像素处理
+理解像素
+CSS像素
+
+CSS像素是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。一般情况下，CSS像素被称为与设备无关的像素（device-independent像素），简称为“DIPs”。在一个标准的显示密度下，一个CSS像素对应着一个设备像素。
+
+1
+&lt;div height=&quot;200&quot; width=&quot;300&quot;&gt;&lt;/div&gt;
+
+
+上面的代码，将会在显示屏设备上绘制一个200x300像素的盒子。但是在Retina屏幕下，相同的div却使用了400x600设备像素，保持相同的物理尺寸显示，导致每个像素点实际上有4倍的普通像素点，如图所示：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="移动Web开发--Retina分辨率的像素处理"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/移动开发/">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/项目/">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-02T09:19:58.000Z"><a href="/2014/03/02/mobile-web-8/">3月 2 2014</a></time>
+      
+      
+
+    <h1 class="title">移动Web开发--Retina分辨率的像素处理</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>苹果的新产品中已经使用了Retina(视网膜)技术。这是一种新的屏幕的显示技术，声称人类的肉眼将无法区分单个像素。这个技术得到了更多人的亲眯，因为给画面带来了前所未有的清晰平滑效果。但是Web开发人员和设计者为了确保用户得到最好的视觉体验，Retina还是给开发带来了些小麻烦。</p>
+<h2 id="Retina分辨率的像素处理">Retina分辨率的像素处理</h2>
+<h3 id="理解像素">理解像素</h3>
+<p><strong>CSS像素</strong></p>
+<blockquote>
+<p>CSS像素是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。一般情况下，CSS像素被称为与设备无关的像素（device-independent像素），简称为“DIPs”。在一个标准的显示密度下，一个CSS像素对应着一个设备像素。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">height</span>=<span class="value">"200"</span> <span class="attribute">width</span>=<span class="value">"300"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>上面的代码，将会在显示屏设备上绘制一个200x300像素的盒子。但是在Retina屏幕下，相同的div却使用了400x600设备像素，保持相同的物理尺寸显示，导致每个像素点实际上有4倍的普通像素点，如图所示：<br><a id="more"></a><br><img src="/images/cont/mobile-web-81.jpg" style="display:block;" /></p>
+<p>也就是说：一个CSS像素点实际分成了四个，这样就造成了颜色只能<strong>近似选取</strong>，于是，我们看上去就变得模糊了。</p>
+<p>以MacBook Pro with Retina Display[3]为例，工作时显卡渲染出2880×1800个像素，其中每四个像素一组，输出原来屏幕的一个像素显示的大小区域内的图像。这样一来，用户所看到的图标与文字的大小与原来的1440×900分辨率显示屏相同，但精细度是原来的4倍…由四个像素代替原来一个像素。这样就会造成普通图片在Retina屏幕上显示模糊：</p>
+<p><img src="/images/cont/mobile-web-80.jpg" style="display:block;" /></p>
+<p><strong>位图像素</strong></p>
+<p>位图是由像素（Pixel）组成的，像素是位图最小的信息单元，存储在图像栅格中(PNG, JPG, GIF等等)。每个像素都具有特定的位置和颜色值。按从左到右、从上到下的顺序来记录图像中每一个像素的信息。</p>
+<p>当一个图像在标准设备下全屏显示时,一位图像素对应的就是一设备像素,导致一个完全保真的显示。因为一个位置像素不能进一步分裂，当在Retina屏幕下时，他要放大四倍来保持相同的物理像素的大小，这样就会丢失很多细节，造成失真的情形。换句话说，每一位图像素被乘以四填补相同的物理表面在视网膜屏幕下显示。</p>
+<p><img src="/images/cont/mobile-web-82.jpg" style="display:block;" /></p>
+<p><strong>如何解决普通图片在Retina屏幕下模糊的问题？</strong></p>
+<h3 id="使用HTML/CSS">使用HTML/CSS</h3>
+<ul>
+<li>图片的原始大小不能是200×300像素，而需要2倍高宽，即400×600像素，再通过CSS样式或HTML属性将其压缩50%。普通屏幕下的图像被压缩，减少像素取样（只是位图含像素的四分之一），这样就造成了资源浪费。同时把这个过程称为＂Downsampled＂。</li>
+</ul>
+<p><img src="/images/cont/mobile-web-83.jpg" style="display:block;" /></p>
+<p>有几种方法可以实现这样的效果：</p>
+<ol>
+<li><p>使用HTML</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"example@2x.jpg"</span> <span class="attribute">width</span>=<span class="value">"200"</span> <span class="attribute">height</span>=<span class="value">"300"</span> /&gt;</span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>使用CSS</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="class">.image</span> <span class="rules">{
+  <span class="rule"><span class="attribute">background-image</span>:<span class="value"> <span class="function">url(example@<span class="number">2</span>x.png)</span></span></span>;
+  <span class="rule"><span class="attribute">background-size</span>:<span class="value"> <span class="number">200</span>px <span class="number">300</span>px</span></span>;
+  <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">300</span>px</span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">200</span>px</span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+</li>
+<li><p>使用JavaScript</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre>$(window).load(<span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+  <span class="keyword">var</span> images = $(<span class="string">'img'</span>);
+  images.each(<span class="function"><span class="keyword">function</span><span class="params">(i)</span> {</span>
+    $(<span class="keyword">this</span>).width($(<span class="keyword">this</span>).width() / <span class="number">2</span>);
+  });
+});
+</pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>上面通过三种方法实现，非Retina屏幕下必须下载更大的图片资源，造成了一定的资源浪费，Downsampled图像在不同的分辨下可能会失去一定的清晰度，另外，background-size在IE９以下浏览器不能得到友好支持</p>
+<h3 id="使用CSS_Media_Queries">使用CSS Media Queries</h3>
+<p>可以通过“device-pixel-ratio”属性或者其扩展属性“min-device-pixel-ratio”和“max-device-pixel-ratio”。这几个Media Queries可以使用background-image为Retina准备高精密度像素的图片。</p>
+<p>先了解设备像素比devicePixelRatio：</p>
+<blockquote>
+<p>window.devicePixelRatio是设备上物理像素和设备独立像素(device-independent pixels (dips))的比例。<br> 公式表示就是：window.devicePixelRatio = 物理像素 / dips</p>
+</blockquote>
+<p>所有非视网膜屏幕的iphone在垂直的时候，宽度为320物理像素。当你使用<meta name="viewport" content="width=device-width">的时候，会设置视窗布局宽度（不同于视觉区域宽度，不放大显示情况下，两者大小一致，见下图）为320px, 于是，页面很自然地覆盖在屏幕上。</p>
+<p><img src="/images/cont/mobile-web-84.jpg" style="display:block;" /></p>
+<p>这样，非视网膜屏幕的iphone上，屏幕物理像素320像素，独立像素也是320像素，因此，window.devicePixelRatio等于1.</p>
+<p>而对于视网膜屏幕的iphone，如iphone4s, 纵向显示的时候，屏幕物理像素640像素。同样，当用户设置<meta name="viewport" content="width=device-width">的时候，其视区宽度并不是640像素，而是320像素，这是为了有更好的阅读体验 – 更合适的文字大小。<br>这样，在视网膜屏幕的iphone上，屏幕物理像素640像素，独立像素还是320像素，因此，window.devicePixelRatio等于2.</p>
+<p><strong>Retian屏幕和普通屏幕</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+</pre></td><td class="code"><pre>@media only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px) {
+
+  <span class="comment">/* Small screen, non-retina */</span>
+  background: url(sprite<span class="built_in">.</span>png) no<span class="attribute">-repeat</span> <span class="number">0</span> <span class="subst">-</span><span class="number">100</span>px;
+
+}
+
+@media
+only screen <span class="literal">and</span> (<span class="attribute">-webkit</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="subst">--</span>moz<span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px),
+only screen <span class="literal">and</span> (<span class="attribute">-o</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>/<span class="number">1</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">192</span>dpi) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">2</span>dppx) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">320</span>px) {
+
+  <span class="comment">/* Small screen, retina, stuff to override above media query */</span>
+  <span class="comment">/* Reference the @2x Sprite */</span>
+  background<span class="attribute">-image</span>: url(sprite@<span class="number">2</span>x<span class="built_in">.</span>png);
+  <span class="comment">/* Translate the @2x sprite's dimensions back to 1x */</span>
+  background<span class="attribute">-size</span>: <span class="number">200</span>px <span class="number">200</span>px;
+
+}
+
+@media only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px) {
+
+  <span class="comment">/* Medium screen, non-retina */</span>
+
+}
+
+@media
+only screen <span class="literal">and</span> (<span class="attribute">-webkit</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="subst">--</span>moz<span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px),
+only screen <span class="literal">and</span> (<span class="attribute">-o</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>/<span class="number">1</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">192</span>dpi) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">2</span>dppx) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">700</span>px) {
+
+  <span class="comment">/* Medium screen, retina, stuff to override above media query */</span>
+
+}
+
+@media only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px) {
+
+  <span class="comment">/* Large screen, non-retina */</span>
+
+}
+
+@media
+only screen <span class="literal">and</span> (<span class="attribute">-webkit</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="subst">--</span>moz<span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px),
+only screen <span class="literal">and</span> (<span class="attribute">-o</span><span class="attribute">-min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>/<span class="number">1</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-device</span><span class="attribute">-pixel</span><span class="attribute">-ratio</span>: <span class="number">2</span>) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">192</span>dpi) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px),
+only screen <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-resolution</span>: <span class="number">2</span>dppx) <span class="literal">and</span> (<span class="keyword">min</span><span class="attribute">-width</span>: <span class="number">1300</span>px) {
+
+  <span class="comment">/* Large screen, retina, stuff to override above media query */</span>
+
+}
+</pre></td></tr></table></figure>
+
+<p>这种方式只能通过HTML元素的背景图片来实现，没有语义。</p>
+<p>这些解决方法都有利有弊，一切在于权衡。</p>
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2014/03/10/nodejs-0/" class="prev" title="node.js--异步I/O与非阻塞I/O">node.js--异步I/O与非阻塞I/O</a></span>
+    
+    
+    <span>下一篇：<a href="/2014/03/01/mobile-web-7/" class="next" title="移动Web开发--响应式设计">移动Web开发--响应式设计</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/移动开发/">移动开发</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/响应式设计/">响应式设计</a>
+  </div>
+
+        
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+    <h1 class="title">我爱评</h1>
+
+    <div class="ds-thread" data-thread-key="/2014/03/02/mobile-web-8/" data-title="移动Web开发--Retina分辨率的像素处理" data-url="/2014/03/02/mobile-web-8/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"no-forget"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+
+    </script>
+</section>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/html5/">html5</a><small>3</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+    <li><a href="/tags/响应式设计/">响应式设计</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/13/nodejs-1/">node.js--错误调试</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/25/mobile-web-3/">移动Web开发--离线存储</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/18/mobile-web-2/">移动Web开发--css3线性渐变</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

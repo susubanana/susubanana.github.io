@@ -322,29 +322,37 @@ debug&gt; c
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-02-28T12:41:12.000Z"><a href="/2014/02/28/mobile-web-3/">2月 28 2014</a></time>
+        <time datetime="2014-03-02T09:19:58.000Z"><a href="/2014/03/02/mobile-web-8/">3月 2 2014</a></time>
       
       
 
-    <h1 class="title"><a href="/2014/02/28/mobile-web-3/">移动Web开发--css3线性渐变</a></h1>
+    <h1 class="title"><a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <a id="more"></a>
-        <div class="paging">
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
+        <p>苹果的新产品中已经使用了Retina(视网膜)技术。这是一种新的屏幕的显示技术，声称人类的肉眼将无法区分单个像素。这个技术得到了更多人的亲眯，因为给画面带来了前所未有的清晰平滑效果。但是Web开发人员和设计者为了确保用户得到最好的视觉体验，Retina还是给开发带来了些小麻烦。</p>
+<h2 id="Retina分辨率的像素处理">Retina分辨率的像素处理</h2>
+<h3 id="理解像素">理解像素</h3>
+<p><strong>CSS像素</strong></p>
+<blockquote>
+<p>CSS像素是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。一般情况下，CSS像素被称为与设备无关的像素（device-independent像素），简称为“DIPs”。在一个标准的显示密度下，一个CSS像素对应着一个设备像素。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">height</span>=<span class="value">"200"</span> <span class="attribute">width</span>=<span class="value">"300"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
 
-</div>
+<p>上面的代码，将会在显示屏设备上绘制一个200x300像素的盒子。但是在Retina屏幕下，相同的div却使用了400x600设备像素，保持相同的物理尺寸显示，导致每个像素点实际上有4倍的普通像素点，如图所示：<br>
       
     </div>
 
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/03/02/mobile-web-8/#more" class="more-link">阅读全文</a>
+          </div>
         
 
       
@@ -403,7 +411,7 @@ debug&gt; c
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
-    <li><a href="/tags/响应式设计/">响应式设计</a><small>1</small></li>
+    <li><a href="/tags/响应式设计/">响应式设计</a><small>2</small></li>
   
   </ul>
 </div>
@@ -431,23 +439,27 @@ debug&gt; c
       </li>
     
       <li>
-        <a href="/2014/02/28/mobile-web-3/">移动Web开发--css3线性渐变</a>
+        <a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a>
       </li>
     
       <li>
-        <a href="/2014/02/28/mobile-web-4/">移动Web开发--离线存储</a>
+        <a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a>
       </li>
     
       <li>
-        <a href="/2014/02/27/mobile-web-2/">移动Web开发--移动端的配置和优化</a>
+        <a href="/2014/02/25/mobile-web-3/">移动Web开发--离线存储</a>
       </li>
     
       <li>
-        <a href="/2014/02/25/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+        <a href="/2014/02/18/mobile-web-2/">移动Web开发--css3线性渐变</a>
       </li>
     
       <li>
-        <a href="/2014/02/21/mobile-web-0/">移动Web开发--响应式设计</a>
+        <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
       </li>
     
       <li>
@@ -468,10 +480,6 @@ debug&gt; c
     
       <li>
         <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
       </li>
     
   </ul>

@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动Web开发--响应式设计 | no forget</title>
+  <meta name="author" content="susubanana">
+  
+  <meta name="description" content="响应式设计
+网页设计应该能够自动进行调整，不应该针对用户分类，去定制无数的解决方案。响应式设计不关乎屏幕的分辨率，不只是技术的实现，它更像是一种对于设计的全新思维模式。
+除了横屏和竖屏两种模式，还需考虑数以百计的屏幕尺寸，很明显，我们不能针对每一种设备都创建定制化的解决方案。
+响应式图片
+处理原理：浏览器根据用户终端的屏幕尺寸、分辨率处理后输出适应的图片，如屏幕分辨率320*480，那么我们匹配给它的是宽度应小于320px的图片。如果终端屏幕是高清屏，那么我们就得输出2倍分辨率的图形(宽:640px)；以保证在高清屏下图形的清晰度。
+有几种技术可以按比例调整图片：">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="移动Web开发--响应式设计"/>
+  <meta property="og:site_name" content="no forget"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="no forget" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+
+    <div class="line">
+        <span></span>
+        <div class="author"></div>
+    </div>
+    <div class="my-word">
+        <h2>每天给自己打气</h2>
+        <p>【小黄人】没肩膀不照样穿背带裤吗</p>
+    </div>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li>
+        
+        
+            
+                 <a href="/">首页</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/web开发/">web开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/移动开发/">移动开发</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/nodejs/">nodejs</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/categories/项目/">项目</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/mylife">杂谈</a>
+            
+        
+      </li>
+    
+      <li>
+        
+        
+            
+                 <a href="/aboutme">关于我</a>
+            
+        
+      </li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+
+
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-01T11:12:38.000Z"><a href="/2014/03/01/mobile-web-7/">3月 1 2014</a></time>
+      
+      
+
+    <h1 class="title">移动Web开发--响应式设计</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="响应式设计">响应式设计</h2>
+<p>网页设计应该能够自动进行调整，不应该针对用户分类，去定制无数的解决方案。响应式设计不关乎屏幕的分辨率，不只是技术的实现，它更像是一种对于设计的全新思维模式。</p>
+<p>除了横屏和竖屏两种模式，还需考虑数以百计的屏幕尺寸，很明显，我们不能针对每一种设备都创建定制化的解决方案。</p>
+<h3 id="响应式图片">响应式图片</h3>
+<p>处理原理：浏览器根据用户终端的屏幕尺寸、分辨率处理后输出适应的图片，如屏幕分辨率320*480，那么我们匹配给它的是宽度应小于320px的图片。如果终端屏幕是高清屏，那么我们就得输出2倍分辨率的图形(宽:640px)；以保证在高清屏下图形的清晰度。</p>
+<p>有几种技术可以按比例调整图片：<br><a id="more"></a></p>
+<ul>
+<li>最流行的方法，<strong>使用<code>width:100%</code>简单修复</strong>，其原理是以大尺寸图片进行，不在代码中声明宽度和高度，用CSS来控制图片的相对大小，让浏览器按比例缩放图片。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">img</span><span class="rules">{<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100</span>%</span></span>;<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+<p>问题：图片的分辨率可能会失真，图片太大会导致下载时间过长，若图片为大型设备准备的，在移动设备该考虑重新调整图片大小。</p>
+<ul>
+<li><strong>Filament Group的响应式图片</strong>，不仅要同比的缩放图片，还要在小设备上降低图片的分辨率。很大的图片在较小屏幕上也不会浪费空间。</li>
+</ul>
+<p>大致的原理是，rwd-images.js会检测当前设备的屏幕分辨率，如果是大屏幕设备，则向页面head部分中添加BASE标记，并将后续的图片、脚本和样式表加载请求定向到一个虚拟路径“/rwd-router”。当这些请求到达服务器端，.htacces文件会决定这些请求所需要的是原始图片还是小尺寸的“响应式图片”，并进行相应的反馈输出。对于小屏幕的移动设备，原始尺寸的大图片永远不会被用到。</p>
+<p><img src="/images/cont/mobile-web-70.jpg" style="display:block;" /></p>
+<p>这个技术的实现需要使用几个相关文件，我们可以在Github上<a href="https://github.com/filamentgroup/Responsive-Images" target="_blank">Responsive-Images</a>获取。包括一个JavaScript文件(rwd-images.js)，一个.htaccess文件，以及一些范例资源文件。具体使用方法可以参考Responsive Images的<a href="https://github.com/filamentgroup/Responsive-Images#readme" target="_blank">说明文档</a>。</p>
+<ul>
+<li><strong>禁用iPhone中的图片自动缩放</strong></li>
+</ul>
+<p>iPhone或iPod Touch的页面会被自动的同比例缩小至最适合屏幕大小的尺寸，x轴不会产生滚动条，用户可以上下拖拽浏览全部页面，或在需要的时候放大页面的局部。这里会产生一个问题，即使我们运用响应式Web设计的思想，专门为iPhone的小屏输出小图片，它同样会随着整个页面一起被同比例缩小，如下图左侧所示。</p>
+<p><img src="/images/cont/mobile-web-71.jpg" style="display:block;" /></p>
+<p>我们可以使用苹果专有的一些meta标记来解决类似的问题。在页面的<head>部分添加以下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width; initial-scale=1.0"</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>将initial-scale的值设定为“1”，即可覆写默认的缩放方式，保持原始的尺寸及比例。</p>
+<h3 id="响应式布局">响应式布局</h3>
+<p>当页面所需要适应的不同设备的屏幕尺寸差异过大时，除了图片方面，我们也应该考虑到整个布局的调整。可使用独立的样式表，或者更有效的，使用CSS media query。大部分样式保持或和原来一样，特定的元素会继承这些样式，并去掉浮动float、宽度width和高度等height的设置来改变位置。</p>
+<p><img src="/images/cont/mobile-web-72.jpg" style="display:block;" /></p>
+<p>实现响应式布局的几种方式：</p>
+<ul>
+<li><strong>创建多个样式表</strong>，以适应不同设备屏幕的宽度范围或横屏竖屏设置。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">//屏幕宽度小于或者等于480px加载shetland.css</span>
+&lt;link rel=<span class="string">"stylesheet"</span> <span class="keyword">type</span>=<span class="string">"text/css"</span> media=<span class="string">"screen and (max-device--width: 480px)"</span> href=<span class="string">"shetland.css"</span>&gt;
+</pre></td></tr></table></figure>
+
+<ul>
+<li><strong>把多个媒体查询放到一个单独的样式表中</strong>，这是使用最有效率的。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="comment">//浏览器或屏幕宽度超过640px时才会有效</span>
+<span class="at_rule">@<span class="keyword">media</span><span class="preprocessor"> screen</span><span class="preprocessor"> and</span> (min-width:<span class="preprocessor"> 640px</span>) {</span>
+     <span class="class">.hereIsMyClass</span> {
+          <span class="attribute">width</span><span class="value">: <span class="number">30</span>%;</span>
+          <span class="attribute">float</span><span class="value">: right;</span>
+     }
+}
+</pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="comment">//浏览器或屏幕宽度小于640px时才会有效</span>
+<span class="at_rule">@<span class="keyword">media</span><span class="preprocessor"> screen</span><span class="preprocessor"> and</span> (max-width:<span class="preprocessor"> 640px</span>) {</span>
+     <span class="class">.aClassforSmallScreens</span> {
+          <span class="attribute">clear</span><span class="value">: both;</span>
+          <span class="attribute">font-size</span><span class="value">: <span class="number">1.3</span>em;</span>
+     }
+}
+</pre></td></tr></table></figure>
+
+<p>可以看到，通过min-width的设置，我们可以在浏览器窗口或设备屏幕宽度高于这个值的情况下，为页面指定一个特定的样式；max-width则反之。</p>
+<p>媒体查询组合一起可以对一个范围内进行设置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="comment">//浏览器或屏幕宽度大于800，小于1200px时才会有效</span>
+<span class="at_rule">@<span class="keyword">media</span><span class="preprocessor"> screen</span><span class="preprocessor"> and</span> (min-width:<span class="preprocessor"> 800px</span>)<span class="preprocessor"> and</span> (max-width:<span class="preprocessor"> 1200px</span>) {</span>
+     <span class="class">.classForaMediumScreen</span> {
+          <span class="attribute">background</span><span class="value">: <span class="hexcolor">#cc0000</span>;</span>
+          <span class="attribute">width</span><span class="value">: <span class="number">30</span>%;</span>
+          <span class="attribute">float</span><span class="value">: right;</span>
+     }
+}
+</pre></td></tr></table></figure>
+
+<p>通过media queries作用于某种特定的设备，而忽略其上运行的浏览器是否由于没有最大化而在尺寸上与设备屏幕尺寸产生不一致的情况。这时，我们需要使用min-device-width与max-device-width，用来判断设备本身的屏幕尺寸。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="at_rule">@<span class="keyword">media</span> screen and (max-device-width: <span class="number">480</span>px) </span>{
+     <span class="class">.classForiPhoneDisplay</span> <span class="rules">{
+          <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">1.2</span>em</span></span>;
+     <span class="rule">}</span></span>
+}
+</pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="at_rule">@<span class="keyword">media</span> screen and (min-device-width: <span class="number">768</span>px) </span>{
+     <span class="class">.minimumiPadWidth</span> <span class="rules">{
+          <span class="rule"><span class="attribute">clear</span>:<span class="value"> both</span></span>;
+          <span class="rule"><span class="attribute">margin-bottom</span>:<span class="value"> <span class="number">2</span>px solid <span class="hexcolor">#ccc</span></span></span>;
+     <span class="rule">}</span></span>
+}
+</pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre>//设备宽度320px
+@media only screen and (max-device-width:320px){
+	selector{ <span class="keyword">...</span> }
+}
+
+// 设备宽度480px
+@media only screen and (min-device-width:321px) and (max-device-width:480px){
+	selector{ <span class="keyword">...</span> }
+}
+
+// 设备宽度640px
+@media only screen (min-device-width:481px)and (max-device-width:640px){
+	selector{ <span class="keyword">...</span> }
+}
+</pre></td></tr></table></figure>
+
+<p>还有其他的media queries可以指定某些指定的设备，如iphone（Retina显示屏）、ipad。</p>
+<p>对于iPad来说，orientation属性尤其有用。它的值可以是landscape(横屏)或portrait(竖屏)。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="at_rule">@<span class="keyword">media</span> screen and (orientation: landscape) </span>{
+     <span class="class">.iPadLandscape</span> <span class="rules">{
+          <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">30</span>%</span></span>;
+          <span class="rule"><span class="attribute">float</span>:<span class="value"> right</span></span>;
+     <span class="rule">}</span></span>
+}
+</pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="at_rule">@<span class="keyword">media</span> screen and (orientation: portrait) </span>{
+     <span class="class">.iPadPortrait</span> <span class="rules">{
+          <span class="rule"><span class="attribute">clear</span>:<span class="value"> both</span></span>;
+     <span class="rule">}</span></span>
+}
+</pre></td></tr></table></figure>
+
+<p>这个属性目前确实只在iPad上有效。对于其他可以转屏的设备，譬如iPhone，可以使用min-device-width和max-device-width来变通实现。</p>
+<ul>
+<li><strong>响应式另一途径javascript</strong></li>
+</ul>
+<p>当某些旧设备无法完美支持CSS3的媒体查询时，JavaScript也是我们的武器之一。已经有专门的JS库来帮助旧浏览器(IE 5+，Firefox 1+，Safari 2等)支持CSS3的media queries。使用方法很简单，下载<a href="http://code.google.com/p/css3-mediaqueries-js/" target="_blank">css3-mediaqueries.js</a>并在你的页面中调用它。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre>//使用jquery代码检测浏览器宽度
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript">
+    $(document).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        $(window).bind(<span class="string">"resize"</span>, resizeWindow);
+        <span class="function"><span class="keyword">function</span> <span class="title">resizeWindow</span><span class="params">(e)</span>{</span>
+            <span class="keyword">var</span> newWindowWidth = $(window).width();
+
+            <span class="comment">// If width width is below 600px, switch to the mobile stylesheet</span>
+            <span class="keyword">if</span>(newWindowWidth &lt; <span class="number">600</span>){
+                $(<span class="string">"link[rel=stylesheet]"</span>).attr({href : <span class="string">"mobile.css"</span>});
+            } <span class="keyword">else</span> <span class="keyword">if</span>(newWindowWidth &gt; <span class="number">600</span>){
+                $(<span class="string">"link[rel=stylesheet]"</span>).attr({href : <span class="string">"style.css"</span>});
+            }
+        }
+    });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+
+        <div class="paging">
+    
+    <span>上一篇：<a href="/2014/03/02/mobile-web-8/" class="prev" title="移动Web开发--Retina分辨率的像素处理">移动Web开发--Retina分辨率的像素处理</a></span>
+    
+    
+    <span>下一篇：<a href="/2014/02/25/mobile-web-3/" class="next" title="移动Web开发--离线存储">移动Web开发--离线存储</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/移动开发/">移动开发</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/响应式设计/">响应式设计</a>
+  </div>
+
+        
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+    <h1 class="title">我爱评</h1>
+
+    <div class="ds-thread" data-thread-key="/2014/03/01/mobile-web-7/" data-title="移动Web开发--响应式设计" data-url="/2014/03/01/mobile-web-7/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"no-forget"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+
+    </script>
+</section>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  
+<div class="widget about-me">
+  <h3 class="title">关于我</h3>
+  <ul class="entry">
+    <li><img src="/images/girl.jpg" style="display: block;" /></li>
+    <li><a class="name" href="/about" target="_blank">dancing-waves</a></li>
+    
+        <li>专注前端领域，但是不仅专注前端</li>
+    
+        <li>熟悉html/html5、css2/css3、javascript、jquery、coffeescript、nodejs</li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
+  
+    <li><a href="/tags/css/">css</a><small>2</small></li>
+  
+    <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
+  
+    <li><a href="/tags/html5/">html5</a><small>3</small></li>
+  
+    <li><a href="/tags/javascript探秘/">javascript探秘</a><small>13</small></li>
+  
+    <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
+  
+    <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
+  
+    <li><a href="/tags/响应式设计/">响应式设计</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/13/nodejs-1/">node.js--错误调试</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/25/mobile-web-3/">移动Web开发--离线存储</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/18/mobile-web-2/">移动Web开发--css3线性渐变</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
+      </li>
+    
+      <li>
+        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget links">
+  <h3 class="title">links</h3>
+  <ul class="entry">
+    
+    <li><a href="http://www.codeforfun.info/" target="_BLANK">树莓派的奇幻漂流</a></li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 susubanana
+  
+</div>
+<div class="clearfix"></div>
+</footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
