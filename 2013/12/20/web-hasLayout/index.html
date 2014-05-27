@@ -11,41 +11,7 @@
 haslayout 是Windows Internet Explorer渲染引擎的一个内部组成部分。在InternetExplorer中，一个元素要么自己对自身的内容进行计算大小和组织，要么依赖于父元素来计算尺寸和组织内容。为了调节这两个不同的概念，渲染引擎采用了 hasLayout 的属性，属性值可以为true或false。当一个元素的 hasLayout属性值为true时，我们说这个元素有一个布局（layout）
 
 hasLayout 在IE8+版本中已经被抛弃，所以只需针对IE8以下的浏览器为某些元素触发hasLayout。
-如何触发hasLayout
-当IE6/7效果和标准浏览器不符时，都可以通过激发元素的 haslayout 属性来修正。设置如下任一个样式，可触发hasLayout：
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-display: inline-block
-height: (除 auto 外任何值)
-width: (除 auto 外任何值)
-float: (left 或 right)
-position: absolute
-writing-mode: tb-rl
-zoom: (除 normal 外任意值)
-min-height: (任意值)
-min-width: (任意值)
-max-height: (除 none 外任意值)
-max-width: (除 none 外任意值)
-overflow: (除 visible 外任意值，仅用于块级元素)
-overflow-x: (除 visible 外任意值，仅用于块级元素)
-overflow-y: (除 visible 外任意值，仅用于块级元素)
-position: fixed
-
-
-一般情况下，当IE6/7效果和标准浏览器不符时，常用的方法是给某元素的css设定zoom:1。使用zoom:1是因为大多数情况下，它能在不影响现有环境的条件下激发元素的 haslayout。">
+如何触发hasLayout">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -172,7 +138,7 @@ position: fixed
 </blockquote>
 <p><strong>hasLayout 在IE8+版本中已经被抛弃，所以只需针对IE8以下的浏览器为某些元素触发hasLayout。</strong></p>
 <h3 id="如何触发hasLayout">如何触发hasLayout</h3>
-<p>当IE6/7效果和标准浏览器不符时，都可以通过激发元素的 haslayout 属性来修正。设置如下任一个样式，可触发hasLayout：</p>
+<p><a id="more"></a><br>当IE6/7效果和标准浏览器不符时，都可以通过激发元素的 haslayout 属性来修正。设置如下任一个样式，可触发hasLayout：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -206,33 +172,6 @@ position: fixed
 </pre></td></tr></table></figure>
 
 <p>一般情况下，当IE6/7效果和标准浏览器不符时，常用的方法是给某元素的css设定<code>zoom:1</code>。使用<code>zoom:1</code>是因为大多数情况下，它能在不影响现有环境的条件下激发元素的 haslayout。</p>
-<a id="more"></a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <div class="paging">
     
@@ -312,12 +251,29 @@ position: fixed
 
   
 <div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/nodejs/">nodejs</a><small>3</small></li>
+  
+    <li><a href="/categories/web开发/">web开发</a><small>20</small></li>
+  
+    <li><a href="/categories/移动开发/">移动开发</a><small>6</small></li>
+  
+    <li><a href="/categories/项目/">项目</a><small>8</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
   <h3 class="title">标签</h3>
   <ul class="entry">
   
     <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
   
-    <li><a href="/tags/css/">css</a><small>3</small></li>
+    <li><a href="/tags/css/">css</a><small>5</small></li>
   
     <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
   
@@ -348,6 +304,14 @@ position: fixed
     
       <li>
         <a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/17/mobile-web-22/">移动Web开发--纯CSS实现的立体按钮</a>
+      </li>
+    
+      <li>
+        <a href="/2014/03/17/mobile-web-2/">移动Web开发--纯CSS实现的立体按钮</a>
       </li>
     
       <li>
@@ -392,14 +356,6 @@ position: fixed
     
       <li>
         <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-2/">javascript面向对象--对象的继承（一）</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a>
       </li>
     
   </ul>
