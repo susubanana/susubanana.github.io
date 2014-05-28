@@ -246,7 +246,31 @@ html结构为：
 </pre></td></tr></table></figure>
 
 <p>主要是通过结合<code>border</code>，<code>border-radius</code>，<code>background</code>，<code>margin</code>等属性相辅完成。</p>
-<p>再实现一个有3D立体效果的按钮，这个稍微复杂，因为上下两层间还有斜边框，来达到立体效果。</p>
+<h3 id="用border实现多种图形">用border实现多种图形</h3>
+<ul>
+<li>用border实现梯形</li>
+</ul>
+<p>原理：利用border相交的角和背景色来实现梯形。如图：</p>
+<p><img src="/images/cont/mobile-web-23.jpg" style="display: block;" /></p>
+<p>对应的样式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="class">.angular-shape</span><span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">50</span>px</span></span>;
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">50</span>px</span></span>;
+    <span class="rule"><span class="attribute">border-width</span>:<span class="value"><span class="number">25</span>px</span></span>;
+    <span class="rule"><span class="attribute">border-style</span>:<span class="value">solid</span></span>;
+    <span class="rule"><span class="attribute">border-color</span>:<span class="value"><span class="hexcolor">#da4632</span> <span class="hexcolor">#ffb601</span> <span class="hexcolor">#009c58</span> <span class="hexcolor">#1369ea</span></span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+<p>从上面的图，能看到梯形，但是，从产品到设计，不一定，这样简单的就能符合预期，但是至少梯形的斜边的实现原理可以从这里得到。</p>
+<p>如下图，有3D立体效果的按钮，利用上下两层间的梯形，来达到立体效果，这里中间部分是圆角的，所以又不能完全用上面的原理来实现效果，但是原理可以借鉴的。</p>
 <p><img src="/images/cont/mobile-web-22.jpg" style="display: block;" /></p>
 <p>html结构为：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
@@ -265,7 +289,7 @@ html结构为：
     &lt;/<span class="keyword">div</span>&gt;
     &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"after-l"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
     &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"after-c"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
-    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"after-r"</span>&gt;&lt;/<span class="keyword">div</span>&gt;
+    &lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"after-r"</span>&gt;&lt;/<span class="keyword">div</span>
 &lt;/a&gt;
 </pre></td></tr></table></figure>
 
@@ -352,8 +376,8 @@ html结构为：
     <span class="attribute">overflow</span><span class="value">: hidden;</span>
     <span class="attribute">position</span><span class="value">: relative;</span>
 }
+<span class="comment">//实现按钮的上半部分的边距和按钮表层的颜色</span>
 <span class="class">.try-wraper</span> <span class="class">.try-cont</span> {
-    <span class="comment">//实现按钮的上半部分的边距和按钮表层的颜色</span>
     <span class="attribute">background</span><span class="value">: <span class="hexcolor">#e45a5a</span>;</span>
     <span class="attribute">margin</span><span class="value">: <span class="number">3</span>px <span class="number">6</span>px <span class="number">0</span>;</span>
     <span class="attribute">width</span><span class="value">: <span class="number">90</span>px;</span>
@@ -375,7 +399,7 @@ html结构为：
     <span class="attribute">line-height</span><span class="value">: <span class="number">20</span>px;</span>
     <span class="attribute">text-align</span><span class="value">: center;</span>
 }
-<span class="comment">//上下两层间的左斜边框</span>
+<span class="comment">//借鉴上面的原理，实现梯形左斜边框</span>
 <span class="class">.after-l</span> {
     <span class="attribute">position</span><span class="value">: absolute;</span>
     <span class="attribute">left</span><span class="value">: <span class="number">0</span>;</span>
@@ -385,11 +409,11 @@ html结构为：
     <span class="attribute">overflow</span><span class="value">: hidden;</span>
     <span class="attribute">font-size</span><span class="value">: <span class="number">0</span>;</span>
     <span class="attribute">line-height</span><span class="value">: <span class="number">0</span>;</span>
-    <span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#d94949</span> <span class="hexcolor">#c63b3b</span> transparent transparent;</span>
-    <span class="attribute">border-style</span><span class="value">: solid solid dashed dashed;</span>
     <span class="attribute">border-width</span><span class="value">: <span class="number">15</span>px <span class="number">6</span>px <span class="number">0</span> <span class="number">0</span>;</span>
+    <span class="attribute">border-style</span><span class="value">: solid solid dashed dashed;</span>
+    <span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#d94949</span> <span class="hexcolor">#c63b3b</span> transparent transparent;</span>
 }
-<span class="comment">//上下两层间的中间的矩形达到分层效果</span>
+<span class="comment">//梯形中间的矩形</span>
 <span class="class">.after-c</span> {
     <span class="attribute">position</span><span class="value">: absolute;</span>
     <span class="attribute">left</span><span class="value">: <span class="number">6</span>px;</span>
@@ -398,7 +422,7 @@ html结构为：
     <span class="attribute">width</span><span class="value">: <span class="number">90</span>px;</span>
     <span class="attribute">background</span><span class="value">: <span class="hexcolor">#c63b3b</span>;</span>
 }
-<span class="comment">//上下两层间的右斜边框</span>
+<span class="comment">//借鉴上面的原理，实现梯形的右斜边框</span>
 <span class="class">.after-r</span> {
     <span class="attribute">position</span><span class="value">: absolute;</span>
     <span class="attribute">right</span><span class="value">: <span class="number">0</span>;</span>
@@ -408,23 +432,66 @@ html结构为：
     <span class="attribute">overflow</span><span class="value">: hidden;</span>
     <span class="attribute">font-size</span><span class="value">: <span class="number">0</span>;</span>
     <span class="attribute">line-height</span><span class="value">: <span class="number">0</span>;</span>
-    <span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#d94949</span> transparent transparent <span class="hexcolor">#c63b3b</span>;</span>
-    <span class="attribute">border-style</span><span class="value">: solid dashed dashed solid;</span>
     <span class="attribute">border-width</span><span class="value">: <span class="number">15</span>px <span class="number">0</span> <span class="number">0</span> <span class="number">6</span>px;</span>
+    <span class="attribute">border-style</span><span class="value">: solid dashed dashed solid;</span>
+    <span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#d94949</span> transparent transparent <span class="hexcolor">#c63b3b</span>;</span>
 }
 </pre></td></tr></table></figure>
 
-<p>这个立体效果主要也是有边框<code>border</code>实现。<code>border</code>还能用来做对话框突三角等。总的来说，css嘛，重复，鼓噪，但是不可否认它瘦弱的躯体拥有各种技巧，从这些技巧中提炼出各式各样的神奇视觉效果，在鼓噪中拥抱它吧。</p>
+<p>这个立体效果主要也是用边框<code>border</code>实现。</p>
 <p>到这里，按钮立体效果完成，多个按钮拼出来的效果如下，就是我们需要的产品：</p>
 <p>最后，整体效果为：</p>
 <p><img src="/images/cont/mobile-web-20.jpg" style="display: block;" /></p>
+<ul>
+<li>用border实现三角形。</li>
+</ul>
+<p>原理：利用border相交的角把html元素的宽高变为0，来实现三角形。如图：</p>
+<p><img src="/images/cont/mobile-web-24.jpg" style="display: block;" /></p>
+<p>对应的样式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="class">.angular-shape</span><span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">0</span></span></span>;
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">0</span></span></span>;
+    <span class="rule"><span class="attribute">border-width</span>:<span class="value"><span class="number">25</span>px</span></span>;
+    <span class="rule"><span class="attribute">border-style</span>:<span class="value">solid</span></span>;
+    <span class="rule"><span class="attribute">border-color</span>:<span class="value"><span class="hexcolor">#da4632</span> <span class="hexcolor">#ffb601</span> <span class="hexcolor">#009c58</span> <span class="hexcolor">#1369ea</span></span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+<p>从上图可知，三角形的雏形已经出来了，只需要再处理它其他3个边框的颜色设为透明或者为背景色即可。</p>
+<p>实现红色的三角形：</p>
+<p><img src="/images/cont/mobile-web-25.jpg" style="display: block;" /></p>
+<p>对应的样式为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="class">.angular-shape</span><span class="rules">{
+    <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">0</span></span></span>;
+    <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">0</span></span></span>;
+    <span class="rule"><span class="attribute">border-width</span>:<span class="value"><span class="number">25</span>px</span></span>;
+    <span class="rule"><span class="attribute">border-style</span>:<span class="value">solid dashed dashed dashed</span></span>;
+    <span class="rule"><span class="attribute">border-color</span>:<span class="value"> <span class="hexcolor">#da4632</span> transparent transparent transparent</span></span>;
+<span class="rule">}</span></span>
+</pre></td></tr></table></figure>
+
+<p>总的来说，css嘛，重复，鼓噪，但是不可否认它瘦弱的躯体拥有各种技巧，从这些技巧中提炼出各式各样的神奇视觉效果，在鼓噪中拥抱它吧。</p>
 
         <div class="paging">
     
-    <span>上一篇：<a href="/2014/03/17/mobile-web-22/" class="prev" title="移动Web开发--纯CSS实现的立体按钮">移动Web开发--纯CSS实现的立体按钮</a></span>
+    <span>上一篇：<a href="/2014/03/25/nodejs-3/" class="prev" title="node.js--WebSocket与Socket.io">node.js--WebSocket与Socket.io</a></span>
     
     
-    <span>下一篇：<a href="/2014/03/13/nodejs-1/" class="next" title="node.js--错误调试">node.js--错误调试</a></span>
+    <span>下一篇：<a href="/2014/03/17/mobile-web-22/" class="next" title="移动Web开发--纯CSS实现的立体按钮">移动Web开发--纯CSS实现的立体按钮</a></span>
     
 
 </div>
@@ -553,11 +620,11 @@ html结构为：
       </li>
     
       <li>
-        <a href="/2014/03/17/mobile-web-22/">移动Web开发--纯CSS实现的立体按钮</a>
+        <a href="/2014/03/17/mobile-web-2/">移动Web开发--纯CSS实现的立体按钮</a>
       </li>
     
       <li>
-        <a href="/2014/03/17/mobile-web-2/">移动Web开发--纯CSS实现的立体按钮</a>
+        <a href="/2014/03/17/mobile-web-22/">移动Web开发--纯CSS实现的立体按钮</a>
       </li>
     
       <li>
