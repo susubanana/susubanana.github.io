@@ -164,27 +164,46 @@
       
       
 
-    <h1 class="title"><a href="/2014/02/25/mobile-web-6/">移动Web开发--离线存储</a></h1>
+    <h1 class="title"><a href="/2014/02/25/mobile-web-6/">移动Web开发--离线缓存</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <a id="more"></a>
-        <div class="paging">
-    
-    <span>上一篇：<a href="/" class="prev" title="undefined">undefined</a></span>
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
+        <p>移动用户访问应用的时候，网络都是在不稳定状态，又或者随着移动用户所在的信号问题，导致网络中断。离线缓存可以有效缓解网络中断后，用户无法正常使用web应用的问题。</p>
+<h2 id="离线缓存">离线缓存</h2>
+<h3 id="如何使用离线缓存">如何使用离线缓存</h3>
+<p>首先，<strong>创建一个名为”manifest.appcache”文件</strong>。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>CACHE MANIFEST
 
-</div>
+<span class="preprocessor">#version 1 //这个manifest的版本号</span>
+<span class="label">http:</span>//i<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/images/ifund/mobile/srdz/rate-bg<span class="preprocessor">.png</span>
+<span class="label">http:</span>//s<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/js/ifund/mobile/zepto<span class="preprocessor">.min</span><span class="preprocessor">.js</span>
+
+<span class="label">NETWORK:</span>
+
+<span class="label">FALLBACK:</span>
+</pre></td></tr></table></figure>
+
+<p>在<code>CACHE MANIFEST</code>语句下面，列出所有想要做缓存的文件，为某个页面做本地存储时，不需要指定页面本身，浏览器会自动对这个页面进行本地存储。<br>
       
     </div>
 
     <footer>
       
+        
+          <div class="alignleft">
+            <a href="/2014/02/25/mobile-web-6/#more" class="more-link">阅读全文</a>
+          </div>
         
 
       
@@ -476,7 +495,7 @@
       </li>
     
       <li>
-        <a href="/2014/02/25/mobile-web-6/">移动Web开发--离线存储</a>
+        <a href="/2014/02/25/mobile-web-6/">移动Web开发--离线缓存</a>
       </li>
     
       <li>
