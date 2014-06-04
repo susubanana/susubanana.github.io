@@ -9,7 +9,9 @@
   <meta name="description" content="移动用户访问应用的时候，网络都是在不稳定状态，又或者随着移动用户所在的信号问题，导致网络中断。离线缓存可以有效缓解网络中断后，用户无法正常使用web应用的问题。
 离线缓存
 如何使用离线缓存
-首先，创建一个名为”manifest.appcache”文件。
+
+创建一个名为”manifest.appcache”文件。
+
 1
 2
 3
@@ -19,18 +21,21 @@
 7
 8
 9
+10
+11
+12
 CACHE MANIFEST
+//列出所有想要做缓存的文件，不需要指定离线缓存页面本身
 
 #version 1 //这个manifest的版本号
 http://i.thsi.cn/images/ifund/mobile/srdz/rate-bg.png
 http://s.thsi.cn/js/ifund/mobile/zepto.min.js
 
 NETWORK:
+//列出所有不需要做缓存的文件的URL，这些文件只有当客户端与服务器端建立连接才能访问
 
 FALLBACK:
-
-
-在CACHE MANIFEST语句下面，列出所有想要做缓存的文件，为某个页面做本地存储时，不需要指定页面本身，浏览器会自动对这个页面进行本地存储。">
+//每一行指定两个资源文件，第一个文件为在线访问时使用的资源文件，第二个文件为不能在线访问时的替代资源文件">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -154,7 +159,9 @@ FALLBACK:
         <p>移动用户访问应用的时候，网络都是在不稳定状态，又或者随着移动用户所在的信号问题，导致网络中断。离线缓存可以有效缓解网络中断后，用户无法正常使用web应用的问题。</p>
 <h2 id="离线缓存">离线缓存</h2>
 <h3 id="如何使用离线缓存">如何使用离线缓存</h3>
-<p>首先，<strong>创建一个名为”manifest.appcache”文件</strong>。</p>
+<ul>
+<li><strong>创建一个名为”manifest.appcache”文件</strong>。</li>
+</ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -164,21 +171,28 @@ FALLBACK:
 7
 8
 9
+10
+11
+12
 </pre></td><td class="code"><pre>CACHE MANIFEST
+//列出所有想要做缓存的文件，不需要指定离线缓存页面本身
 
 <span class="preprocessor">#version 1 //这个manifest的版本号</span>
 <span class="label">http:</span>//i<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/images/ifund/mobile/srdz/rate-bg<span class="preprocessor">.png</span>
 <span class="label">http:</span>//s<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/js/ifund/mobile/zepto<span class="preprocessor">.min</span><span class="preprocessor">.js</span>
 
 <span class="label">NETWORK:</span>
+//列出所有不需要做缓存的文件的URL，这些文件只有当客户端与服务器端建立连接才能访问
 
 <span class="label">FALLBACK:</span>
+//每一行指定两个资源文件，第一个文件为在线访问时使用的资源文件，第二个文件为不能在线访问时的替代资源文件
 </pre></td></tr></table></figure>
 
-<p>在<code>CACHE MANIFEST</code>语句下面，列出所有想要做缓存的文件，为某个页面做本地存储时，不需要指定页面本身，浏览器会自动对这个页面进行本地存储。<br><a id="more"></a></p>
-<p>在<code>NETWORK</code>语句下面，列出所有不需要做缓存的文件的URL，这些文件只有当客户端与服务器端建立连接才能访问。</p>
-<p>在<code>FALLBACK</code>语句下面，每一行指定两个资源文件，第一个文件为在线访问时使用的资源文件，第二个文件为不能在线访问时的替代资源文件。。</p>
-<p>然后，<strong>将要做离线缓存的html页面中的<code>&lt;html&gt;</code>标签，改成<code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></strong>。</p>
+<a id="more"></a>
+
+<ul>
+<li><strong>将要做离线缓存的html页面中的<code>&lt;html&gt;</code>标签，改成<code>&lt;html manifest=&quot;manifest.appcache&quot;&gt;</code></strong>。</li>
+</ul>
 <p>在移动客户端非首次访问这个页面，断掉网络，页面还会正常加载，并能正常交互。</p>
 <h3 id="浏览器与服务器的交互">浏览器与服务器的交互</h3>
 <p><strong>在地址栏中输入url后</strong></p>
@@ -191,19 +205,20 @@ FALLBACK:
 <li>发送请求js文件，阻塞渲染。如果js对dom进行了操作，则会进行rerender。</li>
 </ol>
 <p><strong>对于支持离线缓存的页面，浏览器和服务器的交互会如下：</strong></p>
-<p>首次载入页面：<br> 1-6. 同上。<br> 7、 请求页面中需要缓存的页面和数据，就算在之前的步骤中已经请求过（这是个耗能的地方）<br> 8、 服务器返回所有请求文件，浏览器进行本地存储</p>
+<p>首次载入页面：<br> 1-6. 同上。<br> 7、 请求页面中需要缓存的页面和数据，就算在之前的步骤中已经请求过（这是个耗能的地方）<br> 8、 服务器返回所有请求文件，浏览器解析页面时，解读manifest属性，加载缓存文件(大概是5MB的空间)</p>
 <p>再次载入页面：</p>
 <ol>
 <li>发送请求</li>
-<li>使用本地存储的离线文件</li>
+<li>使用应用缓存的离线文件</li>
 <li>解析页面</li>
-<li>请求服务端的manifest文件，判断是否有改变。返回304则表示没有改变，通知浏览器manifest没有更新，执行再次载入页面步骤6（下面）。如发现更新，则处理manifest文件，执行再次载入页面步骤5。</li>
-<li>进入首次载入页面的7-8，并触发一个事件，通知本地存储已被更新。</li>
-<li>使用本地存储，不重新请求</li>
+<li>随后会请求服务端的manifest文件（联网状态下），判断是否有改变。返回304则表示没有改变，通知浏览器manifest没有更新，执行再次载入页面步骤6（下面）。如发现更新，则处理manifest文件，执行再次载入页面步骤5。</li>
+<li>进入首次载入页面的7-8，并触发一个事件，通知应用缓存已被更新。</li>
+<li>使用应用缓存，不重新请求</li>
 </ol>
 <p>注：<strong>即使资源文件被修改过，但是页面不会立马使用新的资源文件</strong>，只有重新打开这个页面的时候才能使用更新过后的资源文件。</p>
 <p>但是，我在实际应用中遇到一个问题，就是无论我怎么刷新都是按旧的资源文件渲染，我一下子从惊喜掉进恐慌，更新不了，那我修改内容会很囧。</p>
 <h3 id="如何更新离线缓存">如何更新离线缓存</h3>
+<p>想要更新资源，常见的办法就是修改manifest文件头部版本号</p>
 <p>通过ApplicationCache对象接口，动态更新缓存：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
@@ -211,7 +226,7 @@ FALLBACK:
 4
 5
 6
-</pre></td><td class="code"><pre><span class="comment">//第二次载入，如果manifest被更新（可为版本号更新），在下载结束时候触发</span>
+</pre></td><td class="code"><pre><span class="comment">//第二次载入，如果manifest被更新，在下载结束时候触发</span>
 <span class="keyword">var</span> appCache = window.applicationCache;
 appCache.onupdateready = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
    applicationCache.swapCache();
@@ -228,7 +243,7 @@ appCache.onupdateready = <span class="function"><span class="keyword">function</
 <li>让标志是完整的新的缓存在同一个应用程序缓存组作为最新的应用程序缓存。</li>
 <li>取消原有缓存和ApplicationCache对象的缓存主机的关联，并用新缓存代替关联。</li>
 </ol>
-<h3 id="离线缓存的缺点">离线缓存的缺点</h3>
+<h3 id="离线缓存的局限">离线缓存的局限</h3>
 <ol>
 <li>hz/?newcode=2011081194和hz/?newcode=2011100312被存储成了两个html不同的页面，想想当用户浏览了多个不同页面，浏览器就缓存了多个没有意义的页面。</li>
 <li>进行离线储存时会再次下载一次对应的数据，意思就是说，第一次访问时，使用了离线储存技术的页面加载时所消耗的时间比没有使用这个技术的页面要多，而且耗的流量更大。</li>

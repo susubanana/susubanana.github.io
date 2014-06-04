@@ -171,7 +171,9 @@
         <p>移动用户访问应用的时候，网络都是在不稳定状态，又或者随着移动用户所在的信号问题，导致网络中断。离线缓存可以有效缓解网络中断后，用户无法正常使用web应用的问题。</p>
 <h2 id="离线缓存">离线缓存</h2>
 <h3 id="如何使用离线缓存">如何使用离线缓存</h3>
-<p>首先，<strong>创建一个名为”manifest.appcache”文件</strong>。</p>
+<ul>
+<li><strong>创建一个名为”manifest.appcache”文件</strong>。</li>
+</ul>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -181,18 +183,24 @@
 7
 8
 9
+10
+11
+12
 </pre></td><td class="code"><pre>CACHE MANIFEST
+//列出所有想要做缓存的文件，不需要指定离线缓存页面本身
 
 <span class="preprocessor">#version 1 //这个manifest的版本号</span>
 <span class="label">http:</span>//i<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/images/ifund/mobile/srdz/rate-bg<span class="preprocessor">.png</span>
 <span class="label">http:</span>//s<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/js/ifund/mobile/zepto<span class="preprocessor">.min</span><span class="preprocessor">.js</span>
 
 <span class="label">NETWORK:</span>
+//列出所有不需要做缓存的文件的URL，这些文件只有当客户端与服务器端建立连接才能访问
 
 <span class="label">FALLBACK:</span>
+//每一行指定两个资源文件，第一个文件为在线访问时使用的资源文件，第二个文件为不能在线访问时的替代资源文件
 </pre></td></tr></table></figure>
 
-<p>在<code>CACHE MANIFEST</code>语句下面，列出所有想要做缓存的文件，为某个页面做本地存储时，不需要指定页面本身，浏览器会自动对这个页面进行本地存储。<br>
+
       
     </div>
 
