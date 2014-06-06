@@ -22,7 +22,7 @@ FlappyBird.bird = (function(){
 
         //制作一个拥有飞行动作的鸟
         var spriteSheet = new createjs.SpriteSheet({
-            images: ["images/flappy_images/bird.png"],
+            images: ["images/bird.png"],
             frames: {width:42, height:42},
             animations: {
                 //通过背景图片0-2个小鸟实现小鸟的飞行动作
@@ -68,8 +68,6 @@ FlappyBird.bird = (function(){
 
                 //执行死的动画
                 bird.gotoAndPlay("die");
-                document.querySelector('.restart').style.display = "block";
-                document.querySelector('.mask').style.display = "block";
 
                 //游戏结束
                 playGame.end();

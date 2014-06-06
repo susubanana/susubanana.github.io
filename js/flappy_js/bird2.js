@@ -14,7 +14,7 @@ FlappyBird.bird = (function(){
 
             //制作一个拥有飞行动作的鸟
             var spriteSheet = new createjs.SpriteSheet({
-                images: ["flappy_images/bird.png"],
+                images: ["images/bird.png"],
                 frames: {width:42, height:42},
                 animations: {
                     //通过背景图片0-2个小鸟实现小鸟的飞行动作
