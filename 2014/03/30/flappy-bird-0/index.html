@@ -3,28 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>用hexo搭建博客--使用github托管博客 | no forget</title>
+  <title>FlappyBird--项目构思 | no forget</title>
   <meta name="author" content="susubanana">
   
-  <meta name="description" content="使用github托管博客
-创建好本地存放仓库的目录，打开gitBash,进入该目录，从github上拷贝仓库
-1
-git clone git@github.com:susubanana/hexo-blog.git
+  <meta name="description" content="今天双休，闲的无聊，每天周而复始的工作和生活，人也闷得发慌，于是想要做点除了工作之外的项目，为了乐趣和综合能力的锻炼，于是海搜网络，最后决定做了Flappy Bird，一个简单而又能充分锻炼综合能力的小游戏。
+想干就干，开始上网玩这个游戏，了解交互，建立清晰的思路，出动闲置的白纸开始画起来。
+针对小鸟
 
+需要初始化一个小鸟
+小鸟拥有一个飞行、跳、死亡的动作
+既然那么多动作，当然有状态更新
 
-进入仓库文件夹
-1
-cd hexo-blog
+针对管道
 
-
-查看仓库文件状态
-1
-git s">
+需要初始化多根管道
+上下两根管道空隙的处理
+管道的状态更新">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="用hexo搭建博客--使用github托管博客"/>
+  <meta property="og:title" content="FlappyBird--项目构思"/>
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -130,55 +129,60 @@ git s">
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-11-19T10:50:31.000Z"><a href="/2013/11/19/build-blog-22/">11月 19 2013</a></time>
+        <time datetime="2014-03-30T07:14:21.000Z"><a href="/2014/03/30/flappy-bird-0/">3月 30 2014</a></time>
       
       
 
-    <h1 class="title">用hexo搭建博客--使用github托管博客</h1>
+    <h1 class="title">FlappyBird--项目构思</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="使用github托管博客">使用github托管博客</h2>
-<p>创建好本地存放仓库的目录，打开gitBash,进入该目录，从github上拷贝仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git clone git@github<span class="preprocessor">.com</span>:susubanana/hexo-blog<span class="preprocessor">.git</span>
-</pre></td></tr></table></figure>
+        <p>今天双休，闲的无聊，每天周而复始的工作和生活，人也闷得发慌，于是想要做点除了工作之外的项目，为了乐趣和综合能力的锻炼，于是海搜网络，最后决定做了Flappy Bird，一个简单而又能充分锻炼综合能力的小游戏。</p>
+<p>想干就干，开始上网玩这个游戏，了解交互，建立清晰的思路，出动闲置的白纸开始画起来。</p>
+<h3 id="针对小鸟">针对小鸟</h3>
+<ol>
+<li>需要初始化一个小鸟</li>
+<li>小鸟拥有一个飞行、跳、死亡的动作</li>
+<li>既然那么多动作，当然有状态更新</li>
+</ol>
+<h3 id="针对管道">针对管道</h3>
+<ol>
+<li>需要初始化多根管道</li>
+<li>上下两根管道空隙的处理</li>
+<li>管道的状态更新</li>
+</ol>
+<a id="more"></a>
 
-<p>进入仓库文件夹</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">cd</span> hexo-blog
-</pre></td></tr></table></figure>
-
-<p>查看仓库文件状态</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git status
-</pre></td></tr></table></figure>
-
-<p>把所有未被git追踪的文件加入git管理中</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="built_in">add</span> -A
-</pre></td></tr></table></figure>
-
-<p>提交代码到本地仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"update"</span></span>
-</pre></td></tr></table></figure>
-
-<p>再使用<code>git status</code> 查看文件状态</p>
-<p>把本地仓库的改动push到远端仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="keyword">push</span> origin master
-</pre></td></tr></table></figure>
-
+<h3 id="针对游戏">针对游戏</h3>
+<ol>
+<li>初始化游戏</li>
+<li>对用户输入操作的监听</li>
+<li>小鸟和管道碰撞的检测</li>
+<li>游戏计分</li>
+<li>游戏结束</li>
+<li>游戏重新开始</li>
+</ol>
+<h3 id="选择开发语言">选择开发语言</h3>
+<p>前端技术上，html5和javascript都是如风一样的技术，工作上基本用jquery，那么这里就选择原生，html5 canvas用来做小游戏还是比较得心应手的。于是就和小鸟筑巢一样，预热准备动工。</p>
+<h3 id="构思进阶">构思进阶</h3>
+<p>决定好用什么技术，回头复习一下html5 canvas的书籍，要做一个拥有飞的动作的小鸟，得先了解如何绘制，更新状态，还有碰撞等，项目开干之际，还需要看书慢嚼细咽，这有点不太科学，直接去下源码吧。上图灵源码库下载源码。于是看到很多其他书籍的源码，着重关注html5 canvas其他书籍的源码，都下载下来瞧一眼吧。</p>
+<p>从这里，我了解到CreateJS库：</p>
+<blockquote>
+<p>一款可以构建丰富交互体验的 HTML5 游戏的开源工具包，旨在降低 HTML5 项目的开发难度和成本，让开发者以熟悉的方式打造更具现代感的网络交互体验。</p>
+</blockquote>
+<p>CreateJS库EaselJS工具库，这个工具库可以用于 Sprites、动画、向量和位图的绘制。这个正式我要找的，用来构建小鸟的飞行动作，还有管道的创建。</p>
+<p>现在思路清晰了，技术框架选好了，就一步步接着筑巢吧。</p>
+<p><a href="http://susubanana.github.io/flappybird.html" target="_blank">demo查看 http://susubanana.github.io/flappybird.html</a></p>
+<p><a href="https://github.com/susubanana/FlappyBird" target="_blank">源码查看 https://github.com/susubanana/FlappyBird</a></p>
 
         <div class="paging">
     
-    <span>上一篇：<a href="/2013/11/19/build-blog-3/" class="prev" title="用hexo搭建博客--博客站点的配置">用hexo搭建博客--博客站点的配置</a></span>
+    <span>上一篇：<a href="/2014/04/12/coffeescript-0/" class="prev" title="Web开发--CoffeeScript">Web开发--CoffeeScript</a></span>
     
     
-    <span>下一篇：<a href="/2013/11/19/build-blog-2/" class="next" title="用hexo搭建博客--部署到github上">用hexo搭建博客--部署到github上</a></span>
+    <span>下一篇：<a href="/2014/03/25/nodejs-3/" class="next" title="node.js--WebSocket与Socket.io">node.js--WebSocket与Socket.io</a></span>
     
 
 </div>
@@ -196,7 +200,7 @@ git s">
         
   
   <div class="tags">
-    <a href="/tags/hexo/">hexo</a>
+    <a href="/tags/flappybird/">flappybird</a>, <a href="/tags/javascript/">javascript</a>, <a href="/tags/html5/">html5</a>
   </div>
 
         
