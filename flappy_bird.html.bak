@@ -21,7 +21,7 @@
         <div class="tip">按空格执行游戏</div>
         <div class="mask"></div>
         <a href="javascript:;" class="restart">重按空格键开始</a>
-        <canvas id="my-bird" height="465"></canvas>
+        <canvas id="my-bird"></canvas>
     </section>
     <script type="text/javascript">
         FlappyBird.init();

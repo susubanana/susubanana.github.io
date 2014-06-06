@@ -121,7 +121,7 @@ FlappyBird.playGame = (function(){
     Game.prototype.end = function(){
         this.isEnd = true;    
         doc.querySelector('.restart').style.display = "block";
-        doc.getElementById('mask').style.cssText = "display:block;height: " + canvasHeight + "px;";
+        doc.querySelector('mask').style.cssText = "display:block;height: " + canvasHeight + "px;";
         clearInterval(this.timer);
     };
 
