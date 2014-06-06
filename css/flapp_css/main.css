@@ -3,7 +3,7 @@ body{
     font:12px/1.5 Microsoft YaHei, SimSun, tahoma, Arial, sans-serif;
 }
 .canvas-wraper{
-    background: url(../images/body-bg.png) repeat-x 0 bottom #71c5cf;
+    background: url(../../images/flappy_images/body-bg.png) repeat-x 0 bottom #71c5cf;
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
