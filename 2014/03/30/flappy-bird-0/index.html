@@ -166,12 +166,18 @@
 </ol>
 <h3 id="选择开发语言">选择开发语言</h3>
 <p>前端技术上，html5和javascript都是如风一样的技术，工作上基本用jquery，那么这里就选择原生javascript和html5 canvas，这两者用来做网页小游戏还是相对较好的。</p>
-<p>用html5 canvas做一个拥有飞的动作的小鸟，得绘制，清除，更新状态等，这样的交互仅仅用原生实现也可以，就是代码不够简洁也繁琐，上网了解到CreateJS库，这个库刚好能帮我解决用sprites来实现动画的问题，能提高开发效率，也能将动画的帧处理的较细腻：</p>
+<p>然而，用html5 canvas做一个拥有飞的动作的小鸟，得绘制，清除，更新状态等，这样的交互仅仅用原生实现也可以，就是代码不够简洁也繁琐，上网了解到CreateJS库，这个库刚好能帮我解决用sprites来实现动画的问题，能提高开发效率，也能将动画的帧处理的较细腻：</p>
 <blockquote>
 <p>一款可以构建丰富交互体验的 HTML5 游戏的开源工具包，旨在降低 HTML5 项目的开发难度和成本，让开发者以熟悉的方式打造更具现代感的网络交互体验。</p>
 </blockquote>
 <p>CreateJS库EaselJS工具库，这个工具库可以用于 Sprites、动画、向量和位图的绘制。这个正式我要找的，用来构建小鸟的飞行动作，还有管道的创建。</p>
 <h3 id="构思进阶">构思进阶</h3>
+<p>当基本的线性思维的事情考虑好了，就应该进入逻辑分析：</p>
+<ol>
+<li>为了良好的编码风格，得考虑代码封装问题，也就是面向对象</li>
+<li>小鸟弹跳的过程中，需要考虑重力加速度封装</li>
+<li>小鸟与管道碰撞的算法处理</li>
+</ol>
 <p>现在思路清晰了，技术框架选好了，就一步步接着筑巢吧。</p>
 <p><a href="http://susubanana.github.io/flappybird.html" target="_blank">demo查看 http://susubanana.github.io/flappybird.html</a></p>
 <p><a href="https://github.com/susubanana/FlappyBird" target="_blank">源码查看 https://github.com/susubanana/FlappyBird</a></p>
