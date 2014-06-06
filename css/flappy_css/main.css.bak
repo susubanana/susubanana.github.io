@@ -48,7 +48,7 @@ body{
     font-family: Arial;
     font-weight: 400;
 }
-.canvas-wraper .mask{
+.canvas-wraper #mask{
     display: none;
     width: 100%;
     position: absolute;
