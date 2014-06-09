@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/mylife">杂谈</a>
+                 <a href="/categories/杂谈/">杂谈</a>
             
         
       </li>
@@ -110,6 +110,56 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-02-17T10:22:38.000Z"><a href="/2014/02/17/mobile-web-1/">2月 17 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="text-size-adjust属性">text-size-adjust属性</h2>
+<blockquote>
+<p>这个属性用来设定文字大小是否根据设备(浏览器)来自动调整显示大小。有三种属性值：</p>
+<ul>
+<li><code>none</code> 字体大小不会自动调整</li>
+<li><code>auto</code> 默认属性值，字体大小会根据设备/浏览器来自动调整</li>
+<li><code>percentage</code> 字体显示的大小（百分比）</li>
+</ul>
+</blockquote>
+<h3 id="Chrome不支持12px以下字体的解决方案">Chrome不支持12px以下字体的解决方案</h3>
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/02/17/mobile-web-1/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -339,83 +389,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-22T11:40:40.000Z"><a href="/2013/12/22/object-3/">12月 22 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="面向对象继承的方式">面向对象继承的方式</h2>
-<h3 id="构造函数模式">构造函数模式</h3>
-<blockquote>
-<p>优点：获得父对象成员的真实副本，并且不会有子对象意外覆盖父对象的风险<br>缺点：无法从原型中继承，并不会为实例创建原型</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">Bird</span><span class="params">()</span>{</span>
-    <span class="keyword">this</span>.vBird = <span class="number">45</span>;
-};
-
-Bird.prototype.getVBird = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    <span class="keyword">return</span> <span class="keyword">this</span>.vBird;
-};
-
-<span class="keyword">var</span> bird = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-    Bird.call(<span class="keyword">this</span>);
-};
-<span class="keyword">var</span> b = <span class="keyword">new</span> bird();
-console.log(b.vBird); <span class="comment">//45</span>
-b.getVBird(); <span class="comment">// b.getVBird is not a function</span>
-</pre></td></tr></table></figure>
-
-<h3 id="构造函数模式_+_原型继承">构造函数模式 + 原型继承</h3>
-<blockquote>
-<p>优点：获得父对象成员的真实副本，获得指向对象复用的引用（原型），并且不会有子对象意外覆盖父对象的风险<br>缺点：父级构造函数被调用了两次，效率低下<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/22/object-3/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -457,6 +430,8 @@ b.getVBird(); <span class="comment">// b.getVBird is not a function</span>
   
     <li><a href="/tags/html5/">html5</a><small>4</small></li>
   
+    <li><a href="/tags/interview/">interview</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -475,6 +450,10 @@ b.getVBird(); <span class="comment">// b.getVBird is not a function</span>
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/09/interview-0/">热身运动</a>
+      </li>
     
       <li>
         <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
@@ -530,10 +509,6 @@ b.getVBird(); <span class="comment">// b.getVBird is not a function</span>
     
       <li>
         <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
       </li>
     
   </ul>

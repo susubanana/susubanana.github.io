@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/mylife">杂谈</a>
+                 <a href="/categories/杂谈/">杂谈</a>
             
         
       </li>
@@ -110,6 +110,54 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-10T11:27:10.000Z"><a href="/2014/03/10/nodejs-0/">3月 10 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/10/nodejs-0/">node.js--异步I/O与非阻塞I/O</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>异步、非阻塞容易导致学习的概念混淆，听起来貌似一回事。从实际效果上看，两者都实现了并行I/O的目的。但是从计算机内核I/O看，两者实际上是两回事。</p>
+<h2 id="阻塞与非阻塞">阻塞与非阻塞</h2>
+<p>操作系统内核对于I/O只有两种方式：阻塞与非阻塞</p>
+<h3 id="阻塞I/O">阻塞I/O</h3>
+<blockquote>
+<p>线程在执行中遇到I/O操作，耗时较长，这时操作系统会剥夺其CPU的控制权，使其暂停执行，同时将资源让给其他工作线程，这种线程调度方式称为阻塞。<br>当I/O操作完毕，操作系统将这个线程的阻塞状态解除，恢复其控制权，令其继续执行。<br>阻塞I/O造成CPU浪费时间等待I/O，CPU的处理能力得不到充分利用。</p>
+</blockquote>
+<h3 id="非阻塞I/O">非阻塞I/O</h3>
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/10/nodejs-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -343,56 +391,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-17T10:22:38.000Z"><a href="/2014/02/17/mobile-web-1/">2月 17 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="text-size-adjust属性">text-size-adjust属性</h2>
-<blockquote>
-<p>这个属性用来设定文字大小是否根据设备(浏览器)来自动调整显示大小。有三种属性值：</p>
-<ul>
-<li><code>none</code> 字体大小不会自动调整</li>
-<li><code>auto</code> 默认属性值，字体大小会根据设备/浏览器来自动调整</li>
-<li><code>percentage</code> 字体显示的大小（百分比）</li>
-</ul>
-</blockquote>
-<h3 id="Chrome不支持12px以下字体的解决方案">Chrome不支持12px以下字体的解决方案</h3>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/02/17/mobile-web-1/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -434,6 +432,8 @@
   
     <li><a href="/tags/html5/">html5</a><small>4</small></li>
   
+    <li><a href="/tags/interview/">interview</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -452,6 +452,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/09/interview-0/">热身运动</a>
+      </li>
     
       <li>
         <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
@@ -507,10 +511,6 @@
     
       <li>
         <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
       </li>
     
   </ul>

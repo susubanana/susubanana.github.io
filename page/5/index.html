@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/mylife">杂谈</a>
+                 <a href="/categories/杂谈/">杂谈</a>
             
         
       </li>
@@ -110,6 +110,72 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-17T10:50:51.000Z"><a href="/2013/12/17/object-0/">12月 17 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/17/object-0/">javascript面向对象--对象的创建</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="对象的创建">对象的创建</h2>
+<p>对象就是无序属性的集合，可以理解成名值对的集合，其中值可以是数据，也可以是函数。</p>
+<h3 id="工厂模式">工厂模式</h3>
+<p>解决代码重复问题，却无法识别对象类型</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span><span class="params">(name)</span>{</span>
+　　<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();
+　　o.name = name;
+　　o.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+　　alert(<span class="keyword">this</span>.name);
+　　};
+　　<span class="keyword">return</span> o;
+}
+<span class="keyword">var</span> person = createPerson(<span class="string">'syh'</span>);
+person.sayName();
+</pre></td></tr></table></figure>
+
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/17/object-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -356,61 +422,6 @@ var <span class="built_in">sum</span> = add();
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-10T13:19:18.000Z"><a href="/2013/12/10/secrets-of-javascript-1/">12月 10 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/10/secrets-of-javascript-1/">javascript作用域--减少全局变量污染</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="全局变量定义">全局变量定义</h2>
-<ul>
-<li>在任何函数外面定义var语句</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="keyword">var</span> a = <span class="string">'value'</span>;
-</pre></td></tr></table></figure>
-
-<ul>
-<li>直接添加属性在全局对象上</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>window.<span class="operator">a</span> = <span class="string">'value'</span>;   <span class="comment"> //全局对象是所有全局变量的容器</span>
-</pre></td></tr></table></figure>
-
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/10/secrets-of-javascript-1/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -452,6 +463,8 @@ var <span class="built_in">sum</span> = add();
   
     <li><a href="/tags/html5/">html5</a><small>4</small></li>
   
+    <li><a href="/tags/interview/">interview</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -470,6 +483,10 @@ var <span class="built_in">sum</span> = add();
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/09/interview-0/">热身运动</a>
+      </li>
     
       <li>
         <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
@@ -525,10 +542,6 @@ var <span class="built_in">sum</span> = add();
     
       <li>
         <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
       </li>
     
   </ul>

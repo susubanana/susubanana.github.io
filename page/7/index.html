@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/mylife">杂谈</a>
+                 <a href="/categories/杂谈/">杂谈</a>
             
         
       </li>
@@ -110,6 +110,49 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-04T13:29:52.000Z"><a href="/2013/12/04/web-base-0/">12月 4 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/04/web-base-0/">web基础--web工作原理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>平时用浏览器，输入网址后回车，页面响应我们想要浏览的内容，简单操作的背后蕴涵了什么原理？</p>
+<h2 id="web工作原理">web工作原理</h2>
+<p>当输入url回车后，客户端（浏览器）会去请求DNS服务器，通过DNS获取域名对应的IP地址，然后通过这个地址找到对应的服务器，要求建立TCP连接，建立连接，客户端发送httpRequest（请求包）后，服务器接收并开始处理请求，调用自身服务，返回httpResponse（响应包），客户端收到响应包后开始渲染body主体，等到全部接收，断开与该服务器端的TCP连接。</p>
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/04/web-base-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -302,83 +345,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-11-19T10:50:31.000Z"><a href="/2013/11/19/build-blog-22/">11月 19 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/11/19/build-blog-22/">用hexo搭建博客--使用github托管博客</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="使用github托管博客">使用github托管博客</h2>
-<p>创建好本地存放仓库的目录，打开gitBash,进入该目录，从github上拷贝仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git clone git@github<span class="preprocessor">.com</span>:susubanana/hexo-blog<span class="preprocessor">.git</span>
-</pre></td></tr></table></figure>
-
-<p>进入仓库文件夹</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre><span class="built_in">cd</span> hexo-blog
-</pre></td></tr></table></figure>
-
-<p>查看仓库文件状态</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git status
-</pre></td></tr></table></figure>
-
-<p>把所有未被git追踪的文件加入git管理中</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="built_in">add</span> -A
-</pre></td></tr></table></figure>
-
-<p>提交代码到本地仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"update"</span></span>
-</pre></td></tr></table></figure>
-
-<p>再使用<code>git status</code> 查看文件状态</p>
-<p>把本地仓库的改动push到远端仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-</pre></td><td class="code"><pre>git <span class="keyword">push</span> origin master
-</pre></td></tr></table></figure>
-
-
-        <div class="paging">
-    
-    <span>上一篇：<a href="/" class="prev" title="undefined">undefined</a></span>
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -420,6 +386,8 @@
   
     <li><a href="/tags/html5/">html5</a><small>4</small></li>
   
+    <li><a href="/tags/interview/">interview</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -438,6 +406,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/09/interview-0/">热身运动</a>
+      </li>
     
       <li>
         <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
@@ -493,10 +465,6 @@
     
       <li>
         <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
-      </li>
-    
-      <li>
-        <a href="/2013/12/22/object-3/">javascript面向对象--对象的继承（二）</a>
       </li>
     
   </ul>
