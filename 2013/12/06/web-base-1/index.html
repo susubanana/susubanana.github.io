@@ -165,7 +165,7 @@ Accept-Charset：UTF-<span class="number">8</span>,<span class="variable">*;</sp
 <ul>
 <li>GET请求消息体为空，POST请求带有消息体。</li>
 <li>GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如：EditPosts.aspx?name=test1&amp;id=123456。POST方法是把提交的数据放在HTTP包的body中。</li>
-<li>GET提交的数据大小有限制（数据大小长度并没有限制，HTTP协议规范没有对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制。），而POST方法提交的数据没有限制。</li>
+<li>GET提交的数据大小有限制（数据大小长度并没有限制，HTTP协议规范没有对URL长度进行限制。这个限制是特定的浏览器及服务器对它的限制），而POST方法提交的数据没有限制。</li>
 <li>GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码。</li>
 </ul>
 <h2 id="HTTP协议详解之响应篇">HTTP协议详解之响应篇</h2>
