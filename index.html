@@ -116,17 +116,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2014-06-09T02:40:46.000Z"><a href="/2014/06/09/interview-0/">6月 9 2014</a></time>
+        <time datetime="2014-06-09T02:40:46.000Z"><a href="/2014/06/09/question-0/">6月 9 2014</a></time>
       
       
 
-    <h1 class="title"><a href="/2014/06/09/interview-0/">热身运动</a></h1>
+    <h1 class="title"><a href="/2014/06/09/question-0/">热身运动</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="http协议题集">http协议题集</h2>
+        <h2 id="http协议">http协议</h2>
 <h3 id="http协议状态有哪些?">http协议状态有哪些?</h3>
 <h3 id="状态码">状态码</h3>
 <p>状态码用来告诉客户端,服务器是否产生了预期的Response。状态代码由三位数字组成，第一个数字是响应类别，有五种可能值：<br>1XX 提示信息 - 表示请求已被成功接收，继续处理<br>2XX 成功 - 表示请求已被成功接收，理解，接受<br>3XX 重定向 - 要完成请求必须进行更进一步的处理<br>4XX 客户端错误 - 请求有语法错误或请求无法实现<br>5XX 服务器端错误 - 服务器未能实现合法的请求</p>
@@ -146,7 +146,7 @@
 <li>Presto内核渲染引擎 —— 旧版Opera中所使用的渲染引擎</li>
 </ul>
 <h3 id="简述浏览器加载和渲染原理？">简述浏览器加载和渲染原理？</h3>
-<h2 id="html题集">html题集</h2>
+<h2 id="html">html</h2>
 <h3 id="如何触发标准模式和怪异模式">如何触发标准模式和怪异模式</h3>
 <p>触发标准模式<br>1、加DOCTYPE声明,比如：<br>&lt;!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.1//EN” “<a href="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;" target="_blank">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;</a><br>&lt;!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “<a href="http://www.w3.org/TR/html4/strict.dtd&quot;&gt;" target="_blank">http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</a><br>&lt;!DOCTYPE html&gt;<br>2、设置X-UA-Compatible触发。</p>
 <p>触发怪异模式<br>1、无doctype声明、定义旧的HTML版本（HTML4以下,例如3.2）<br>2、加XML声明，可在ie6下触发<br>&lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br>&lt;!DOCTYPE …&gt;<br>3、在XML声明和XHTML的DOCTYPE之间加入HTML注释，可在ie7下触发 &lt;?xml version=”1.0” encoding=”utf-8”?&gt;<br><!-- keep IE7 in quirks mode --><br>&lt;!DOCTYPE …&gt;<br>5、<!-- -->放在&lt;!DOCTYPE前面</p>
@@ -170,7 +170,9 @@
 </ul>
 <p>pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。<br>fieldset 元素可将表单内的相关元素分组。</p>
 <p>在HTML5中，article元素可以看成是一种特殊类型的section元素，它比section元素更强调独立性。即section元素强调分段或分块，而article强调独立性。具体来说，如果一块内容相对来说比较独立的、完整的时候，应该使用article元素，但是如果你想将一块内容分成几段，一般带标题的时候，应该使用section元素。另外，在HTML5中，当使用CSS样式的时候，应该使用div。</p>
-<h2 id="css题集">css题集</h2>
+<h3 id="如何理解网站重构">如何理解网站重构</h3>
+<p>使html语义化、与css样式、javascript分离，使页面加载更加快速，并易于被搜索引擎收录，代码可维护性强，可复用性强。</p>
+<h2 id="css">css</h2>
 <h3 id="CSS选择符有哪些？哪些属性可以继承？优先级？内联和important哪个优先级高？">CSS选择符有哪些？哪些属性可以继承？优先级？内联和important哪个优先级高？</h3>
 <ul>
 <li>Class 可继承</li>
@@ -179,8 +181,10 @@
 <li>优先级就近原则，样式定义最近者为准<br>优先级为<br>!important &gt; 内联样式 &gt; [ id &gt; class &gt; tag ]</li>
 </ul>
 <h3 id="对渐进增强与平稳退化（优雅降级）的理解">对渐进增强与平稳退化（优雅降级）的理解</h3>
-<p>向上增强叫做渐进增强，向下兼容叫优雅降级。<br>优雅降级：<br>使用优雅降级方案，Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会检查以确认它们是否能正常工作。由于IE独特的盒模型布局问题，绝大多数Web设计师和开发者都通过专门的样式表或针对不同版本的IE的hack实践过优雅降级了；<br>使用优雅降级技术时，你必须首先完整的实现了网站，其中包括所有的功能和效果。然后再为那些无法支持所有功能的浏览器增加候选方案，使之在旧式浏览器上以某种形式降级体验却不至于完全失效。</p>
-<p>渐进增强：<br>从被所有浏览器支持的基本功能开始，逐步地添加那些只有新式浏览器才支持的功能。渐进增强是值得所有开发者采用的做法。渐进增强方案并不假定所有用户都支持javascript，而总是提供一种候补方法，确保用户可以访问（主要的）内容。<br>使用渐进增强时，无需为了一个已成型的网站在旧式浏览器下正常工作而做逆向工程。首先，只需要为所有的设备和浏览器准备好清晰且语义化的HTML以及完善的内容，然后再以无侵入（unobtrusive）的方式向页面增加无害于基础浏览器的额外样式和功能。当浏览器升级时，它们会自动地呈现出来并发挥作用。</p>
+<p>向上增强叫做渐进增强，向下兼容叫优雅降级。<br>优雅降级：<br>设计师针对最好的浏览器设计，并能保证css3各种层面的代码在较老的浏览器上剥离时，用户还能获得一种可用的体验。也就是说能否支持更好的体验在于浏览器的能力。</p>
+<p>渐进增强：<br>先构建支持更低级别浏览器的网站，然后使用css3对那些能力更强的浏览器来增强体验。</p>
+<p>对比两者，优雅降级是从能利用css3的大部分能力的浏览器出发，优雅降级到缺乏支持的老浏览器上。渐进增强是从基于兼容的标准最为基线，再针对支持css3的浏览器增加css3代码。</p>
+<p>典型的实践路径是先使用css3实现一个特性，再使用css2.1，最后使用针对遗留的浏览器使用的hack。若是有足够的理由，可以用渐进增强的路径，先使用css2.1,再使用css3。</p>
 <h3 id="双飞翼">双飞翼</h3>
 <ol>
 <li>最外围模块： float: left;position: relative;</li>
@@ -255,14 +259,20 @@
 <ol>
 <li>绝对(absolute)：</li>
 </ol>
-<p>绝对定位通过指定一个左、右、上或者下的位置来确定一个元素相对于父元素的边界进行定位的的位置。此外，绝对定位的元素被完全与普通文档流分离，换句话说，网页上的其他东西甚至不知道这个绝对定位的元素的存在。</p>
+<p>绝对定位通过指定一个左、右、上或者下的位置来确定一个元素相对于父元素的边界进行定位的的位置。此外 ，绝对定位的元素被完全与普通文档流分离，换句话说，网页上的其他东西甚至不知道这个绝对定位的元素的存在。</p>
 <ol>
 <li>固定(fixed)：</li>
 </ol>
 <p>一个固定的元素被锁定在屏幕的位置上。fixed是相对浏览器窗口的固定位置定位。</p>
-<p><strong>position:absolute和float会隐式的改变display类型，不论之前是什么类型的元素（display:none除外），只要设置了position:absolute或float，都会让元素以display:inline-block的方式显示，可以设置长宽，默认宽度并不占满父元素，就算是显示的设置display:inline或display:block，仍然无效。</strong><br><strong>注意一点的是，position:relative并不能够隐式的改变display的类型</strong></p>
+<p><strong>position:absolute和float会隐式的改变display类型，让元素以display:inline-block的方式显示</strong>，（不论之前是什么类型的元素，display:none除外），可以设置长宽，默认宽度并不占满父元素，就算是显示的设置display:inline或display:block，仍然无效。</p>
+<p><strong>position:relative并不能够隐式的改变display的类型</strong></p>
 <h3 id="css3比较流行的属性">css3比较流行的属性</h3>
-<h2 id="javascript题集">javascript题集</h2>
+<h2 id="javascript">javascript</h2>
+<h3 id="理解基本类型和引用类型的值复制与函数的参数传递">理解基本类型和引用类型的值复制与函数的参数传递</h3>
+<p>基本类型复制：将一个变量赋予给另一个变量，实际上是在变量对象上创建一个新值，然后将该值复制到新变量的分配的位置上。两个变量的值完全独立，两个变量的任何操作不会相互影响。</p>
+<p>引用类型复制：将一个引用类型变量的引用复制给新变量分配的内存空间中，复制的是引用类型的引用，这个引用指向堆中同一个对象。改变其中一个变量就会影响另一个变量。</p>
+<p>基本类型值的传递是按基本类型变量复制一样，而引用类型传递也是按引用类型变量复制一样，但是作为参数传递的时候，会将这个变量在内存中的地址复制给一个局部变量。而javascript中所有函数的参数都是按值传递的，困惑的是，在访问变量的时候是按值访问还是按引用访问两种方式。</p>
+<h3 id="理解类型转换">理解类型转换</h3>
 <h3 id="对事件捕获和事件冒泡的理解">对事件捕获和事件冒泡的理解</h3>
 <h3 id="addEventListener和attachEvent的区别？">addEventListener和attachEvent的区别？</h3>
 <ul>
@@ -299,12 +309,72 @@
 <li>作为apply或者call调用，this指向第一个参数对象，没有参数时，指向window。</li>
 <li>在闭包中，this随着运行时的作用域改变而改变。在闭包内部匿名函数中，this通常指向window。</li>
 </ul>
-<h3 id="理解引用类型传递和值传递">理解引用类型传递和值传递</h3>
-<h3 id="多个图片加载，很慢如何处理">多个图片加载，很慢如何处理</h3>
-<h3 id="html5有哪些新增的javascript_API">html5有哪些新增的javascript API</h3>
-<h3 id="web前端优化">web前端优化</h3>
-<h3 id="快速排序和数组消重">快速排序和数组消重</h3>
 <h3 id="理解setTimeOut()作用域的问题">理解setTimeOut()作用域的问题</h3>
+<p>在setTimeOut()中，this是指向全局作用域window的。</p>
+<h3 id="多个图片加载，很慢如何处理">多个图片加载，很慢如何处理</h3>
+<p>图片懒加载<br><a href="http://blog.wakao.me/index.php/page/2" target="_blank">http://blog.wakao.me/index.php/page/2</a></p>
+<h3 id="html5有哪些新增的javascript_API">html5有哪些新增的javascript API</h3>
+<ul>
+<li>新增了getElementsByClassName()方法，返回带有指定类名的NodeList</li>
+<li>增加classList属性，可以通过这个属性来进行增<code>add(&#39;类字符串&#39;)</code>、删<code>remove(&#39;类字符串&#39;)</code>、替换类名<code>toggle(&#39;类字符串&#39;)</code>或者查询是否包含类名<code>contains(&#39;类字符串&#39;)</code>。</li>
+<li>将IE专有的innerHtml和outerHTML纳入html5规范，innerHTML和outerHTML的区别是，返回的值是否包含操作元素本身。</li>
+</ul>
+<h3 id="页面优化以及提高前端性能">页面优化以及提高前端性能</h3>
+<h3 id="快速排序和数组消重">快速排序和数组消重</h3>
+<p>数组消重：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="keyword">var</span> <span class="keyword">array</span> = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>];
+<span class="function"><span class="keyword">function</span> <span class="title">hash_unique</span><span class="params">(array)</span> {</span>
+    <span class="keyword">var</span> o = {};
+    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; <span class="keyword">array</span>.length; i++) {
+        <span class="keyword">if</span>(typeof o[<span class="keyword">array</span>[i]] == <span class="string">'undefined'</span>) {
+            o[<span class="keyword">array</span>[i]] = j++;
+        }
+    }
+    <span class="keyword">array</span>.length = <span class="number">0</span>;
+    <span class="keyword">for</span>(<span class="keyword">var</span> k in o) {
+        <span class="keyword">array</span>[o[k]] = k;
+    }
+    <span class="keyword">return</span> <span class="keyword">array</span>;
+}
+console.log(hash_unique(<span class="keyword">array</span>));
+</pre></td></tr></table></figure>
+
+<h3 id="数组的操作">数组的操作</h3>
+<ul>
+<li><code>toString()/valueOf()/toLocaleString()</code> 返回将数组中的值的字符串的形式拼接成以<code>,</code>分隔的字符串。</li>
+<li><code>join(&#39;,&#39;)</code> 返回以<code>,</code>分隔的字符串。</li>
+<li><code>push()/pop()</code> 分别是将数据项插入数组末端并返回数组的长度/弹出最后一项，并返回该值。</li>
+<li><code>push()/shift()/unshift()</code> 分别是将数据项插入数组末端并返回数组的长度/弹出第一个项，并返回该值/在第一项插入任意项数据，并返回数组长度。</li>
+<li><code>sort()/reverse()</code> 分别是按升序排列/按降序排列，sort会调用数组的toString()把数据项转换为字符串再比较，但结果不是最佳方案，sort()能接收一个函数作为参数。</li>
+<li><code>contact()</code> 是创建当前数组的一个副本，然后将contact括号内的数据项添加在副本数组的末尾，并返回新数组。</li>
+<li><code>slice()</code> 基于当前当前数组一个或者多个项创建一个新数组。slice(1, 4)从位置1开始，到位置3结束，返回第二项到第四项组成的新数组。</li>
+<li><code>splice()</code> 主要用途是向数组中部插入数据项。<ul>
+<li>删除任意数量的项：<code>splice(1, 2)</code> 从第二个位置开始，删除两项，并返回删除后的项组成的新数组。</li>
+<li>在指定位置插入数据项：<code>splice(1, 0, &#39;ok&#39;)</code> 参数：起始位置，要删除的项的数量，要插入的项，返回空数组。</li>
+<li>指定位置中替换任意项：<code>splice(1, 1, &#39;ok&#39;)</code> 参数：起始位置，要删除的项的数量，要插入的项，并返回删除后的项组成的新数组。</li>
+</ul>
+</li>
+<li><code>indexOf()/lastIndexOf()</code>接收两个参数：要查找的项，查找起点位置的索引（可选，没有则从位置0开始查找），<code>lastIndexOf()</code> 从数组的末尾开始查找，并返回查找项在数组中的位置。支持的浏览器有IE9+，火狐，safari，谷歌，opera。<br>*</li>
+</ul>
+<h3 id="javascript操作节点和jquery操作节点（包括位置和事件）">javascript操作节点和jquery操作节点（包括位置和事件）</h3>
+<h3 id="如何解决回调层级过深的问题">如何解决回调层级过深的问题</h3>
+<h3 id="Ajax跨域的几种方法以及每种方法的原理">Ajax跨域的几种方法以及每种方法的原理</h3>
+<h3 id="当需要更新一个ui节点下的1000个li节点的某个属性时候该怎么做才能保证页面性能">当需要更新一个ui节点下的1000个li节点的某个属性时候该怎么做才能保证页面性能</h3>
 
         <div class="paging">
     
@@ -609,7 +679,7 @@ debug&gt; c
   <ul class="entry">
     
       <li>
-        <a href="/2014/06/09/interview-0/">热身运动</a>
+        <a href="/2014/06/09/question-0/">热身运动</a>
       </li>
     
       <li>
