@@ -116,6 +116,53 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-20T09:41:12.000Z"><a href="/2013/12/20/web-bfc/">12月 20 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/20/web-bfc/">Web开发--谈谈对BFC的理解</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h3 id="什么是BFC">什么是BFC</h3>
+<blockquote>
+<p>BFC的全名是block formatting context，转成中文就是块级元素格式上下文。它决定了元素如何对其内容进行定位，以及与其他元素的关系和相互作用。当涉及到可视化布局的时候，Block Formatting Context提供了一个环境，HTML元素在这个环境中按照一定规则进行布局。一个环境中的元素不会影响到其它环境中的布局。</p>
+</blockquote>
+<p>通俗来理解，一个BFC就是一个箱子，在同一个BFC内，箱子子会一个挨着一个的摆放，相邻箱子的左右间距是由margin决定而垂直方向的margin会重叠，每一个箱子的左外边缘（margin-left）会触碰到容器的左边缘(border-left)（对于从右到左的格式来说，则触碰到右边缘）。而浮动<code>float</code>和清除浮动<code>clear</code>也只对同一个BFC内的元素有效。</p>
+<p>深入点理解BFC的特性：</p>
+<p><strong>边缘不和浮动元素重叠</strong>，因为元素触发了BFC的话，就不会被float元素覆盖，如下：</p>
+<p>不触发BFC，内容不多，符合预期：<br><img src="/images/cont/web-bfc-0.jpg" style="display:block;" /><br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/20/web-bfc/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-17T10:50:51.000Z"><a href="/2013/12/17/object-0/">12月 17 2013</a></time>
       
       
@@ -355,73 +402,6 @@ bird.method(Bird.getVBird); <span class="comment">// "blueBird的速度是 undef
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-11T10:30:27.000Z"><a href="/2013/12/11/secrets-of-javascript-2/">12月 11 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="闭包的理解">闭包的理解</h2>
-<p>根据下面代码进行分析：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">()</span>{</span>
-    var firstVal = <span class="number">0</span>,
-        secondVal = <span class="number">1</span>;
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        secondVal++;
-        <span class="keyword">return</span> firstVal + secondVal;
-    }
-}
-var <span class="built_in">sum</span> = add();
-<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//2</span>
-<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//3，说明secondVal++的值没有被销毁，还保存在内存中。</span>
-</pre></td></tr></table></figure>
-
-<h3 id="从堆栈的角度理解：">从堆栈的角度理解：</h3>
-<p>在面向堆栈的编程语言中，函数的局部变量都是保存在栈上的，每当函数激活的时候，这些变量和函数参数都会压入到该堆栈上。当函数返回的时候，这些参数又会从栈中移除。<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/11/secrets-of-javascript-2/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -465,7 +445,7 @@ var <span class="built_in">sum</span> = add();
   
     <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
-    <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
+    <li><a href="/tags/javascript/">javascript</a><small>15</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
@@ -483,6 +463,10 @@ var <span class="built_in">sum</span> = add();
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/13/high-performance-0/">前端优化--高性能javascript</a>
+      </li>
     
       <li>
         <a href="/2014/06/09/question-0/">热身运动</a>
@@ -538,10 +522,6 @@ var <span class="built_in">sum</span> = add();
     
       <li>
         <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
       </li>
     
   </ul>

@@ -3,50 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javascript高级技巧--函数绑定bind() | no forget</title>
+  <title>前端优化--高性能javascript | no forget</title>
   <meta name="author" content="susubanana">
   
-  <meta name="description" content="函数绑定bind()方法
-自定义bind方法
-这个技巧常用于回调函数中。其中this指向的对象取决于调用表达式。可能会出现不符合预期的情况，因而需要绑定函数的原始对象。
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-// 作为回调函数传递时，this指向全局变量
-var Bird = {
-    vBird : 45,
-    colors: [&#39;blue&#39;, &#39;yellow&#39;],
-    getVBird :function(whichBird){
-        return whichBird + &#39;的速度是 &#39; + this.vBird;
-    }
-};
-var bird = {
-    vBird : 60
-    method: function(callback) {
-        return callback(&#39;blueBird&#39;);
-    }
-};
-bird.method(Bird.getVBird); // &quot;blueBird的速度是 undefined&quot;
-
-
-简单的bind(一个环境，一个函数)，这个bind函数返回给定环境中调用给定的函数的函数，并将所有参数传递过去：">
+  <meta name="description" content="http://www.cnblogs.com/mofish/archive/2010/10/12/1849016.html">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="javascript高级技巧--函数绑定bind()"/>
+  <meta property="og:title" content="前端优化--高性能javascript"/>
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -152,149 +117,22 @@ bird.method(Bird.getVBird); // &quot;blueBird的速度是 undefined&quot;
     <header>
       
         <div class="icon"></div>
-        <time datetime="2013-12-11T12:28:51.000Z"><a href="/2013/12/11/secrets-of-javascript-3/">12月 11 2013</a></time>
+        <time datetime="2014-06-13T09:49:00.000Z"><a href="/2014/06/13/high-performance-0/">6月 13 2014</a></time>
       
       
 
-    <h1 class="title">javascript高级技巧--函数绑定bind()</h1>
+    <h1 class="title">前端优化--高性能javascript</h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="函数绑定bind()方法">函数绑定bind()方法</h2>
-<h3 id="自定义bind方法">自定义bind方法</h3>
-<p>这个技巧常用于回调函数中。其中this指向的对象取决于调用表达式。可能会出现不符合预期的情况，因而需要绑定函数的原始对象。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="code"><pre><span class="comment">// 作为回调函数传递时，this指向全局变量</span>
-<span class="keyword">var</span> Bird = {
-    vBird : <span class="number">45</span>,
-    colors: [<span class="string">'blue'</span>, <span class="string">'yellow'</span>],
-    getVBird :<span class="function"><span class="keyword">function</span><span class="params">(whichBird)</span>{</span>
-        <span class="keyword">return</span> whichBird + <span class="string">'的速度是 '</span> + <span class="keyword">this</span>.vBird;
-    }
-};
-<span class="keyword">var</span> bird = {
-    vBird : <span class="number">60</span>
-    method: <span class="function"><span class="keyword">function</span><span class="params">(callback)</span> {</span>
-        <span class="keyword">return</span> callback(<span class="string">'blueBird'</span>);
-    }
-};
-bird.method(Bird.getVBird); <span class="comment">// "blueBird的速度是 undefined"</span>
-</pre></td></tr></table></figure>
-
-<p>简单的bind(一个环境，一个函数)，这个bind函数返回给定环境中调用给定的函数的函数，并将所有参数传递过去：<br><a id="more"></a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">bind</span><span class="params">(obj, method)</span>{</span>
-    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> method.call(obj, [].slice.apply(<span class="built_in">arguments</span>));
-    };
-}
-<span class="keyword">var</span> Bird = {
-    vBird : <span class="number">45</span>,
-    colors: [<span class="string">'blue'</span>, <span class="string">'yellow'</span>],
-    getVBird :<span class="function"><span class="keyword">function</span><span class="params">(whichBird)</span>{</span>
-        <span class="keyword">return</span> whichBird + <span class="string">'的速度是 '</span> + <span class="keyword">this</span>.vBird;
-    }
-};
-<span class="keyword">var</span> bird = {
-    vBird : <span class="number">60</span>
-};
-<span class="keyword">var</span> birdGetVBird = bind(bird, Bird.getVBird);
-birdGetVBird(<span class="string">'blueBird'</span>); <span class="comment">//"blueBird的速度是 60"</span>
-</pre></td></tr></table></figure>
-
-<h3 id="ECMAScript5的bind方法">ECMAScript5的bind方法</h3>
-<p>ECMAScript5 将bind添加到function.prototype中。支持的有IE9+、火狐、谷歌，其实现原理：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-</pre></td><td class="code"><pre><span class="keyword">if</span>(type of <span class="built_in">Function</span>.prototype.bind === <span class="string">"undefined"</span>){
-    <span class="built_in">Function</span>.prototype.bind = <span class="function"><span class="keyword">function</span><span class="params">(thisArg)</span>{</span>
-        <span class="keyword">var</span> fn = <span class="keyword">this</span>,
-            slice = <span class="built_in">Array</span>.prototype.slice,
-            args = slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);
-        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-            <span class="keyword">return</span> fn.apply(thisArg, args.contact(slice.call(<span class="built_in">arguments</span>)));
-        };
-    };
-}
-</pre></td></tr></table></figure>
-
-<p>使用ECMAScript5的bind方法</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-</pre></td><td class="code"><pre><span class="keyword">var</span> Bird = {
-    vBird : <span class="number">45</span>,
-    colors: [<span class="string">'blue'</span>, <span class="string">'yellow'</span>],
-    getVBird :<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> <span class="keyword">this</span>.vBird;
-    }
-};
-
-<span class="keyword">var</span> bird = {
-    vBird : <span class="number">60</span>
-};
-<span class="keyword">var</span> vBird = Bird.getVBird.bind(bird);
-console.log(vBird()); <span class="comment">//60</span>
-</pre></td></tr></table></figure>
-
-<p>被绑定的函数和普通函数相比，需要更多的内存，也因为多重函数调用会稍慢，所以最好在必要时使用。</p>
+        <p><a href="http://www.cnblogs.com/mofish/archive/2010/10/12/1849016.html" target="_blank">http://www.cnblogs.com/mofish/archive/2010/10/12/1849016.html</a></p>
 
         <div class="paging">
     
-    <span>上一篇：<a href="/2013/12/12/secrets-of-javascript-4/" class="prev" title="javascript高级技巧--函数柯里化">javascript高级技巧--函数柯里化</a></span>
     
-    
-    <span>下一篇：<a href="/2013/12/11/secrets-of-javascript-2/" class="next" title="javascript作用域--闭包">javascript作用域--闭包</a></span>
+    <span>下一篇：<a href="/2014/06/09/question-0/" class="next" title="热身运动">热身运动</a></span>
     
 
 </div>
@@ -304,11 +142,6 @@ console.log(vBird()); <span class="comment">//60</span>
     <footer>
       
         
-  
-  <div class="categories">
-    <a href="/categories/web开发/">web开发</a>
-  </div>
-
         
   
   <div class="tags">
@@ -329,7 +162,7 @@ console.log(vBird()); <span class="comment">//60</span>
 <section id="comment">
     <h1 class="title">我爱评</h1>
 
-    <div class="ds-thread" data-thread-key="/2013/12/11/secrets-of-javascript-3/" data-title="javascript高级技巧--函数绑定bind()" data-url="/2013/12/11/secrets-of-javascript-3/"></div>
+    <div class="ds-thread" data-thread-key="/2014/06/13/high-performance-0/" data-title="前端优化--高性能javascript" data-url="/2014/06/13/high-performance-0/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
