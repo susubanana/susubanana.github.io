@@ -331,7 +331,7 @@ GET和POST的区别？">
 <li>减少对dom的访问，将循环计算的操作尽量放在ECMAscript本身处理。</li>
 <li>对比getElementById()等返回的是HTML集合，HTML集合与文档一直保持连接，每次需要获取最新信息时，都要重新执行查询过程，querySelectorAll()返回的是NodeList静态列表的类数组对象，不实时对应文档结构，因而不会每次访问时都重新执行查询过程。</li>
 <li>减少重绘重排，如合并修改样式，批量修改dom(先隐藏元素，批量修改后，再显示，或针对要修改的节点创建一个副本，先修改副本然后替换旧的节点，最好的方式是在文档之外创建一个文档，针对这个文档操作，然后再将它附加到原始节点中，只操作一次元素节点。)</li>
-<li>使用内容分发网络，将网站内容分散到多个、处于不同地域位置的服务器上可以加快下载速度，通过向地理最近的用户传输内容，可以极大减少网络延时。</li>
+<li>使用内容分发网络，将网站内容分散到多个、处于不同地域位置的服务器上可以加快下载速度，通过向地理最近的用户传输内容，另外，浏览器同一时间针对同一域名下的请求有一定数量限制（一般10个以内），超过限制数目的请求会被阻止。可以极大减少网络延时。</li>
 <li>Gzip压缩文件内容，通过设置HTTP请求中有Accept-Encoding文件头的压缩格式。Gzip大概可以减少70%的响应规模。</li>
 <li>避免使用滤镜，IE滤镜的问题在于浏览器加载图片时它会终止内容的呈现并且冻结浏览器。在每一个元素（不仅仅是图片）它都会运算一次，增加了内存开支，因此它的问题是多方面的。可以使用PNG8格式来代替。如果确实需要使用AlphaImageLoader，使用下划线_filter又使之对IE7以上版本的用户无效。</li>
 <li>优化CSS Sprite，在Sprite中水平排列你的图片，垂直排列会稍稍增加文件大小。Sprite中把颜色较近的组合在一起可以降低颜色数。不要在Spirite的图像中间留有较大空隙。这虽然不大会增加文件大小，但它需要更少的内存来把图片解压为像素地图。100x100的图片为1万像素，而1000x1000就是100万像素。</li>
@@ -371,6 +371,18 @@ GET和POST的区别？">
 console.log(hash_unique(<span class="keyword">array</span>));
 </pre></td></tr></table></figure>
 
+<h3 id="字符串的操作">字符串的操作</h3>
+<ul>
+<li><code>str.length</code> 获取字符串的长度</li>
+<li><code>str.charAt(index)</code> 获取字符串的指定位置的字符</li>
+<li><code>str.slice(start, end),str.substring(start, end),str.substr(start, num)</code> 获取字符串的子串，第二个参数可选，只指定start，返回的三个字符串副本一致。指定第二个参数时，前两者返回以start位置开始，end位置结束（不包括end位置字符）的字符串；substr返回的是以start位置开始的num个字符的字符串。<br>上面三个方法的第一个参数为负值时，slice和substr会将第一个参数加上字符串的长度作为起始位置，substring会将所有负值参数转为0：假设长度是5，<code>str.slice(-1)</code>，<code>str.substring(-1)</code>，<code>str.substr(-1)</code>会转化为：<code>str.slice(4)</code>，<code>str.substring(0)</code>，<code>str.substr(4)</code><br>上面三个方法的第二个参数为负值时，slice将第二个参数加上字符串的长度作为起始结束位置，substring会将所有负值参数转为0，substr会将第二个参数转为0，所以返回空字符串：假设长度是5，<code>str.slice(2,-1)</code>，<code>str.substring(2, -1)</code>，<code>str.substr(2, -1)</code>会转化为：<code>str.slice(2, 4)</code>，<code>str.substring(2, 0)</code>，<code>str.substr(2, 0)</code></li>
+<li><code>str.indexOf()/str.lastIndexOf()</code> 查找给定字符串，str.indexOf(string)从开头向后搜索，str.lastIndexOf()是从末尾向前搜索子字符串，返回指定字符串的位置。</li>
+<li><code>str.trim()</code> 删除字符串前缀或者后缀的所有空格。</li>
+<li><code>str.toLowerCase()、str.toUpperCase()</code> 字符串大小写转换</li>
+<li><code>str.match()/str.search()</code> 字符串模式匹配，str.match()只接收一个参数（正则表达式/RegExp对象），返回一个数组。str.search()只接收一个参数（正则表达式/RegExp对象），返回的是第一个匹配项的索引。</li>
+<li><code>str.split()</code>基于指定的分隔符，将一个字符串分割成多个子字符串，并放在一个数组中。</li>
+<li><code>str.localeCompare(字符串)</code> 比较两个字符串是否相等，字符串的首字母在str前面则返回1，相同的字符串则返回0，首字母排在str后面则返回-1。</li>
+</ul>
 <h3 id="数组的操作">数组的操作</h3>
 <ul>
 <li><code>toString()/valueOf()/toLocaleString()</code> 返回将数组中的值的字符串的形式拼接成以<code>,</code>分隔的字符串。</li>
@@ -386,14 +398,136 @@ console.log(hash_unique(<span class="keyword">array</span>));
 <li>指定位置中替换任意项：<code>splice(1, 1, &#39;ok&#39;)</code> 参数：起始位置，要删除的项的数量，要插入的项，并返回删除后的项组成的新数组。</li>
 </ul>
 </li>
-<li><code>indexOf()/lastIndexOf()</code>接收两个参数：要查找的项，查找起点位置的索引（可选，没有则从位置0开始查找），<code>lastIndexOf()</code> 从数组的末尾开始查找，并返回查找项在数组中的位置。支持的浏览器有IE9+，火狐，safari，谷歌，opera。<br>*</li>
+<li><code>indexOf()/lastIndexOf()</code>接收两个参数：要查找的项，查找起点位置的索引（可选，没有则从位置0开始查找），<code>lastIndexOf()</code> 从数组的末尾开始查找，并返回查找项在数组中的位置。支持的浏览器有IE9+，火狐，safari，谷歌，opera。</li>
 </ul>
+<h3 id="eval()方法">eval()方法</h3>
+<p>eval方法就是一个完整的javascript解析器，它接收一个参数（要执行的ECMAScript语句或者字符串）。使用eval执行的代码比不使用eval的代码慢100倍以上，使用<code>eval</code>，则<code>eval</code>中的代码（实际上为字符串）无法预先识别其上下文，无法被提前解析和优化，即无法进行预编译的操作。所以，其性能也会大幅度降低。使用eval方法容易被恶意代码侵入，有安全性隐患。</p>
 <h3 id="javascript操作节点和jquery操作节点（包括位置和事件）">javascript操作节点和jquery操作节点（包括位置和事件）</h3>
+<p>javascript原生创建新节点</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>document.createDocumentFragment() <span class="comment">//创建一个DOM片段</span>
+document.createElement() <span class="comment">//创建一个具体的元素</span>
+document.createTextNode() <span class="comment">//创建一个文本节点</span>
+</pre></td></tr></table></figure>
+
+<p>jquery创建节点</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">var</span> ele = $(<span class="string">'&lt;p&gt;创建节点&lt;/p&gt;'</span>)
+`
+</pre></td></tr></table></figure>
+
+<p>javascript原生添加、移除、替换、插入</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="keyword">element</span>.appendChild(newNode)<span class="comment"> //用于向childNodes列表的末尾添加一个节点，返回要添加的元素节点，若child节点是存在节点则移动到childNodes列表末尾。</span>
+<span class="keyword">element</span>.removeChild(child)
+<span class="keyword">element</span>.replaceChild(newNode, replaceChild)<span class="comment"> //用于替换节点，接受两个参数，第一参数是要插入的节点，第二个是要替换的节点，返回被替换的节点</span>
+<span class="keyword">element</span>.insertBefore(newNode, indexChild)<span class="comment"> //用于指定插入位置，接受2个参数，第一个是要插入的节点，第二个是参照节点，节点插入到参照节点的前面，返回要添加的元素节点</span>
+<span class="keyword">element</span>.cloneNode()<span class="comment"> //用于复制节点，接受一个布尔值参数，true 表示深复制（复制节点及其所有子节点），false 表示浅复制（复制节点本身，不复制子节点）</span>
+</pre></td></tr></table></figure>
+
+<p>jquery添加、移除、替换、插入</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre>$(A).append(B) <span class="comment">//将B加入到A内部末尾</span>
+$(A).appendTo(B) <span class="comment">//将A加入到B内部末尾</span>
+$(A).prepend(B) <span class="comment">//将B加入到A内部开头</span>
+$(A).prependTo(B) <span class="comment">//将A加入到B内部开头</span>
+$(A).after(B) <span class="comment">//将B加入到A后面</span>
+$(A).insertAfter(B) <span class="comment">//将A加入到B后面</span>
+$(A).before(B) <span class="comment">//将B加入到A前面</span>
+$(A).insertBefore(B) <span class="comment">//将A加入到B前面</span>
+
+$(A).remove()
+$(A).clone()
+$(A).replaceWidth()
+`
+</pre></td></tr></table></figure>
+
+<p>查找</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>document.getElementsByTagName() <span class="comment">//通过标签名称</span>
+document.getElementsByName() <span class="comment">//通过元素的Name属性的值</span>
+document.getElementById() <span class="comment">//通过元素Id，唯一性</span>
+document.documentElement <span class="comment">//取得html标签</span>
+document.<span class="keyword">body</span> <span class="comment">//取得body标签</span>
+</pre></td></tr></table></figure>
+
+<h3 id="HTML集合和NodeList的区别">HTML集合和NodeList的区别</h3>
+<p>NodeList是一个类数组的静态列表，在访问DOM文档时实时动态查询，也就是文档改变时，都会立即得到更新，始终保持最新最准确的信息，可通过[index]或item(index)访问。<br>返回NodeList的API：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>element<span class="preprocessor">.childNodes</span>
+document<span class="preprocessor">.querySelectorAll</span>()
+</pre></td></tr></table></figure>
+
+<p>HTMLCollection 是HTML 元素的集合，在访问DOM文档时实时动态查询，也就是文档改变时，都会立即得到更新，始终保持最新最准确的信息，比NodeList多了一个namedItem()方法，这个方法是通过name属性查找。<br>返回HTMLCollection的API：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>element<span class="preprocessor">.children</span>
+document<span class="preprocessor">.images</span>
+document<span class="preprocessor">.forms</span>
+document<span class="preprocessor">.all</span>
+</pre></td></tr></table></figure>
+
+<p>IE/火狐返回HTMLCollection，谷歌、opera、safari返回NodeList的API：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>document<span class="preprocessor">.getElementsByName</span>()
+document<span class="preprocessor">.getElementsByTagName</span>()
+document<span class="preprocessor">.getElementsByClassName</span>()
+</pre></td></tr></table></figure>
+
+<p>两者因为对文档的实时查询，都有性能方面的考虑，但是querySelectAll返回的NodeList对象，底层实现如同一个快照，不用不断对文档进行动态查询，则避免大多性能方面的考虑。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>document.<span class="keyword">query</span><span class="variable">SelectorAll</span>() //返回一个nodelist对象，能避免大多数性能问题。
+</pre></td></tr></table></figure>
+
+<h3 id="element-childNodes和element-children的区别">element.childNodes和element.children的区别</h3>
+<p><code>element.childNodes</code> 它返回指定元素的子元素集合，包括HTML节点，所有属性，文本，IE8及以下版本会返回html节点，IE8+会返回具体节点类型。只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。</p>
+<p><code>element.children</code> 只返回html元素的节点，除此之外和childNodes没什么区别。IE8及以下版本也会包含注释节点（无注释则返回元素节点）。其他浏览器均返回元素节点。</p>
+<h3 id="jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。">jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。</h3>
+<h3 id="ECMAScript5增加了哪些API">ECMAScript5增加了哪些API</h3>
 <h3 id="如何解决回调层级过深的问题">如何解决回调层级过深的问题</h3>
 <h3 id="Ajax跨域的几种方法以及每种方法的原理">Ajax跨域的几种方法以及每种方法的原理</h3>
 <h3 id="当需要更新一个ui节点下的1000个li节点的某个属性时候该怎么做才能保证页面性能">当需要更新一个ui节点下的1000个li节点的某个属性时候该怎么做才能保证页面性能</h3>
 <h3 id="多个图片加载，很慢如何处理">多个图片加载，很慢如何处理</h3>
 <p>图片懒加载<br><a href="http://blog.wakao.me/index.php/page/2" target="_blank">http://blog.wakao.me/index.php/page/2</a></p>
+<h3 id="什么是哈希表？">什么是哈希表？</h3>
+<h3 id="请指出Javascript宿主对象和内置对象的区别？">请指出Javascript宿主对象和内置对象的区别？</h3>
+<h3 id="JavaScript的模板系统">JavaScript的模板系统</h3>
+<h3 id="什么是FOUC？如何来避免FOUC">什么是FOUC？如何来避免FOUC</h3>
+<p>以无样式显示页面内容的瞬间闪烁,这种现象称之为文档样式短暂失效(Flash of Unstyled Content),简称为FOUC。<br>原因大致为：</p>
+<ol>
+<li>使用import方法导入样式表。</li>
+<li>将样式表放在页面底部</li>
+<li>有几个样式表，放在html结构的不同位置。</li>
+</ol>
+<p>原理：当样式表晚于结构性html加载，当加载到此样式表时，页面将停止之前的渲染。此样式表被下载和解析后，将重新渲染页面，也就出现了短暂的花屏现象。</p>
 
         <div class="paging">
     
