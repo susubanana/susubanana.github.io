@@ -401,7 +401,7 @@ console.log(hash_unique(<span class="keyword">array</span>));
 <li><code>indexOf()/lastIndexOf()</code>接收两个参数：要查找的项，查找起点位置的索引（可选，没有则从位置0开始查找），<code>lastIndexOf()</code> 从数组的末尾开始查找，并返回查找项在数组中的位置。支持的浏览器有IE9+，火狐，safari，谷歌，opera。</li>
 </ul>
 <h3 id="eval()方法">eval()方法</h3>
-<p>eval方法就是一个完整的javascript解析器，它接收一个参数（要执行的ECMAScript语句或者字符串）。使用eval执行的代码比不使用eval的代码慢100倍以上，使用<code>eval</code>，则<code>eval</code>中的代码（实际上为字符串）无法预先识别其上下文，无法被提前解析和优化，即无法进行预编译的操作。所以，其性能也会大幅度降低。使用eval方法容易被恶意代码侵入，有安全性隐患。</p>
+<p>eval()方法就是一个完整的javascript解析器，它接收一个参数（要执行的ECMAScript语句或者字符串）。使用eval()执行的代码比不使用eval的代码慢100倍以上，使用<code>eval</code>，则<code>eval</code>中的代码（实际上为字符串）无法预先识别其上下文，无法被提前解析和优化，即无法进行预编译的操作。所以，其性能也会大幅度降低。使用eval方法容易被恶意代码侵入，有安全性隐患。</p>
 <h3 id="javascript操作节点和jquery操作节点（包括位置和事件）">javascript操作节点和jquery操作节点（包括位置和事件）</h3>
 <p>javascript原生创建新节点</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
@@ -511,6 +511,7 @@ document<span class="preprocessor">.getElementsByClassName</span>()
 <p><code>element.childNodes</code> 它返回指定元素的子元素集合，包括HTML节点，所有属性，文本，IE8及以下版本会返回html节点，IE8+会返回具体节点类型。只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。</p>
 <p><code>element.children</code> 只返回html元素的节点，除此之外和childNodes没什么区别。IE8及以下版本也会包含注释节点（无注释则返回元素节点）。其他浏览器均返回元素节点。</p>
 <h3 id="jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。">jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。</h3>
+<p><a href="http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml" target="_blank">http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml</a></p>
 <h3 id="ECMAScript5增加了哪些API">ECMAScript5增加了哪些API</h3>
 <h3 id="如何解决回调层级过深的问题">如何解决回调层级过深的问题</h3>
 <p>分解成多个异步回调函数，并借助第三方函数处理回调函数的协作关系来解决多个回调函数对应一个业务逻辑。</p>
