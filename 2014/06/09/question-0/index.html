@@ -511,7 +511,6 @@ document<span class="preprocessor">.getElementsByClassName</span>()
 <p><code>element.childNodes</code> 它返回指定元素的子元素集合，包括HTML节点，所有属性，文本，IE8及以下版本会返回html节点，IE8+会返回具体节点类型。只有当nodeType==1时才是元素节点，2是属性节点，3是文本节点。</p>
 <p><code>element.children</code> 只返回html元素的节点，除此之外和childNodes没什么区别。IE8及以下版本也会包含注释节点（无注释则返回元素节点）。其他浏览器均返回元素节点。</p>
 <h3 id="jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。">jquery中一些API的实现原理，如：on、bind、delegate、live的区别和实现原理，ready实现机制。</h3>
-<p><a href="http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml" target="_blank">http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml</a></p>
 <h3 id="ECMAScript5增加了哪些API">ECMAScript5增加了哪些API</h3>
 <h3 id="如何解决回调层级过深的问题">如何解决回调层级过深的问题</h3>
 <p>分解成多个异步回调函数，并借助第三方函数处理回调函数的协作关系来解决多个回调函数对应一个业务逻辑。</p>
@@ -534,6 +533,8 @@ document<span class="preprocessor">.getElementsByClassName</span>()
 <p>原理：当样式表晚于结构性html加载，当加载到此样式表时，页面将停止之前的渲染。此样式表被下载和解析后，将重新渲染页面，也就出现了短暂的花屏现象。</p>
 
         <div class="paging">
+    
+    <span>上一篇：<a href="/2014/06/19/source-jquery-0/" class="prev" title="jQuery源码解读 -- jQuery对象的初始化">jQuery源码解读 -- jQuery对象的初始化</a></span>
     
     
     <span>下一篇：<a href="/2014/04/12/coffeescript-0/" class="next" title="Web开发--CoffeeScript">Web开发--CoffeeScript</a></span>
@@ -625,6 +626,8 @@ document<span class="preprocessor">.getElementsByClassName</span>()
   
     <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
+    <li><a href="/tags/jQuery/">jQuery</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -643,6 +646,10 @@ document<span class="preprocessor">.getElementsByClassName</span>()
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/19/source-jquery-0/">jQuery源码解读 -- jQuery对象的初始化</a>
+      </li>
     
       <li>
         <a href="/2014/06/09/question-0/">热身运动</a>
@@ -698,10 +705,6 @@ document<span class="preprocessor">.getElementsByClassName</span>()
     
       <li>
         <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
       </li>
     
   </ul>

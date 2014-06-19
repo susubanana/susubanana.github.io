@@ -3,13 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>no forget</title>
+  <title>jQuery源码解读 -- jQuery对象的初始化 | no forget</title>
   <meta name="author" content="susubanana">
+  
+  <meta name="description" content="jQuery 对象的初始化
+jQuery对象构造函数：
+1
+2
+3
+4
+5
+var jQuery = function( selector, context ) {
+    // The jQuery object is actually just the init constructor &#39;enh">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="jQuery源码解读 -- jQuery对象的初始化"/>
   <meta property="og:site_name" content="no forget"/>
 
   
@@ -109,8 +119,7 @@
 
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
   
   <div class="post-content">
     <header>
@@ -120,7 +129,7 @@
       
       
 
-    <h1 class="title"><a href="/2014/06/19/source-jquery-0/">jQuery源码解读 -- jQuery对象的初始化</a></h1>
+    <h1 class="title">jQuery源码解读 -- jQuery对象的初始化</h1>
   
 
     </header>
@@ -496,7 +505,7 @@ rootjQuery = jQuery( document );
         <div class="paging">
     
     
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
+    <span>下一篇：<a href="/2014/06/09/question-0/" class="next" title="热身运动">热身运动</a></span>
     
 
 </div>
@@ -506,6 +515,15 @@ rootjQuery = jQuery( document );
     <footer>
       
         
+        
+  
+  <div class="tags">
+    <a href="/tags/jQuery/">jQuery</a>
+  </div>
+
+        
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["qzone","tsina","tqq","renren","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/flappy_js/share.flappy_js?v=89860593.flappy_js?cdnversion='+~(-new Date()/36e5)];</script>
 
       
       <div class="clearfix"></div>
@@ -514,209 +532,30 @@ rootjQuery = jQuery( document );
 </article>
 
 
+<section id="comment">
+    <h1 class="title">我爱评</h1>
+
+    <div class="ds-thread" data-thread-key="/2014/06/19/source-jquery-0/" data-title="jQuery源码解读 -- jQuery对象的初始化" data-url="/2014/06/19/source-jquery-0/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"no-forget"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+
+    </script>
+</section>
 
 
 
 
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-06-09T02:40:46.000Z"><a href="/2014/06/09/question-0/">6月 9 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/06/09/question-0/">热身运动</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="http协议">http协议</h2>
-<h3 id="http协议状态有哪些?">http协议状态有哪些?</h3>
-<p>状态码用来告诉客户端,服务器是否产生了预期的Response。状态代码由三位数字组成，第一个数字是响应类别，有五种可能值：<br>1XX 提示信息 - 表示请求已被成功接收，继续处理<br>2XX 成功 - 表示请求已被成功接收，理解，接受<br>3XX 重定向 - 要完成请求必须进行更进一步的处理<br>4XX 客户端错误 - 请求有语法错误或请求无法实现<br>5XX 服务器端错误 - 服务器未能实现合法的请求</p>
-<p>常见状态代码：<br>200 OK      //客户端请求成功<br>400 Bad Request  //客户端请求有语法错误，不能被服务器所理解<br>401 Unauthorized //请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用<br>403 Forbidden  //服务器收到请求，但是拒绝提供服务<br>404 Not Found  //请求资源不存在，eg：输入了错误的URL<br>500 Internal Server Error //服务器发生不可预期的错误<br>503 Server Unavailable  //服务器当前不能处理客户端的请求，一段时间后，可能恢复正常</p>
-<h3 id="GET和POST的区别？">GET和POST的区别？</h3>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/06/09/question-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-04-12T10:32:28.000Z"><a href="/2014/04/12/coffeescript-0/">4月 12 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <a id="more"></a>
-        <div class="paging">
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-30T07:14:21.000Z"><a href="/2014/03/30/flappy-bird-0/">3月 30 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/03/30/flappy-bird-0/">FlappyBird--项目构思</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>今天双休，闲的无聊，每天周而复始的工作和生活，人也闷得发慌，于是想要做点除了工作之外的项目，为了乐趣和综合能力的锻炼，于是海搜网络，最后决定做了Flappy Bird，一个简单而又能充分锻炼综合能力的小游戏。</p>
-<p>想干就干，开始上网玩这个游戏，了解交互，建立清晰的思路，出动闲置的白纸开始画起来。</p>
-<h3 id="针对小鸟">针对小鸟</h3>
-<ol>
-<li>需要初始化一个小鸟</li>
-<li>小鸟拥有一个飞行、跳、死亡的动作</li>
-<li>既然那么多动作，当然有状态更新</li>
-</ol>
-<h3 id="针对管道">针对管道</h3>
-<ol>
-<li>需要初始化多根管道</li>
-<li>上下两根管道空隙的处理</li>
-<li>管道的状态更新</li>
-</ol>
-
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/03/30/flappy-bird-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-25T09:58:13.000Z"><a href="/2014/03/25/nodejs-3/">3月 25 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>WebSocket主要是两部分内容，一部分是浏览器实现的WebSocket，一部分是服务器端实现的WebSocket协议。WebSocket是随html5的推动被设计和开发，但是没有成为html5标准的一部分，前者被W3C标准化，后者被IETF标准化为RFC 6455。</p>
-<h2 id="WebSocket协议">WebSocket协议</h2>
-<ul>
-<li>客户端与服务器端只建立一个TCP连接即可完成双向通信。这个连接是实时的、永久的，除非被显式关闭。</li>
-<li>WebSocket服务器端可以推送数据到客户端，远比http请求响应灵活。</li>
-<li>有更轻量级的协议头，减少数据传送量。</li>
-</ul>
-<h3 id="WebSocket浏览器端的实现">WebSocket浏览器端的实现</h3>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/03/25/nodejs-3/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-<nav id="pagination">
-  
-  
-    <a href="/page/2/" class="alignright next">Next</a>
-  
-  <div class="clearfix"></div>
-</nav></div></div>
+</div></div>
     <aside id="sidebar" class="alignright">
   
 <div class="widget about-me">

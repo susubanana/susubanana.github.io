@@ -116,6 +116,71 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-02-18T11:18:23.000Z"><a href="/2014/02/18/mobile-web-2/">2月 18 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/02/18/mobile-web-2/">移动Web开发--纯CSS实现的立体按钮</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>产品经理让弄一个老虎机用作手机客户端积分抽奖，为了节省网络带宽，要求文件大小尽可能小，蛋疼的各种按钮效果不能用图片，都要用样式搞定。</p>
+<h2 id="纯CSS实现的立体按钮">纯CSS实现的立体按钮</h2>
+<p>实现如下按钮效果：</p>
+<p><img src="/images/cont/mobile-web-21.jpg" style="display: block;" /></p>
+<p>html结构为：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"td-yellow"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"mask"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item-wraper"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"item-cont"</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">strong</span>&gt;</span>18<span class="tag">&lt;/<span class="title">strong</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">p</span>&gt;</span>基金份额<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/02/18/mobile-web-2/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-02-17T10:22:38.000Z"><a href="/2014/02/17/mobile-web-1/">2月 17 2014</a></time>
       
       
@@ -330,65 +395,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-01-06T11:10:32.000Z"><a href="/2014/01/06/design-patterns-0/">1月 6 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="单例模式">单例模式</h2>
-<blockquote>
-<p>其思想是保证一个特定的类仅有一个实例，每次初始化的对象都是同一个对象。<br>单例的存在往往表明系统中要么紧密耦合，要么逻辑过于分散在其他模块中。如游戏中某个对象的状态需要在其他模块中通信。<br>单例可以用来划分命名空间，并将一批相关方法和属性组织在一起的对象，如果它可以被实例化，那么它只能被实例化一次。</p>
-</blockquote>
-<p>使用对象字面量创建对象就是一个单例。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-</pre></td><td class="code"><pre><span class="keyword">var</span> Bird = {
-    vBird : <span class="number">45</span>,
-    getVBird :<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
-        <span class="keyword">return</span> <span class="keyword">this</span>.vBird;
-    }
-};
-</pre></td></tr></table></figure>
-
-<p>也可以使用构造函数方式创建单例，什么时候使用这种语法的单例实现呢，在于当使用同一个构造函数实例化多个对象时，应该指向完全相同的对象。<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/01/06/design-patterns-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -432,6 +438,8 @@
   
     <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
+    <li><a href="/tags/jQuery/">jQuery</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -450,6 +458,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/19/source-jquery-0/">jQuery源码解读 -- jQuery对象的初始化</a>
+      </li>
     
       <li>
         <a href="/2014/06/09/question-0/">热身运动</a>
@@ -505,10 +517,6 @@
     
       <li>
         <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
       </li>
     
   </ul>

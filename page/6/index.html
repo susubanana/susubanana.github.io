@@ -116,6 +116,73 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2013-12-11T10:30:27.000Z"><a href="/2013/12/11/secrets-of-javascript-2/">12月 11 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/11/secrets-of-javascript-2/">javascript作用域--闭包</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="闭包的理解">闭包的理解</h2>
+<p>根据下面代码进行分析：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">()</span>{</span>
+    var firstVal = <span class="number">0</span>,
+        secondVal = <span class="number">1</span>;
+    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        secondVal++;
+        <span class="keyword">return</span> firstVal + secondVal;
+    }
+}
+var <span class="built_in">sum</span> = add();
+<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//2</span>
+<span class="transposed_variable">console.</span>log(<span class="built_in">sum</span>()); <span class="comment">//3，说明secondVal++的值没有被销毁，还保存在内存中。</span>
+</pre></td></tr></table></figure>
+
+<h3 id="从堆栈的角度理解：">从堆栈的角度理解：</h3>
+<p>在面向堆栈的编程语言中，函数的局部变量都是保存在栈上的，每当函数激活的时候，这些变量和函数参数都会压入到该堆栈上。当函数返回的时候，这些参数又会从栈中移除。<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/11/secrets-of-javascript-2/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2013-12-10T13:19:18.000Z"><a href="/2013/12/10/secrets-of-javascript-1/">12月 10 2013</a></time>
       
       
@@ -296,48 +363,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-06T10:20:22.000Z"><a href="/2013/12/06/web-base-1/">12月 6 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/06/web-base-1/">web基础--HTTP协议详解</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>HTTP超文本传输协议是一种通过Internet发送与接收数据的协议，客户端发出一个请求，服务器响应这个请求。,它建立在TCP协议之上，一般采用TCP的80端口。<br>HTTP协议是无状态的，同一个客户端的这次请求和上次请求是没有对应关系，对HTTP服务器来说，它并不知道这两个请求是否来自同一个客户端。</p>
-<h2 id="HTTP协议详解之url">HTTP协议详解之url</h2>
-<p>http url的格式如右：<code>http://host[&quot;:&quot;port][abs_path]</code><br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/06/web-base-1/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -381,6 +406,8 @@
   
     <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
+    <li><a href="/tags/jQuery/">jQuery</a><small>1</small></li>
+  
     <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
@@ -399,6 +426,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/06/19/source-jquery-0/">jQuery源码解读 -- jQuery对象的初始化</a>
+      </li>
     
       <li>
         <a href="/2014/06/09/question-0/">热身运动</a>
@@ -454,10 +485,6 @@
     
       <li>
         <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/06/design-patterns-0/">javascript设计模式--单例模式</a>
       </li>
     
   </ul>
