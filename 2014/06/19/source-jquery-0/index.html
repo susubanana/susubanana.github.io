@@ -14,7 +14,13 @@ jQuery对象构造函数：
 4
 5
 var jQuery = function( selector, context ) {
-    // The jQuery object is actually just the init constructor &#39;enh">
+    // The jQuery object is actually just the init constructor &#39;enhanced&#39;
+    // Need init if jQuery is called (just allow error to be thrown if not included)
+    return new jQuery.fn.init( selector, context );
+},
+
+
+这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -149,8 +155,7 @@ var jQuery = function( selector, context ) {
 },
 </pre></td></tr></table></figure>
 
-<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。</p>
-<p><strong>jQuery.fn.init的定义如下</strong>：</p>
+<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。<br><a id="more"></a><br><strong>jQuery.fn.init的定义如下</strong>：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
