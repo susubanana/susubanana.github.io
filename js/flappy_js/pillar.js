@@ -5,7 +5,7 @@ FlappyBird.pillar = (function () {
     var bird = new FlappyBird.bird();
     var playGame = null;
     var vPillar = 4.5;
-    var gap;
+    var gap = 140;
     var Pillar = function(){
         this.pass = false;
         this.pillarWidth = 74;
@@ -18,7 +18,6 @@ FlappyBird.pillar = (function () {
         var stage = stage;
         var pillar1 = new createjs.Bitmap("images/flappy_images/pipe.png");
         var pillar2 = new createjs.Bitmap("images/flappy_images/pipe.png");
-        gap = stage.height * 0.28;
         pillar1.x = x + 30;
 
         //通过随机数实现管道的随机缝隙
