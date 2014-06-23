@@ -140,7 +140,8 @@
 },
 </pre></td></tr></table></figure>
 
-<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。<br>
+<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。</p>
+<p>创建对象实例时，使用new 构造函数()，会返回这个构造函数的实例，但假若构造函数内部有返回值，这个new出来的实例就会被丢弃，最终使用构造函数内部返回的值作为new 构造函数()表达式的值。所以jQuery对象就是利用这一特性，因而，jQuery对象是jQuery.fn.init的实例。<br>
       
     </div>
 

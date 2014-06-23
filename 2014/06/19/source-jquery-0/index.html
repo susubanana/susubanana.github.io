@@ -20,7 +20,8 @@ var jQuery = function( selector, context ) {
 },
 
 
-这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。">
+这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。
+创建对象实例时，使用new 构造函数()，会返回这个构造函数的实例，但假若构造函数内部有返回值，这个new出来的实例就会被丢弃，最终使用构造函数内部返回的值作为new 构造函数()表达式的值。所以jQuery对象就是利用这一特性，因而，jQuery对象是jQuery.fn.init的实例。">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -155,7 +156,9 @@ var jQuery = function( selector, context ) {
 },
 </pre></td></tr></table></figure>
 
-<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。<br><a id="more"></a><br><strong>jQuery.fn.init的定义如下</strong>：</p>
+<p>这里定义了jQuery对象，返回jQuery.fn.init的实例，也就是说jQuery对象是jQuery.fn.init的实例。</p>
+<p>创建对象实例时，使用new 构造函数()，会返回这个构造函数的实例，但假若构造函数内部有返回值，这个new出来的实例就会被丢弃，最终使用构造函数内部返回的值作为new 构造函数()表达式的值。所以jQuery对象就是利用这一特性，因而，jQuery对象是jQuery.fn.init的实例。<br><a id="more"></a></p>
+<p><strong>jQuery.fn.init的定义如下</strong>：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -231,7 +234,7 @@ rootjQuery = jQuery( <span class="built_in">document</span> );
 }
 </pre></td></tr></table></figure>
 
-<p>这里定义了jQuery的原型就是jQuery.fn</p>
+<p>这里定义了jQuery的原型就是jQuery.prototype，jQuery.fn是jQuery.prototype的简写，所有方法或者属性挂载到jQuery.fn上，jQuery.fn加强了内部的封装。</p>
 <p>由上面三段代码得知关系如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
@@ -270,8 +273,298 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
 
 <p>jQuery.fn.init.prototype 和 jQuery.fn 的引用指向同一个引用地址，所有方法或者属性挂载到jQuery.fn上，jQuery.fn加强了内部的封装，也就是说真正在内部起作用的是jQuery.fn，而jQuery.fn.init.prototype作为载体，再将属性和方法又挂载到刚开始定义的jQuery对象上。</p>
 <h3 id="jQuery-fn-init生成jQuery对象的过程">jQuery.fn.init生成jQuery对象的过程</h3>
-<p>这个函数接收三个参数，分别是选择器，上下文和root，</p>
-<p>源码：</p>
+<p>这个函数接收三个参数，分别是选择器，context和rootjQuery。<br>context：可以不传入或者传入DOM元素、jQuery对象、或者javascript对象。<br>rootjQuery：包含了document的jQuery对象，用于document.getElementById()查找失败或者未指定选择器和context的情况。</p>
+<p>源码分析：</p>
+<p>如果选择器为空、null、undefined的时候，返回空的jQuery对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="regexp">//</span> <span class="attribute">HANDLE</span>: $(<span class="string">""</span>), $(<span class="literal">null</span>), $(<span class="literal">undefined</span>), $(<span class="literal">false</span>)
+<span class="keyword">if</span> ( !selector ) {
+	<span class="keyword">return</span> <span class="keyword">this</span>;
+}
+</pre></td></tr></table></figure>
+
+<p>如果参数是是字符串，则使用正则表达式检测selector是html还是#id</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="comment">// Handle HTML strings</span>
+<span class="keyword">if</span> ( typeof selector === <span class="string">"string"</span> ) {
+    <span class="keyword">if</span> ( selector.charAt(<span class="number">0</span>) === <span class="string">"&lt;"</span> && selector.charAt( selector.<span class="built_in">length</span> - <span class="number">1</span> ) === <span class="string">"&gt;"</span> && selector.<span class="built_in">length</span> &gt;= <span class="number">3</span> ) {
+        <span class="comment">// Assume that strings that start and end with &lt;&gt; are HTML and skip the regex check</span>
+        <span class="built_in">match</span> = [ null, selector, null ];
+
+    } <span class="keyword">else</span> {
+        <span class="built_in">match</span> = rquickExpr.exec( selector );
+    }
+</pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果字符串是html标签，则调用jQuery.parseHTML()来创建DOM</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="code"><pre>  <span class="regexp">//</span> Match html <span class="keyword">or</span> make sure <span class="literal">no</span> context <span class="keyword">is</span> specified <span class="keyword">for</span> <span class="comment">#id</span>
+    <span class="keyword">if</span> ( match && (match[<span class="number">1</span>] || !context) ) {
+
+        <span class="regexp">//</span> <span class="attribute">HANDLE</span>: $<span class="function"><span class="params">(html)</span> -&gt;</span> $(array)
+        <span class="keyword">if</span> ( match[<span class="number">1</span>] ) {
+            context = context <span class="keyword">instanceof</span> jQuery ? context[<span class="number">0</span>] : context;
+
+            <span class="regexp">//</span> scripts <span class="keyword">is</span> <span class="literal">true</span> <span class="keyword">for</span> back-compat
+            <span class="regexp">//</span> Intentionally <span class="reserved">let</span> the error be thrown <span class="keyword">if</span> parseHTML <span class="keyword">is</span> <span class="keyword">not</span> present
+            jQuery.merge( <span class="keyword">this</span>, jQuery.parseHTML(
+                match[<span class="number">1</span>],
+                context && context.nodeType ? context.ownerDocument || context : <span class="built_in">document</span>,
+                <span class="literal">true</span>
+            ) );
+
+            <span class="regexp">//</span> <span class="attribute">HANDLE</span>: $(html, props)
+            <span class="keyword">if</span> ( rsingleTag.test( match[<span class="number">1</span>] ) && jQuery.isPlainObject( context ) ) {
+                <span class="keyword">for</span> ( match <span class="keyword">in</span> context ) {
+                    <span class="regexp">//</span> Properties <span class="keyword">of</span> context are called as methods <span class="keyword">if</span> possible
+                    <span class="keyword">if</span> ( jQuery.isFunction( <span class="keyword">this</span>[ match ] ) ) {
+                        <span class="keyword">this</span>[ match ]( context[ match ] );
+
+                    <span class="regexp">//</span> ...<span class="keyword">and</span> otherwise set as attributes
+                    } <span class="keyword">else</span> {
+                        <span class="keyword">this</span>.attr( match, context[ match ] );
+                    }
+                }
+            }
+
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+</pre></td></tr></table></figure>
+
+<p>这里看一下jQuery.parseHTML()的实现原理，如果是简单的html标签，在jQuery.parseHTML()内，使用document.createElement()创建DOM，如果是复杂的html标签，再调用jQuery.buildFragment()，利用浏览器的innerHTML机制创建DOM。</p>
+</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="code"><pre>    jQuery.parseHTML = <span class="function"><span class="keyword">function</span><span class="params">( data, context, keepScripts )</span> {</span>
+    	<span class="keyword">if</span> ( !data || <span class="keyword">typeof</span> data !== <span class="string">"string"</span> ) {
+    		<span class="keyword">return</span> <span class="literal">null</span>;
+    	}
+    	<span class="keyword">if</span> ( <span class="keyword">typeof</span> context === <span class="string">"boolean"</span> ) {
+    		keepScripts = context;
+    		context = <span class="literal">false</span>;
+    	}
+    	context = context || document;
+
+    	<span class="keyword">var</span> parsed = rsingleTag.exec( data ),
+    		scripts = !keepScripts && [];
+
+    	<span class="comment">// 如果是简单的html标签，使用document.createElement()创建DOM</span>
+    	<span class="keyword">if</span> ( parsed ) {
+    		<span class="keyword">return</span> [ context.createElement( parsed[<span class="number">1</span>] ) ];
+    	}
+
+        <span class="comment">//如果是复杂的html标签，在jQuery.buildFragment()内，利用浏览器的innerHTML机制创建DOM</span>
+    	parsed = jQuery.buildFragment( [ data ], context, scripts );
+
+    	<span class="keyword">if</span> ( scripts && scripts.length ) {
+    		jQuery( scripts ).remove();
+    	}
+
+    	<span class="keyword">return</span> jQuery.merge( [], parsed.childNodes );
+    };
+</pre></td></tr></table></figure>
+
+<ul>
+<li>如果字符串是#id，则调用document.getElementById()查找DOM<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="code"><pre>    <span class="regexp">//</span> <span class="attribute">HANDLE</span>: $(<span class="comment">#id)</span>
+    } <span class="keyword">else</span> {
+        elem = <span class="built_in">document</span>.getElementById( match[<span class="number">2</span>] );
+
+        <span class="regexp">//</span> Check parentNode to <span class="keyword">catch</span> <span class="keyword">when</span> Blackberry <span class="number">4.6</span> returns
+        <span class="regexp">//</span> nodes that are <span class="literal">no</span> longer <span class="keyword">in</span> the <span class="built_in">document</span> <span class="comment">#6963</span>
+        <span class="keyword">if</span> ( elem && elem.parentNode ) {
+            <span class="regexp">//</span> Handle the <span class="reserved">case</span> where IE <span class="keyword">and</span> Opera <span class="keyword">return</span> items
+            <span class="regexp">//</span> <span class="keyword">by</span> name instead <span class="keyword">of</span>
+            <span class="regexp">//</span>如果找到的值与传入的ID不符，则使用name属性查找，opera可能按name查找而不是ID
+            <span class="keyword">if</span> ( elem.id !== match[<span class="number">2</span>] ) {
+                <span class="keyword">return</span> rootjQuery.find( selector );
+            }
+
+            <span class="regexp">//</span> Otherwise, we inject the element directly into the jQuery object
+            <span class="keyword">this</span>.length = <span class="number">1</span>;
+            <span class="keyword">this</span>[<span class="number">0</span>] = elem;
+        }
+
+        <span class="keyword">this</span>.context = <span class="built_in">document</span>;
+        <span class="keyword">this</span>.selector = selector;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+</pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>如果字符串不是html元素和#id，而是表达式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>// HANDLE: $(expr, $(<span class="keyword">...</span>))
+} <span class="keyword">else</span> <span class="keyword">if</span> ( !context || context.jquery ) {
+    //如果没有指定上下文，则使用rootjQuery查找
+    //如果指定了上下文，则使用context查找
+    <span class="keyword">return</span> ( context || rootjQuery ).find( selector );
+
+// HANDLE: $(expr, context)
+// (which is just equivalent to: $(context).find(expr)
+} <span class="keyword">else</span> {
+    //如果指定了上下文，但上下文不是jQuery对象，则先创建一个包含context的jQuery对象，然后查找
+    <span class="keyword">return</span> this.constructor( context ).find( selector );
+}
+</pre></td></tr></table></figure>
+
+<p>如果选择器是DOM元素，如果参数selector含有属性nodeType，则可认为selector是DOM元素，返回包含DOM元素的jQuery对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="comment">// HANDLE: $(DOMElement)</span>
+    } <span class="keyword">else</span> <span class="keyword">if</span> ( selector.nodeType ) {
+        <span class="keyword">this</span>.context = <span class="keyword">this</span>[<span class="number">0</span>] = selector;
+        <span class="keyword">this</span>.length = <span class="number">1</span>;
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+
+    <span class="comment">// HANDLE: $(function)</span>
+    <span class="comment">// Shortcut for document ready</span>
+    }
+</pre></td></tr></table></figure>
+
+<p>如果selector是一个函数，则在$(document).ready(functon(){})中调用此函数</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="regexp">//</span> <span class="attribute">HANDLE</span>: $(<span class="reserved">function</span>)
+    <span class="regexp">//</span> Shortcut <span class="keyword">for</span> <span class="built_in">document</span> ready
+    } <span class="keyword">else</span> <span class="keyword">if</span> ( jQuery.isFunction( selector ) ) {
+        <span class="keyword">return</span> <span class="keyword">typeof</span> rootjQuery.ready !== <span class="string">"undefined"</span> ?
+            rootjQuery.ready( selector ) :
+            <span class="regexp">//</span> Execute immediately <span class="keyword">if</span> ready <span class="keyword">is</span> <span class="keyword">not</span> present
+            selector( jQuery );
+    }
+</pre></td></tr></table></figure>
+
+<p>如果参数是jQuery对象，如果参数含有selector属性，则是jQuery对象，将会复制它selector和context属性。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>if ( selector<span class="preprocessor">.selector</span> !== undefined ) {
+    this<span class="preprocessor">.selector</span> = selector<span class="preprocessor">.selector</span><span class="comment">;</span>
+    this<span class="preprocessor">.context</span> = selector<span class="preprocessor">.context</span><span class="comment">;</span>
+}
+</pre></td></tr></table></figure>
+
+<p>返回当前的jQuery对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="keyword">return</span> jQuery.makeArray( selector, <span class="keyword">this</span> );
+</pre></td></tr></table></figure>
+
+<p>jQuery.fn.init的源码归总：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -388,7 +681,14 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
 114
 115
 116
-</pre></td><td class="code"><pre><span class="keyword">var</span>	init = jQuery.fn.init = function( selector, context ) {
+117
+118
+119
+120
+121
+122
+</pre></td><td class="code"><pre><span class="keyword">var</span> rootjQuery,
+	init = jQuery.fn.init = function( selector, context ) {
     <span class="keyword">var</span> <span class="keyword">match</span>, elem;
 
     <span class="comment">//如果选择器为空、null、undefined的时候，返回空的jQuery对象</span>
@@ -398,7 +698,7 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
 
     <span class="comment">// 如果selector是字符串</span>
     <span class="keyword">if</span> ( typeof selector === <span class="string">"string"</span> ) {
-        <span class="comment">//通过正则判断传入的选择器是HTML字符串还是ID</span>
+        <span class="comment">//如果参数是是字符串，则使用正则表达式检测selector是html还是#id</span>
         <span class="keyword">if</span> ( selector.charAt(<span class="number">0</span>) === <span class="string">"&lt;"</span> && selector.charAt( selector.length - <span class="number">1</span> ) === <span class="string">"&gt;"</span> && selector.length &gt;= <span class="number">3</span> ) {
             <span class="comment">// Assume that strings that start and end with &lt;&gt; are HTML and skip the regex check</span>
             <span class="keyword">match</span> = [ <span class="keyword">null</span>, selector, <span class="keyword">null</span> ];
@@ -407,7 +707,7 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
             <span class="keyword">match</span> = rquickExpr.exec( selector );
         }
 
-        <span class="comment">// 如果match[1]不为空或者context为空的时候</span>
+        <span class="comment">// 如果参数是html标签，则调用jQuery.parseHTML()来创建DOM</span>
         <span class="keyword">if</span> ( <span class="keyword">match</span> && (<span class="keyword">match</span>[<span class="number">1</span>] || !context) ) {
 
             <span class="comment">// 如果match[1] 不为空（即为html字符串）</span>
@@ -440,7 +740,7 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
                 <span class="keyword">return</span> <span class="keyword">this</span>;
 
             <span class="comment">// HANDLE: $(#id)</span>
-            <span class="comment">// 如果context为空的时候，直接调用getElementById来选择元素 （即为id）</span>
+            <span class="comment">// 如果参数是#id，则调用document.getElementById()查找DOM</span>
             } <span class="keyword">else</span> {
                 elem = document.getElementById( <span class="keyword">match</span>[<span class="number">2</span>] );
 
@@ -464,17 +764,21 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
             }
 
         <span class="comment">// HANDLE: $(expr, $(...))</span>
-        <span class="comment">// 如果context为空 或者 context是一个jQuery对象，则直接调用context.find(selector)</span>
+        <span class="comment">// 如果选择器不是html元素和#id，而是表达式</span>
         } <span class="keyword">else</span> <span class="keyword">if</span> ( !context || context.jquery ) {
+            <span class="comment">//如果没有指定上下文，则使用rootjQuery查找</span>
+            <span class="comment">//如果指定了上下文，则使用context查找</span>
             <span class="keyword">return</span> ( context || rootjQuery ).find( selector );
 
         <span class="comment">// HANDLE: $(expr, context)</span>
         <span class="comment">// (which is just equivalent to: $(context).find(expr)</span>
         } <span class="keyword">else</span> {
+            <span class="comment">//如果指定了上下文，但上下文不是jQuery对象，则先创建一个包含context的jQuery对象，然后查找</span>
             <span class="keyword">return</span> <span class="keyword">this</span>.constructor( context ).find( selector );
         }
 
     <span class="comment">// HANDLE: $(DOMElement)</span>
+    <span class="comment">//如果选择器是DOM元素，如果参数selector含有属性nodeType，则可认为selector是DOM元素，返回包含DOM元素的jQuery对象</span>
     } <span class="keyword">else</span> <span class="keyword">if</span> ( selector.nodeType ) {
         <span class="keyword">this</span>.context = <span class="keyword">this</span>[<span class="number">0</span>] = selector;
         <span class="keyword">this</span>.length = <span class="number">1</span>;
@@ -490,12 +794,13 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
             selector( jQuery );
     }
 
-     <span class="comment">// 如果选择器是一个jQuery对象</span>
+     <span class="comment">// 如果参数是jQuery对象，如果参数含有selector属性，则是jQuery对象，将会复制它selector和context属性。</span>
     <span class="keyword">if</span> ( selector.selector !== undefined ) {
         <span class="keyword">this</span>.selector = selector.selector;
         <span class="keyword">this</span>.context = selector.context;
     }
 
+    <span class="comment">//返回当前的jQuery对象</span>
     <span class="keyword">return</span> jQuery.makeArray( selector, <span class="keyword">this</span> );
 };
 
@@ -506,7 +811,16 @@ init.prototype = jQuery.fn;
 rootjQuery = jQuery( document );
 </pre></td></tr></table></figure>
 
-<p><a href="http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml" target="_blank">http://www.360doc.com/content/13/1128/09/10504424_332741972.shtml</a><br><a href="http://nuysoft.iteye.com/blog/1190542" target="_blank">http://nuysoft.iteye.com/blog/1190542</a></p>
+<h3 id="总结">总结</h3>
+<p>创建对象实例时，使用new 构造函数()，会返回这个构造函数的实例，但假若构造函数内部有返回值，这个new出来的实例就会被丢弃，最终使用构造函数内部返回的值作为new 构造函数()表达式的值。所以jQuery对象就是利用这一特性，因而，jQuery对象是jQuery.fn.init的实例。</p>
+<p>jQuery.fn.init.prototype 和 jQuery.fn 的引用指向同一个引用地址，所有方法或者属性挂载到jQuery.fn上，jQuery.fn加强了内部的封装，尽管jQuery对象的jQuery.prototype在外界被变更也不会在jQuery对象的正常运作产生影响，也就是说真正在内部起作用的是jQuery.fn，而jQuery.fn.init.prototype作为载体，再将属性和方法又挂载到刚开始定义的jQuery对象上，从而保护jQuery对象，不易受外界的应用影响。</p>
+<p>jQuery.fn.init生成jQuery对象的过程：</p>
+<p>如果参数是是字符串，则先使用正则表达式检测selector是html还是#id</p>
+<ul>
+<li>如果字符串是html标签，则调用jQuery.parseHTML()来创建DOM，在jQuery.parseHTML()内，使用document.createElement()创建DOM，如果是复杂的html标签，再调用jQuery.buildFragment()，利用浏览器的innerHTML机制创建DOM。</li>
+<li>如果字符串是#id，则调用document.getElementById()查找DOM。</li>
+</ul>
+<p>如果字符串不是html元素和#id，而是表达式，如果没有指定上下文，则使用rootjQuery查找，如果指定了上下文，则使用context查找。如果指定了上下文，但上下文不是jQuery对象，则先创建一个包含context的jQuery对象，然后查找。</p>
 
         <div class="paging">
     
