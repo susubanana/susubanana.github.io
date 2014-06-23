@@ -68,9 +68,11 @@ FlappyBird.playGame = (function(){
     Game.prototype.addStartListener = function () {
 
         var self = this;
-        alert(doc.hasOwnProperty('onkeydown'))
-        alert(doc.hasOwnProperty('ontouchstart') == true)
-        if(doc.hasOwnProperty('onkeydown') == true){
+        if(doc.hasOwnProperty('ontouchstart')){
+            doc.ontouchstart = function () {
+                self.startControl();
+            };
+        } else {
             doc.addEventListener("keydown", function(e){
 
                 var e = e || event;
@@ -78,11 +80,6 @@ FlappyBird.playGame = (function(){
                 if (currKey == 32) {
                     self.startControl();
                 }
-            }, false);
-        } else if(doc.hasOwnProperty('ontouchstart') == true){
-
-            doc.addEventListener("touchstart", function(){
-                self.startControl();
             }, false);
         }
     };
