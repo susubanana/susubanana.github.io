@@ -19,6 +19,7 @@ FlappyBird.playGame = (function(){
         this.isStart = false;
         this.isEnd = false;
         this.timer = null;
+        this.touch = false;
         instance = this;
     };
     Game.prototype.init = function(){
@@ -72,9 +73,8 @@ FlappyBird.playGame = (function(){
 
         var self = this;
         if(doc.hasOwnProperty('ontouchstart')){
-            alert(doc.querySelector('.touch'))
             doc.querySelector('.touch').style.display = "block";
-
+            this.touch = true;
             doc.ontouchstart = function () {
                 self.startControl();
             };
@@ -99,7 +99,7 @@ FlappyBird.playGame = (function(){
 
             //设置tick事件
             createjs.Ticker.addEventListener('tick', self.tick);
-            doc.querySelector('.tip').style.display = "none";
+            doc.querySelectorAll('.tip').style.display = "none";
         } else if (self.isEnd == false) {
             self.jump();
         } else {
@@ -145,8 +145,12 @@ FlappyBird.playGame = (function(){
     };
 
     Game.prototype.end = function(){
-        this.isEnd = true;    
-        doc.querySelector('.restart').style.display = "block";
+        this.isEnd = true;
+        if(this.touch == true) {
+            doc.querySelector('.restart-touch').style.display = "block";
+        } else {
+            doc.querySelector('.restart-space').style.display = "block";
+        }
         doc.querySelector('.mask').style.cssText = "display:block;height: " + canvasHeight + "px;";
         clearInterval(this.timer);
     };
