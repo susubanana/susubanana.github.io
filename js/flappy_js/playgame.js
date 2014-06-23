@@ -35,7 +35,10 @@ FlappyBird.playGame = (function(){
         pillars = story.buildPillar(stage);
 
         //小鸟初始化，(60,200)是小鸟的坐标，渲染到画布上
-        bird.init(stage, 100, 300);
+        var birdX, birdY;
+        birdX = canvas.width * 0.2;
+        birdY = canvas.height * 0.4;
+        bird.init(stage, birdX, birdY);
         createjs.Ticker.setFPS(10);
 
         //设置画布监听
