@@ -481,7 +481,7 @@ alert(jQuery<span class="preprocessor">.prototype</span><span class="preprocesso
 
 </li>
 </ul>
-<p>如果字符串不是html元素和#id，而是表达式</p>
+<p>如果selector不是html元素和#id，而是表达式</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre>1
 2
 3
@@ -814,13 +814,13 @@ rootjQuery = jQuery( document );
 <h3 id="总结">总结</h3>
 <p>创建对象实例时，使用new 构造函数()，会返回这个构造函数的实例，但假若构造函数内部有返回值，这个new出来的实例就会被丢弃，最终使用构造函数内部返回的值作为new 构造函数()表达式的值。所以jQuery对象就是利用这一特性，因而，jQuery对象是jQuery.fn.init的实例。</p>
 <p>jQuery.fn.init.prototype 和 jQuery.fn 的引用指向同一个引用地址，所有方法或者属性挂载到jQuery.fn上，jQuery.fn加强了内部的封装，尽管jQuery对象的jQuery.prototype在外界被变更也不会在jQuery对象的正常运作产生影响，也就是说真正在内部起作用的是jQuery.fn，而jQuery.fn.init.prototype作为载体，再将属性和方法又挂载到刚开始定义的jQuery对象上，从而保护jQuery对象，不易受外界的应用影响。</p>
-<p>jQuery.fn.init生成jQuery对象的过程：</p>
-<p>如果参数是是字符串，则先使用正则表达式检测selector是html还是#id</p>
+<p>jQuery.fn.init生成jQuery对象的过程中，如果参数是是字符串的处理过程：</p>
+<p>先使用正则表达式检测selector是html还是#id</p>
 <ul>
 <li>如果字符串是html标签，则调用jQuery.parseHTML()来创建DOM，在jQuery.parseHTML()内，使用document.createElement()创建DOM，如果是复杂的html标签，再调用jQuery.buildFragment()，利用浏览器的innerHTML机制创建DOM。</li>
 <li>如果字符串是#id，则调用document.getElementById()查找DOM。</li>
 </ul>
-<p>如果字符串不是html元素和#id，而是表达式</p>
+<p>如果selector不是html元素和#id，而是表达式</p>
 <ul>
 <li>如果没有指定上下文，则使用rootjQuery查找</li>
 <li>如果指定了上下文，则使用context查找。</li>
