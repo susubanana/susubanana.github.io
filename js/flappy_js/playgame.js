@@ -72,7 +72,9 @@ FlappyBird.playGame = (function(){
 
         var self = this;
         if(doc.hasOwnProperty('ontouchstart')){
+            alert(doc.querySelector('.touch'))
             doc.querySelector('.touch').style.display = "block";
+
             doc.ontouchstart = function () {
                 self.startControl();
             };
