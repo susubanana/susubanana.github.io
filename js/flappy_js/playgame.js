@@ -72,10 +72,12 @@ FlappyBird.playGame = (function(){
 
         var self = this;
         if(doc.hasOwnProperty('ontouchstart')){
+            doc.querySelector('.touch').style.display = "block";
             doc.ontouchstart = function () {
                 self.startControl();
             };
         } else {
+            doc.querySelector('.space').style.display = "block";
             doc.addEventListener("keydown", function(e){
 
                 var e = e || event;
