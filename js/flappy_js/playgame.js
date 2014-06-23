@@ -26,6 +26,7 @@ FlappyBird.playGame = (function(){
 		var canvas = doc.getElementById('my-bird');
 		canvas.height = canvasHeight - 40;
         canvas.width = canvas.height * 0.8;
+        alert(canvas.width)
         stage = new createjs.Stage(canvas);
 		
         //管道初始化
