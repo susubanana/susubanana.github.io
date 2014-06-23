@@ -24,12 +24,8 @@ FlappyBird.playGame = (function(){
     };
     Game.prototype.init = function(){
 		var canvas = doc.getElementById('my-bird');
-		if(doc.documentElement.clientWidth < 1024 || doc.body.clientWidth < 1024){
-			canvas.width = doc.documentElement.clientWidth || doc.body.clientWidth;						
-		} else {
-			canvas.width = 600;
-		}
 		canvas.height = canvasHeight - 40;
+        canvas.width = canvas.height * 0.8;
         stage = new createjs.Stage(canvas);
 		
         //管道初始化
