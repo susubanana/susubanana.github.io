@@ -78,9 +78,10 @@ FlappyBird.playGame = (function(){
                 }
             }, false);
         } else if(doc.hasOwnProperty('ontouchstart')){
-            doc.ontouchstart = function () {
+            alert(1)
+            doc.addEventListener("touchstart", function(){
                 self.startControl();
-            };
+            }, false);
         }
     };
 
