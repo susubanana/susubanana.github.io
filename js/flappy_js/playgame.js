@@ -68,7 +68,7 @@ FlappyBird.playGame = (function(){
     Game.prototype.addStartListener = function () {
 
         var self = this;
-        if(doc.hasOwnProperty('onkeydown')){
+        if(doc.hasOwnProperty('onkeydown') == true){
             doc.addEventListener("keydown", function(e){
 
                 var e = e || event;
@@ -77,7 +77,7 @@ FlappyBird.playGame = (function(){
                     self.startControl();
                 }
             }, false);
-        } else if(doc.hasOwnProperty('ontouchstart')){
+        } else if(doc.hasOwnProperty('ontouchstart') == true){
             alert(1)
             doc.addEventListener("touchstart", function(){
                 self.startControl();
