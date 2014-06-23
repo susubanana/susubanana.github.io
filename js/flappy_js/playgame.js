@@ -99,7 +99,11 @@ FlappyBird.playGame = (function(){
 
             //设置tick事件
             createjs.Ticker.addEventListener('tick', self.tick);
-            doc.querySelectorAll('.tip').style.display = "none";
+            if(this.touch == true) {
+                doc.querySelector('.touch').style.display = "none";
+            } else {
+                doc.querySelector('.space').style.display = "none";
+            }
         } else if (self.isEnd == false) {
             self.jump();
         } else {
