@@ -820,7 +820,12 @@ rootjQuery = jQuery( document );
 <li>如果字符串是html标签，则调用jQuery.parseHTML()来创建DOM，在jQuery.parseHTML()内，使用document.createElement()创建DOM，如果是复杂的html标签，再调用jQuery.buildFragment()，利用浏览器的innerHTML机制创建DOM。</li>
 <li>如果字符串是#id，则调用document.getElementById()查找DOM。</li>
 </ul>
-<p>如果字符串不是html元素和#id，而是表达式，如果没有指定上下文，则使用rootjQuery查找，如果指定了上下文，则使用context查找。如果指定了上下文，但上下文不是jQuery对象，则先创建一个包含context的jQuery对象，然后查找。</p>
+<p>如果字符串不是html元素和#id，而是表达式</p>
+<ul>
+<li>如果没有指定上下文，则使用rootjQuery查找</li>
+<li>如果指定了上下文，则使用context查找。</li>
+<li>如果指定了上下文，但上下文不是jQuery对象，则先创建一个包含context的jQuery对象，然后查找。</li>
+</ul>
 
         <div class="paging">
     
