@@ -116,6 +116,108 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-30T07:14:21.000Z"><a href="/2014/03/30/flappy-bird-0/">3月 30 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/30/flappy-bird-0/">FlappyBird--项目构思</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天双休，闲的无聊，想要做点除了工作之外的项目，为了乐趣和综合能力的锻炼，于是海搜网络，最后决定做了Flappy Bird，一个简单而又能充分锻炼综合能力的小游戏。</p>
+<p>想干就干，开始上网玩这个游戏，了解交互，建立清晰的思路，出动闲置的白纸开始画起来。</p>
+<h3 id="针对小鸟">针对小鸟</h3>
+<ol>
+<li>需要初始化一个小鸟</li>
+<li>小鸟拥有一个飞行、跳、死亡的动作</li>
+<li>既然那么多动作，当然有状态更新</li>
+</ol>
+<h3 id="针对管道">针对管道</h3>
+<ol>
+<li>需要初始化多根管道</li>
+<li>上下两根管道空隙的处理</li>
+<li>管道的状态更新</li>
+</ol>
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/30/flappy-bird-0/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-25T09:58:13.000Z"><a href="/2014/03/25/nodejs-3/">3月 25 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>WebSocket主要是两部分内容，一部分是浏览器实现的WebSocket，一部分是服务器端实现的WebSocket协议。WebSocket是随html5的推动被设计和开发，但是没有成为html5标准的一部分，前者被W3C标准化，后者被IETF标准化为RFC 6455。</p>
+<h2 id="WebSocket协议">WebSocket协议</h2>
+<ul>
+<li>客户端与服务器端只建立一个TCP连接即可完成双向通信。这个连接是实时的、永久的，除非被显式关闭。</li>
+<li>WebSocket服务器端可以推送数据到客户端，远比http请求响应灵活。</li>
+<li>有更轻量级的协议头，减少数据传送量。</li>
+</ul>
+<h3 id="WebSocket浏览器端的实现">WebSocket浏览器端的实现</h3>
+<p>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/25/nodejs-3/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-13T09:29:12.000Z"><a href="/2014/03/13/nodejs-1/">3月 13 2014</a></time>
       
       
@@ -280,123 +382,6 @@ debug&gt; c
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-01T11:12:38.000Z"><a href="/2014/03/01/mobile-web-7/">3月 1 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="响应式设计">响应式设计</h2>
-<p>网页设计应该能够自动进行调整，不应该针对用户分类，去定制无数的解决方案。响应式设计不关乎屏幕的分辨率，不只是技术的实现，它更像是一种对于设计的全新思维模式。</p>
-<p>除了横屏和竖屏两种模式，还需考虑数以百计的屏幕尺寸，很明显，我们不能针对每一种设备都创建定制化的解决方案。</p>
-<h3 id="响应式图片">响应式图片</h3>
-<p>处理原理：浏览器根据用户终端的屏幕尺寸、分辨率处理后输出适应的图片，如屏幕分辨率320*480，那么我们匹配给它的是宽度应小于320px的图片。如果终端屏幕是高清屏，那么我们就得输出2倍分辨率的图形(宽:640px)；以保证在高清屏下图形的清晰度。</p>
-<p>有几种技术可以按比例调整图片：<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/03/01/mobile-web-7/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-25T11:41:12.000Z"><a href="/2014/02/25/mobile-web-6/">2月 25 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/02/25/mobile-web-6/">移动Web开发--离线缓存</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>移动用户访问应用的时候，网络都是在不稳定状态，又或者随着移动用户所在的信号问题，导致网络中断。离线缓存可以有效缓解网络中断后，用户无法正常使用web应用的问题。</p>
-<h2 id="离线缓存">离线缓存</h2>
-<h3 id="如何使用离线缓存">如何使用离线缓存</h3>
-<ul>
-<li><strong>创建一个名为”manifest.appcache”文件</strong>。</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-</pre></td><td class="code"><pre>CACHE MANIFEST
-//列出所有想要做缓存的文件，不需要指定离线缓存页面本身
-
-<span class="preprocessor">#version 1 //这个manifest的版本号</span>
-<span class="label">http:</span>//i<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/images/ifund/mobile/srdz/rate-bg<span class="preprocessor">.png</span>
-<span class="label">http:</span>//s<span class="preprocessor">.thsi</span><span class="preprocessor">.cn</span>/js/ifund/mobile/zepto<span class="preprocessor">.min</span><span class="preprocessor">.js</span>
-
-<span class="label">NETWORK:</span>
-//列出所有不需要做缓存的文件的URL，这些文件只有当客户端与服务器端建立连接才能访问
-
-<span class="label">FALLBACK:</span>
-//每一行指定两个资源文件，第一个文件为在线访问时使用的资源文件，第二个文件为不能在线访问时的替代资源文件
-</pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/02/25/mobile-web-6/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -432,17 +417,17 @@ debug&gt; c
   
     <li><a href="/tags/css/">css</a><small>6</small></li>
   
-    <li><a href="/tags/flappybird/">flappybird</a><small>1</small></li>
+    <li><a href="/tags/flappybird/">flappybird</a><small>2</small></li>
   
     <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
   
-    <li><a href="/tags/html5/">html5</a><small>4</small></li>
+    <li><a href="/tags/html5/">html5</a><small>5</small></li>
   
     <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
-    <li><a href="/tags/jQuery/">jQuery</a><small>1</small></li>
+    <li><a href="/tags/jQuery/">jQuery</a><small>2</small></li>
   
-    <li><a href="/tags/javascript/">javascript</a><small>14</small></li>
+    <li><a href="/tags/javascript/">javascript</a><small>15</small></li>
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
@@ -462,6 +447,10 @@ debug&gt; c
   <ul class="entry">
     
       <li>
+        <a href="/2014/06/23/source-jquery-1/">jQuery源码解读 -- on的实现原理</a>
+      </li>
+    
+      <li>
         <a href="/2014/06/19/source-jquery-0/">jQuery源码解读 -- jQuery对象的初始化</a>
       </li>
     
@@ -471,6 +460,10 @@ debug&gt; c
     
       <li>
         <a href="/2014/04/12/coffeescript-0/">Web开发--CoffeeScript</a>
+      </li>
+    
+      <li>
+        <a href="/2014/04/06/flappy-bird-1/">FlappyBird--项目实现</a>
       </li>
     
       <li>
@@ -511,14 +504,6 @@ debug&gt; c
     
       <li>
         <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/07/design-patterns-1/">javascript设计模式--工厂模式</a>
       </li>
     
   </ul>

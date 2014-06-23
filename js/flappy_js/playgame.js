@@ -42,8 +42,7 @@ FlappyBird.playGame = (function(){
         createjs.Ticker.addEventListener('tick', stage);
 
         //监听键盘操作
-        this.addSpaceKeyListener();
-        this.addTouchListener();
+        this.addStartListener();
     };
 
     //监听键盘操作
@@ -60,11 +59,29 @@ FlappyBird.playGame = (function(){
     };
     Game.prototype.addTouchListener = function () {
         var self = this;
-    	doc.ontouchstart = function (e) {
+
+    	doc.ontouchstart = function () {
         	self.startControl();
     	};
     };
-    
+
+    Game.prototype.addStartListener = function () {
+
+        var self = this;
+        if(doc.hasOwnProperty('onkeydown')){
+            doc.addEventListener("keydown", function(e){
+
+                var e = e || event;
+                var currKey = e.keyCode || e.which || e.charCode;
+                if (currKey == 32) {
+                    self.startControl();
+                }
+            }, false);
+        } else if(doc.hasOwnProperty('ontouchstart')){
+            self.startControl();
+        }
+    };
+
     Game.prototype.startControl = function() {
         var self = this;
         if(self.isStart == false){
