@@ -68,6 +68,7 @@ FlappyBird.playGame = (function(){
     Game.prototype.addStartListener = function () {
 
         var self = this;
+        alert(doc.hasOwnProperty('ontouchstart'))
         if(doc.hasOwnProperty('onkeydown')){
             doc.addEventListener("keydown", function(e){
 
