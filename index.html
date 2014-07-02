@@ -116,6 +116,64 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-07-02T12:05:38.000Z"><a href="/2014/07/02/comment-0/">7月 2 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/07/02/comment-0/">node.js实战--分享一个nodejs评论系统</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="node-js评论系统">node.js评论系统</h2>
+<p>了解node.js也有一段时间了，看了不少node的书籍，但是还是觉得，理解的不够深入，书里的概念比较系统，有利于梳理我们的知识体系，但是始终要有输出，才能更好的更好的深入理解知识体系，于是作为一个前端的我，感觉做个服务器端的项目练练手，也是很不错的体验。</p>
+<p>由于一直在维护自己的博客，因为博客一直没有正式上线，所以一直没有链入评论系统，所以萌发了做一个评论系统的想法。</p>
+<p>于是我就开始潜心于一个结合node.js + CoffeeScript + mongoose + underscore.js templates制作的评论系统。</p>
+<p><strong>项目地址</strong>：<a href="https://github.com/susubanana/article-comments" target="_blank">https://github.com/susubanana/article-comments</a></p>
+<h3 id="项目效果">项目效果</h3>
+<p>经过几天努力，小有成就，如图：</p>
+<p><img src="/images/cont/comment-0.jpg" style="display: block" /></p>
+<h3 id="谈谈制作所遇到的困难">谈谈制作所遇到的困难</h3>
+<p>作为一个服务器端项目，它不像浏览器客户端，可以通过浏览器调试工具实时调试，有时候它并不报错，还不知道错误在哪里发生的，反反复复找不到缘由。当然也可以使用工具来调试，如：用node-inspector调试，就可以和浏览器一样调试，但是，这一次为了锻炼自己的逻辑思维，所以，就要不断的理顺自己的逻辑思路，看看是不是哪里不符合逻辑。</p>
+<p>由于没有系统接触CoffeeScript/mongoose/underscore.js templates的知识体系，都要靠边coding，遇到问题则解决问题。如一些没有涉猎的API或者语法的使用，以及对数据库表操作与设计，还有就是js库模板如何给它正确传入值。</p>
+<p>最后就是评论系统本身，需要做层级关系，也就是A评论B，B回复A，C评论B等等层级的关系，这里面通过学习了来往扎堆发言和QQ空间的评论模式，理清这个层级逻辑，但是如何将层级入到数据库，如何控制层级内容的无误的渲染到浏览器上等这些逻辑比较费时，思路不能含糊，否则容易出错。</p>
+<h3 id="小结">小结</h3>
+<p>始终坚持在技术上的学习上要有输出，要不容易淡忘，尽管过目不忘，但是也只是概念上的理解，并没有经历实战带来的觉悟和深入理解，还有乐趣。这里就不贴代码了，此贴只为完成这个项目对自己一个欣慰。继续努力。。。</p>
+<p>至于为什么博客要用多说，因为多说比较完善，是一个成熟的产品，可以满足各种需求，但是自己做的评论系统，只为练练手，离成熟产品还有相当的距离，只能通过不断学习去改进并优化。</p>
+
+        <div class="paging">
+    
+    
+    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
+    
+
+</div>
+      
+    </div>
+
+    <footer>
+      
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-06-23T12:15:23.000Z"><a href="/2014/06/23/source-jquery-1/">6月 23 2014</a></time>
       
       
@@ -296,50 +354,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-04-06T04:09:16.000Z"><a href="/2014/04/06/flappy-bird-1/">4月 6 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/04/06/flappy-bird-1/">FlappyBird--项目实现</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>用了几天的下班空余时间，终于把FlappyBird写完了。下面来看看成果吧。</p>
-
-        <div class="paging">
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -369,7 +383,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>6</small></li>
   
@@ -387,7 +401,9 @@
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
+    <li><a href="/tags/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -401,6 +417,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/07/02/comment-0/">node.js实战--分享一个nodejs评论系统</a>
+      </li>
     
       <li>
         <a href="/2014/06/23/source-jquery-1/">jQuery源码解读 -- on的实现原理</a>
@@ -456,10 +476,6 @@
     
       <li>
         <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
-      </li>
-    
-      <li>
-        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
       </li>
     
   </ul>

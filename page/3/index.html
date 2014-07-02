@@ -116,6 +116,57 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2014-03-02T09:19:58.000Z"><a href="/2014/03/02/mobile-web-8/">3月 2 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>苹果的新产品中已经使用了Retina(视网膜)技术。这是一种新的屏幕的显示技术，声称人类的肉眼将无法区分单个像素。这个技术得到了更多人的亲眯，因为给画面带来了前所未有的清晰平滑效果。但是Web开发人员和设计者为了确保用户得到最好的视觉体验，Retina还是给开发带来了些小麻烦。</p>
+<h2 id="Retina分辨率的像素处理">Retina分辨率的像素处理</h2>
+<h3 id="理解像素">理解像素</h3>
+<p><strong>CSS像素</strong></p>
+<blockquote>
+<p>CSS像素是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。一般情况下，CSS像素被称为与设备无关的像素（device-independent像素），简称为“DIPs”。在一个标准的显示密度下，一个CSS像素对应着一个设备像素。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">height</span>=<span class="value">"200"</span> <span class="attribute">width</span>=<span class="value">"300"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>上面的代码，将会在显示屏设备上绘制一个200x300像素的盒子。但是在Retina屏幕下，相同的div却使用了400x600设备像素，保持相同的物理尺寸显示，导致每个像素点实际上有4倍的普通像素点，如图所示：<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/02/mobile-web-8/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2014-03-01T11:12:38.000Z"><a href="/2014/03/01/mobile-web-7/">3月 1 2014</a></time>
       
       
@@ -342,89 +393,6 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-02-15T12:16:13.000Z"><a href="/2014/02/15/mobile-web-0/">2月 15 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="移动端的配置和优化">移动端的配置和优化</h2>
-<h3 id="视口宽度设置为匹配设备可视宽度">视口宽度设置为匹配设备可视宽度</h3>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-</pre></td><td class="code"><pre><span class="doctype">&lt;!DOCTYPE HTML&gt;</span>
-<span class="tag">&lt;<span class="title">html</span>&gt;</span>
-<span class="tag">&lt;<span class="title">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">title</span>&gt;</span><span class="tag">&lt;/<span class="title">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
-    <span class="comment">&lt;!-- 视口宽度设置为匹配设备可视宽度 --&gt;</span>
-    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=divice-width,initial-scale=1.0"</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
-<span class="tag">&lt;<span class="title">body</span>&gt;</span>
-	<span class="tag">&lt;<span class="title">header</span>&gt;</span>
-		移动开发
-	<span class="tag">&lt;/<span class="title">header</span>&gt;</span>
-	<span class="tag">&lt;<span class="title">section</span>&gt;</span>
-		<span class="tag">&lt;<span class="title">p</span>&gt;</span>TEST MOBILE<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
-	<span class="tag">&lt;/<span class="title">section</span>&gt;</span>
-	<span class="tag">&lt;<span class="title">footer</span>&gt;</span>
-	<span class="tag">&lt;/<span class="title">footer</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
-</pre></td></tr></table></figure>
-
-<h3 id="iphone下全屏模式启动">iphone下全屏模式启动</h3>
-<p>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/02/15/mobile-web-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -456,7 +424,7 @@
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>2</small></li>
   
     <li><a href="/tags/css/">css</a><small>6</small></li>
   
@@ -474,7 +442,9 @@
   
     <li><a href="/tags/markdown/">markdown</a><small>1</small></li>
   
-    <li><a href="/tags/node.js/">node.js</a><small>3</small></li>
+    <li><a href="/tags/mongodb/">mongodb</a><small>1</small></li>
+  
+    <li><a href="/tags/node.js/">node.js</a><small>4</small></li>
   
     <li><a href="/tags/web基础/">web基础</a><small>4</small></li>
   
@@ -488,6 +458,10 @@
 <div class="widget tag">
   <h3 class="title">Recent Posts</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2014/07/02/comment-0/">node.js实战--分享一个nodejs评论系统</a>
+      </li>
     
       <li>
         <a href="/2014/06/23/source-jquery-1/">jQuery源码解读 -- on的实现原理</a>
@@ -543,10 +517,6 @@
     
       <li>
         <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
-      </li>
-    
-      <li>
-        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
       </li>
     
   </ul>
