@@ -6,7 +6,11 @@
   <title>FlappyBird--项目实现 | no forget</title>
   <meta name="author" content="susubanana">
   
-  <meta name="description" content="用了几天的下班空余时间，终于把FlappyBird写完了。下面来看看成果吧。">
+  <meta name="description" content="这个小游戏从最初的项目构思到实现已经花了一个多星期时间了，终于也完成了。
+FlappyBird—项目实现
+这是结合javascript原生 + html5 canvas + CreateJS库EaselJS工具库制作的FlappyBird小游戏。
+demo查看：http://susubanana.github.io/flappybird.html
+项目地址：https://github.com/susubanana/FlappyBird">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -127,7 +131,24 @@
     </header>
     <div class="entry">
       
-        <p>用了几天的下班空余时间，终于把FlappyBird写完了。下面来看看成果吧。</p>
+        <p>这个小游戏从最初的项目构思到实现已经花了一个多星期时间了，终于也完成了。</p>
+<h2 id="FlappyBird—项目实现">FlappyBird—项目实现</h2>
+<p>这是结合javascript原生 + html5 canvas + CreateJS库EaselJS工具库制作的FlappyBird小游戏。</p>
+<p><strong>demo查看</strong>：<a href="http://susubanana.github.io/flappybird.html" target="_blank">http://susubanana.github.io/flappybird.html</a></p>
+<p><strong>项目地址</strong>：<a href="https://github.com/susubanana/FlappyBird" target="_blank">https://github.com/susubanana/FlappyBird</a><br><a id="more"></a></p>
+<h3 id="项目效果">项目效果</h3>
+<p>经过一个多星期时间的努力，小有所成，如图：</p>
+<p><img src="/images/cont/flappybird-0.jpg" style="display: block" /></p>
+<h3 id="谈谈制作所遇到的困难">谈谈制作所遇到的困难</h3>
+<p>作为一个游戏项目，可谓是项目虽小，五脏俱全，需要综合考虑很多东西：</p>
+<p>代码封装使用模块模式、单全局变量模式、单例模式等</p>
+<p>重力加速度封装，做的时候才发现物理学公式用在这里并不能正确展示自己想要的动画，还是要测试合适的公式。</p>
+<p>状态帧监听，因为这里需要知道小鸟弹跳的位置和管道移动的位置，是否已经穿过管道或者与管道碰撞，穿过则执行加分处理，碰撞则执行死亡状态处理，并提示用重新开始游戏。</p>
+<p>由于没有系统接触CreateJS库EaselJS工具库的知识体系，都要靠边coding，边参考官方API，查找如何实现小鸟飞行动作的初始化，小鸟的弹跳动作，小鸟死亡状态，还有上下管道如何渲染到画布上，管道的移动等。</p>
+<p>最后就是游戏的控制，控制小鸟和管道的初始化，设置时间帧监听小鸟的管道的位置状态，小鸟与管道的碰撞计算公式。</p>
+<h3 id="小结">小结</h3>
+<p>项目实战，需求都需要细分成一个个点，然后利用所学的知识各个击破，当然也需要清晰的思路和大局观和局部观，也就是从既要跳出来看整个项目的逻辑，也要从细节上考虑具体的逻辑。所以这里的实现，在前期项目构思可能会花费一点点时间，但是还是相对利好后期的项目开发，至少能知道每个步骤该从何下手去寻求解决方案。当然也少不了遇到某些问题或者报错解决不了，还是要从网络上海搜或者从自己脑子里慢慢得出解决方案，所以遇到问题总有解决的办法，重要的静下心来，好好思考自己的思路有没有不够缜密的地方，寻求突破方案。</p>
+<p>项目虽小，但贵在能把自己的空余时间挤出来发掘自己的潜力，锻炼自己的逻辑思维，组织好自己的代码，将项目做到最优化。尽管还有很多不足，但是我在努力着。。。</p>
 
         <div class="paging">
     
