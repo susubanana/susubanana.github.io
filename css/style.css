@@ -658,6 +658,13 @@ article .paging span {
   display: inline;
   float: left;
 }
+@media screen and (max-width: 600px) {
+  article .paging span {
+    height: 28px;
+    overflow: hidden;
+    zoom: 1;
+  }
+}
 article .paging span a {
   padding: 20px 0;
   background: #fafafa;

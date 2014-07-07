@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/mylife">杂谈</a>
+                 <a href="/categories/杂谈/">杂谈</a>
             
         
       </li>
@@ -110,6 +110,108 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2013-12-21T11:00:06.000Z"><a href="/2013/12/21/object-1/">12月 21 2013</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2013/12/21/object-1/">javascript面向对象--对象的成员</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="私有属性和方法">私有属性和方法</h2>
+<p>javascript没有特殊的语法表示公有、私有属性和方法，所有对象的成员都是公有的。实现私有成员的方法：使用闭包。</p>
+<h3 id="构造函数实现私有成员">构造函数实现私有成员</h3>
+<p>局部变量(私有成员)被所有在构造函数中定义的公有方法所共享，而且仅被在构造函数中定义的公有方法所共享，所以在prototype中定义的类成员不能访问在构造器中定义的局部变量。</p>
+<figure class="highlight ssh"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="code"><pre><span class="function"><span class="keyword">function</span> <span class="title">Bird</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _birdWidth = <span class="number">42</span>;
+
+    <span class="comment">//公有方法或特权方法（指能访问私有成员的公有方法）</span>
+    <span class="keyword">this</span>.getWidth = <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+        <span class="keyword">return</span> _birdWidth;
+    };
+}
+Bird.prototype = (<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+    <span class="comment">//私有成员</span>
+    <span class="keyword">var</span> _vBird = <span class="number">45</span>;
+
+    <span class="comment">//公有成员</span>
+    <span class="keyword">return</span> {
+        getW : <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            console.log(<span class="keyword">this</span>._birdWidth); <span class="comment">//undefined</span>
+        },
+        getVBird: <span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+            <span class="keyword">return</span> _vBird;
+        }
+    };
+}());
+
+<span class="keyword">var</span> bird = <span class="keyword">new</span> Bird();
+console.log(bird.birdWidth); <span class="comment">//undefined</span>
+console.log(bird.getWidth()); <span class="comment">//42</span>
+console.log(bird.getVBird()); <span class="comment">//45</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2013/12/21/object-1/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -328,51 +430,6 @@ console.log(alphabet); <span class="comment">//abcdefghijklmnopqrstuvwxyz</span>
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2013-12-12T09:45:24.000Z"><a href="/2013/12/12/secrets-of-javascript-4/">12月 12 2013</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2013/12/12/secrets-of-javascript-4/">javascript高级技巧--函数柯里化</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <h2 id="函数柯里化">函数柯里化</h2>
-<p>与函数bind()紧密相关的主题是函数柯里化。</p>
-<blockquote>
-<p>将函数及其参数的子集绑定来实现函数委托的方式称为函数柯里化<br>柯里化主要工作是将被返回的函数的参数进行排序</p>
-</blockquote>
-<p>柯里化函数通常如下创建：调用另一个函数，并为它传入柯里化函数和必要参数，返回给定的函数的函数和传入的参数。<br>
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2013/12/12/secrets-of-javascript-4/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -438,6 +495,10 @@ console.log(alphabet); <span class="comment">//abcdefghijklmnopqrstuvwxyz</span>
   <ul class="entry">
     
       <li>
+        <a href="/2014/07/07/my-life-0/">my-life</a>
+      </li>
+    
+      <li>
         <a href="/2014/07/02/comment-0/">node.js实战--分享一个nodejs评论系统</a>
       </li>
     
@@ -491,10 +552,6 @@ console.log(alphabet); <span class="comment">//abcdefghijklmnopqrstuvwxyz</span>
     
       <li>
         <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
-      </li>
-    
-      <li>
-        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
       </li>
     
   </ul>
