@@ -653,27 +653,33 @@ article .paging {
   overflow: hidden;
   color: #999;
 }
-article .paging span {
-  width: 50%;
+article .paging dl {
   display: inline;
   float: left;
+  line-height: 28px;
 }
 @media screen and (max-width: 600px) {
-  article .paging span {
+  article .paging dl {
     height: 28px;
     overflow: hidden;
     zoom: 1;
   }
 }
-article .paging span a {
-  padding: 20px 0;
+article .paging dl dt {
+  clear: both;
+  float: left;
+  display: inline;
+}
+article .paging dl dd {
+  overflow: hidden;
+  zoom: 1;
+}
+article .paging dl dd a {
   background: #fafafa;
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   text-align: center;
-  white-space: nowrap;
-  word-break: keep-all;
   font-size: 16px;
   color: #ffa500;
   -webkit-transition: color 0.35s, background-color 0.35s;
