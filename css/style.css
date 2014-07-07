@@ -662,13 +662,6 @@ article .paging dl {
   line-height: 28px;
   margin-top: 5px;
 }
-@media screen and (max-width: 600px) {
-  article .paging dl {
-    height: 28px;
-    overflow: hidden;
-    zoom: 1;
-  }
-}
 article .paging dl dt {
   clear: both;
   float: left;
