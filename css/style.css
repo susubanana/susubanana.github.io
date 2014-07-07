@@ -657,6 +657,7 @@ article .paging dl {
   display: inline;
   float: left;
   line-height: 28px;
+  margin-top: 5px;
 }
 @media screen and (max-width: 600px) {
   article .paging dl {
