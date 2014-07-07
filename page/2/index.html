@@ -88,7 +88,7 @@
         
         
             
-                 <a href="/categories/杂谈/">杂谈</a>
+                 <a href="/mylife">杂谈</a>
             
         
       </li>
@@ -110,60 +110,6 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-30T07:14:21.000Z"><a href="/2014/03/30/flappy-bird-0/">3月 30 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/03/30/flappy-bird-0/">FlappyBird--项目构思</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>今天双休，闲的无聊，想要做点除了工作之外的项目，为了乐趣和综合能力的锻炼，于是海搜网络，最后决定做了Flappy Bird，一个简单而又能充分锻炼综合能力的小游戏。</p>
-<p>想干就干，开始上网玩这个游戏，了解交互，建立清晰的思路，出动闲置的白纸开始画起来。</p>
-<h3 id="针对小鸟">针对小鸟</h3>
-<ol>
-<li>需要初始化一个小鸟</li>
-<li>小鸟拥有一个飞行、跳、死亡的动作</li>
-<li>既然那么多动作，当然有状态更新</li>
-</ol>
-<h3 id="针对管道">针对管道</h3>
-<ol>
-<li>需要初始化多根管道</li>
-<li>上下两根管道空隙的处理</li>
-<li>管道的状态更新</li>
-</ol>
-
-      
-    </div>
-
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2014/03/30/flappy-bird-0/#more" class="more-link">阅读全文</a>
-          </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
   <article class="post">
   
   <div class="post-content">
@@ -198,55 +144,6 @@
           <div class="alignleft">
             <a href="/2014/03/25/nodejs-3/#more" class="more-link">阅读全文</a>
           </div>
-        
-
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2014-03-22T10:32:28.000Z"><a href="/2014/03/22/coffeescript-0/">3月 22 2014</a></time>
-      
-      
-
-    <h1 class="title"><a href="/2014/03/22/coffeescript-0/">Web开发--CoffeeScript</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <a id="more"></a>
-
-
-<p>1111111111</p>
-
-        <div class="paging">
-    
-    <span>上一篇：<a href="/" class="prev" title="undefined">undefined</a></span>
-    
-    
-    <span>下一篇：<a href="/" class="next" title="undefined">undefined</a></span>
-    
-
-</div>
-      
-    </div>
-
-    <footer>
-      
         
 
       
@@ -380,6 +277,102 @@ debug&gt; c
 
 
 
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-02T09:19:58.000Z"><a href="/2014/03/02/mobile-web-8/">3月 2 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/02/mobile-web-8/">移动Web开发--Retina分辨率的像素处理</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>苹果的新产品中已经使用了Retina(视网膜)技术。这是一种新的屏幕的显示技术，声称人类的肉眼将无法区分单个像素。这个技术得到了更多人的亲眯，因为给画面带来了前所未有的清晰平滑效果。但是Web开发人员和设计者为了确保用户得到最好的视觉体验，Retina还是给开发带来了些小麻烦。</p>
+<h2 id="Retina分辨率的像素处理">Retina分辨率的像素处理</h2>
+<h3 id="理解像素">理解像素</h3>
+<p><strong>CSS像素</strong></p>
+<blockquote>
+<p>CSS像素是一个抽象的单位，主要使用在浏览器上，用来精确的度量（确定）Web页面上的内容。一般情况下，CSS像素被称为与设备无关的像素（device-independent像素），简称为“DIPs”。在一个标准的显示密度下，一个CSS像素对应着一个设备像素。</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">div</span> <span class="attribute">height</span>=<span class="value">"200"</span> <span class="attribute">width</span>=<span class="value">"300"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<p>上面的代码，将会在显示屏设备上绘制一个200x300像素的盒子。但是在Retina屏幕下，相同的div却使用了400x600设备像素，保持相同的物理尺寸显示，导致每个像素点实际上有4倍的普通像素点，如图所示：<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/02/mobile-web-8/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2014-03-01T11:12:38.000Z"><a href="/2014/03/01/mobile-web-7/">3月 1 2014</a></time>
+      
+      
+
+    <h1 class="title"><a href="/2014/03/01/mobile-web-7/">移动Web开发--响应式设计</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="响应式设计">响应式设计</h2>
+<p>网页设计应该能够自动进行调整，不应该针对用户分类，去定制无数的解决方案。响应式设计不关乎屏幕的分辨率，不只是技术的实现，它更像是一种对于设计的全新思维模式。</p>
+<p>除了横屏和竖屏两种模式，还需考虑数以百计的屏幕尺寸，很明显，我们不能针对每一种设备都创建定制化的解决方案。</p>
+<h3 id="响应式图片">响应式图片</h3>
+<p>处理原理：浏览器根据用户终端的屏幕尺寸、分辨率处理后输出适应的图片，如屏幕分辨率320*480，那么我们匹配给它的是宽度应小于320px的图片。如果终端屏幕是高清屏，那么我们就得输出2倍分辨率的图形(宽:640px)；以保证在高清屏下图形的清晰度。</p>
+<p>有几种技术可以按比例调整图片：<br>
+      
+    </div>
+
+    <footer>
+      
+        
+          <div class="alignleft">
+            <a href="/2014/03/01/mobile-web-7/#more" class="more-link">阅读全文</a>
+          </div>
+        
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+
+
 
 <nav id="pagination">
   
@@ -411,7 +404,7 @@ debug&gt; c
   <h3 class="title">标签</h3>
   <ul class="entry">
   
-    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>2</small></li>
+    <li><a href="/tags/CoffeeScript/">CoffeeScript</a><small>1</small></li>
   
     <li><a href="/tags/css/">css</a><small>6</small></li>
   
@@ -420,8 +413,6 @@ debug&gt; c
     <li><a href="/tags/hexo/">hexo</a><small>7</small></li>
   
     <li><a href="/tags/html5/">html5</a><small>5</small></li>
-  
-    <li><a href="/tags/interview/">interview</a><small>1</small></li>
   
     <li><a href="/tags/jQuery/">jQuery</a><small>2</small></li>
   
@@ -459,10 +450,6 @@ debug&gt; c
       </li>
     
       <li>
-        <a href="/2014/06/09/question-0/">热身运动</a>
-      </li>
-    
-      <li>
         <a href="/2014/04/06/flappy-bird-1/">FlappyBird--项目实现</a>
       </li>
     
@@ -472,10 +459,6 @@ debug&gt; c
     
       <li>
         <a href="/2014/03/25/nodejs-3/">node.js--WebSocket与Socket.io</a>
-      </li>
-    
-      <li>
-        <a href="/2014/03/22/coffeescript-0/">Web开发--CoffeeScript</a>
       </li>
     
       <li>
@@ -504,6 +487,14 @@ debug&gt; c
     
       <li>
         <a href="/2014/02/17/mobile-web-1/">移动Web开发--text-size-adjust属性</a>
+      </li>
+    
+      <li>
+        <a href="/2014/02/15/mobile-web-0/">移动Web开发--移动端的配置和优化</a>
+      </li>
+    
+      <li>
+        <a href="/2014/01/08/design-patterns-2/">javascript设计模式--装饰者模式</a>
       </li>
     
   </ul>
