@@ -653,6 +653,9 @@ article .paging {
   overflow: hidden;
   color: #999;
 }
+article .paging .page-prev {
+  margin-right: 50px;
+}
 article .paging dl {
   display: inline;
   float: left;
