@@ -8,13 +8,13 @@ FlappyBird.playGame = (function(){
     var pillars = [];
     var stage = null;
     var instance = null;
-    var canvasHeight = window.innerHeight;
+    var canvasWraperHeight = 0;
     var doc = document;
     var Game = function(){
         if(instance){
             return instance;
         }
-        this.floorY = canvasHeight - 40;
+        this.floorY = 0;
         this.score = 0;
         this.isStart = false;
         this.isEnd = false;
@@ -23,9 +23,26 @@ FlappyBird.playGame = (function(){
         instance = this;
     };
     Game.prototype.init = function(){
-		var canvas = doc.getElementById('my-bird');
-		canvas.height = canvasHeight - 40;
-        canvas.width = canvas.height * 0.8;
+        var canvasWraper = doc.querySelector('.canvas-wraper');
+        var canvas = doc.getElementById('my-bird');
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth;
+        var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        var gameWidth = clientWidth;
+        var gameHeight = clientHeight;
+        if(gameWidth < 641){
+            this.floorY = gameHeight - 40;
+            canvasWraper.style.width = gameWidth + "px";
+            canvasWraper.style.height = gameHeight - 35 + "px";
+            canvas.width = gameWidth;
+            canvas.height =  gameHeight - 40;
+        } else {
+            canvasWraper.style.width = "550px";
+            canvasWraper.style.height = 720 - 35 + "px";
+            canvas.width = 550;
+            canvas.height = 680;
+            this.floorY = 680;
+        }
+        canvasWraperHeight = parseInt(canvasWraper.style.height) + 35 + "px";
         stage = new createjs.Stage(canvas);
 		
         //管道初始化
@@ -46,24 +63,6 @@ FlappyBird.playGame = (function(){
     };
 
     //监听键盘操作
-    
-    Game.prototype.addSpaceKeyListener = function () {
-        var self = this;
-        doc.onkeydown = function (e) {
-            var e = e || event;
-            var currKey = e.keyCode || e.which || e.charCode;
-            if (currKey == 32) {
-            	self.startControl();
-            }
-        };
-    };
-    Game.prototype.addTouchListener = function () {
-        var self = this;
-
-    	doc.ontouchstart = function () {
-        	self.startControl();
-    	};
-    };
 
     Game.prototype.addStartListener = function () {
 
@@ -151,7 +150,7 @@ FlappyBird.playGame = (function(){
         } else {
             doc.querySelector('.restart-space').style.display = "block";
         }
-        doc.querySelector('.mask').style.cssText = "display:block;height: " + canvasHeight + "px;";
+        doc.querySelector('.mask').style.cssText = "display:block;height: " + canvasWraperHeight;
         clearInterval(this.timer);
     };
 
